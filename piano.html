@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Piano App</title>
+<link rel="stylesheet" type="text/css" href="Piano_Style.css">
+<script type = "text/javascript" src = "jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="Piano_Scripts.js"></script>
+</head>
+<body>
+	<!--Here the audio for each note is declared pointing to the sound files -->
+	<audio id="c1">
+		<source src="Piano_Notes/C1.mp3">
+	</audio>
+	<audio id="c#1">
+		<source src="Piano_Notes/C%231.mp3">
+	</audio>
+	<audio id="d1">
+		<source src="Piano_Notes/D1.mp3">
+	</audio>
+	<audio id="d#1">
+		<source src="Piano_Notes/D%231.mp3">
+	</audio>
+	<audio id="e1">
+		<source src="Piano_Notes/E1.mp3">
+	</audio>
+	<audio id="f1">
+		<source src="Piano_Notes/F1.mp3">
+	</audio>
+	<audio id="f#1">
+		<source src="Piano_Notes/F%231.mp3">
+	</audio>
+	<audio id="g1">
+		<source src="Piano_Notes/G1.mp3">
+	</audio>
+	<audio id="g#1">
+		<source src="Piano_Notes/G%231.mp3">
+	</audio>
+	<audio id="a2">
+		<source src="Piano_Notes/A2.mp3">
+	</audio>
+	<audio id="a#2">
+		<source src="Piano_Notes/A%232.mp3">
+	</audio>
+	<audio id="b2">
+		<source src="Piano_Notes/B2.mp3">
+	</audio>
+	<audio id="c2">
+		<source src="Piano_Notes/C2.mp3">
+	</audio>
+	<audio id="c#2">
+		<source src="Piano_Notes/C%232.mp3">
+	</audio>
+	<audio id="d2">
+		<source src="Piano_Notes/D2.mp3">
+	</audio>
+	<audio id="d#2">
+		<source src="Piano_Notes/D%232.mp3">
+	</audio>
+	<audio id="e2">
+		<source src="Piano_Notes/E2.mp3">
+	</audio>
+	<audio id="f2">
+		<source src="Piano_Notes/F2.mp3">
+	</audio>
+	<audio id="f#2">
+		<source src="Piano_Notes/F%232.mp3">
+	</audio>
+	<audio id="g2">
+		<source src="Piano_Notes/G2.mp3">
+	</audio>
+	<audio id="g#2">
+		<source src="Piano_Notes/G%232.mp3">
+	</audio>
+	<audio id="a3">
+		<source src="Piano_Notes/A3.mp3">
+	</audio>
+	<audio id="a#3">
+		<source src="Piano_Notes/A%233.mp3">
+	</audio>
+	<audio id="b3">
+		<source src="Piano_Notes/B3.mp3">
+	</audio>
+	<audio id="c3">
+		<source src="Piano_Notes/C3.mp3">
+	</audio>
+	<audio id="c#3">
+		<source src="Piano_Notes/C%233.mp3">
+	</audio>
+	<audio id="d3">
+		<source src="Piano_Notes/D3.mp3">
+	</audio>
+	<audio id="d#3">
+		<source src="Piano_Notes/D%233.mp3">
+	</audio>
+	<audio id="e3">
+		<source src="Piano_Notes/E3.mp3">
+	</audio>
+	<audio id="f3">
+		<source src="Piano_Notes/F3.mp3">
+	</audio>
+	<audio id="f#3">
+		<source src="Piano_Notes/F%233.mp3">
+	</audio>
+	<audio id="g3">
+		<source src="Piano_Notes/G3.mp3">
+	</audio>
+	<audio id="g#3">
+		<source src="Piano_Notes/G%233.mp3">
+	</audio>
+	<audio id="a4">
+		<source src="Piano_Notes/A4.mp3">
+	</audio>
+	<audio id="a#4">
+		<source src="Piano_Notes/A%234.mp3">
+	</audio>
+	<audio id="b4">
+		<source src="Piano_Notes/B4.mp3">
+	</audio>
+	<audio id="c4">
+		<source src="Piano_Notes/C4.mp3">
+	</audio>
+	<audio id="c#4">
+		<source src="Piano_Notes/C%234.mp3">
+	</audio>
+	<audio id="d4">
+		<source src="Piano_Notes/D4.mp3">
+	</audio>
+	<audio id="d#4">
+		<source src="Piano_Notes/D%234.mp3">
+	</audio>
+	<audio id="e4">
+		<source src="Piano_Notes/E4.mp3">
+	</audio>
+	<audio id="f4">
+		<source src="Piano_Notes/F4.mp3">
+	</audio>
+	<audio id="f#4">
+		<source src="Piano_Notes/F%234.mp3">
+	</audio>
+	<audio id="g4">
+		<source src="Piano_Notes/G4.mp3">
+	</audio>
+	<audio id="g#4">
+		<source src="Piano_Notes/G%234.mp3">
+	</audio>
+	<audio id="a5">
+		<source src="Piano_Notes/A5.mp3">
+	</audio>
+	<audio id="a#5">
+		<source src="Piano_Notes/A%235.mp3">
+	</audio>
+	<audio id="b5">
+		<source src="Piano_Notes/B5.mp3">
+	</audio>
+	<audio id="c5">
+		<source src="Piano_Notes/C5.mp3">
+	</audio>
+	<audio id="c#5">
+		<source src="Piano_Notes/C%235.mp3">
+	</audio>
+	<audio id="d5">
+		<source src="Piano_Notes/D5.mp3">
+	</audio>
+	<audio id="d#5">
+		<source src="Piano_Notes/D%235.mp3">
+	</audio>
+	<audio id="e5">
+		<source src="Piano_Notes/E5.mp3">
+	</audio>
+	<audio id="f5">
+		<source src="Piano_Notes/F5.mp3">
+	</audio>
+	<audio id="f#5">
+		<source src="Piano_Notes/F%235.mp3">
+	</audio>
+	<audio id="g5">
+		<source src="Piano_Notes/G5.mp3">
+	</audio>
+	<audio id="g#5">
+		<source src="Piano_Notes/G%235.mp3">
+	</audio>
+	<audio id="a6">
+		<source src="Piano_Notes/A6.mp3">
+	</audio>
+	<audio id="a#6">
+		<source src="Piano_Notes/A%236.mp3">
+	</audio>
+	<audio id="b6">
+		<source src="Piano_Notes/B6.mp3">
+	</audio>
+	<audio id="c6">
+		<source src="Piano_Notes/C6.mp3">
+	</audio>
+	<audio id="c#6">
+		<source src="Piano_Notes/C%236.mp3">
+	</audio>
+	<audio id="d6">
+		<source src="Piano_Notes/D6.mp3">
+	</audio>
+	<audio id="d#6">
+		<source src="Piano_Notes/D%236.mp3">
+	</audio>
+	<audio id="e6">
+		<source src="Piano_Notes/E6.mp3">
+	</audio>
+	<audio id="f6">
+		<source src="Piano_Notes/F6.mp3">
+	</audio>
+	<audio id="f#6">
+		<source src="Piano_Notes/F%236.mp3">
+	</audio>
+	<audio id="g6">
+		<source src="Piano_Notes/G6.mp3">
+	</audio>
+	<audio id="g#6">
+		<source src="Piano_Notes/G%236.mp3">
+	</audio><audio id="a7">
+		<source src="Piano_Notes/A7.mp3">
+	</audio>
+	<audio id="a#7">
+		<source src="Piano_Notes/A%237.mp3">
+	</audio>
+	<audio id="b7">
+		<source src="Piano_Notes/B7.mp3">
+	</audio>
+	<audio id="c7">
+		<source src="Piano_Notes/C7.mp3">
+	</audio>
+	<audio id="c#7">
+		<source src="Piano_Notes/C%237.mp3">
+	</audio>
+	<audio id="d7">
+		<source src="Piano_Notes/D7.mp3">
+	</audio>
+	<audio id="d#7">
+		<source src="Piano_Notes/D%237.mp3">
+	</audio>
+	<audio id="e7">
+		<source src="Piano_Notes/E7.mp3">
+	</audio>
+	<audio id="f7">
+		<source src="Piano_Notes/F7.mp3">
+	</audio>
+	<audio id="f#7">
+		<source src="Piano_Notes/F%237.mp3">
+	</audio>
+	<audio id="g7">
+		<source src="Piano_Notes/G7.mp3">
+	</audio>
+	<audio id="g#7">
+		<source src="Piano_Notes/G%237.mp3">
+	</audio>
+	<audio id="a8">
+		<source src="Piano_Notes/A8.mp3">
+	</audio>
+	<audio id="a#8">
+		<source src="Piano_Notes/A%238.mp3">
+	</audio>
+	<audio id="b8">
+		<source src="Piano_Notes/B8.mp3">
+	</audio>
+	<audio id="c8">
+		<source src="Piano_Notes/C8.mp3">
+	</audio>
+	
+	<!--Here are the divs which contain background images to display the piano body and face -->
+	<div id="keyboard_body">
+		<div id="keyboard_face">
+		</div>
+	</div>
+	
+	<!-- This div contains the white keys and black keys and calls to JS to implement sound -->
+	<div id="container">
+		<div id="inside">
+			<div id="keys">
+				<div id="c1" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c#1" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d1" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d#1" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="e1" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f1" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f#1" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g1" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g#1" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a2" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a#2" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="b2" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c2" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c#2" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d2" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d#2" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="e2" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f2" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f#2" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g2" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g#2" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a3" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a#3" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="b3" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c3" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c#3" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d3" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d#3" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="e3" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f3" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f#3" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g3" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g#3" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a4" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a#4" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="b4" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c4" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c#4" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d4" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d#4" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="e4" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f4" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f#4" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g4" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g#4" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a5" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a#5" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="b5" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c5" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c#5" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d5" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="d#5" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="e5" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f5" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="f#5" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g5" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="g#5" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a6" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="a#6" class="blackkey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="b6" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>
+				<div id="c6" class="whitekey" onmousedown="mousedown(this.id)" onmouseup="mouseup(this.id)"></div>				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

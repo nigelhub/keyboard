@@ -1,0 +1,93 @@
+html,body { height:100%; width:100%;padding:0; margin:0;}
+
+#keyboard_body
+{
+	position:relative;
+	width:90%;
+	left:5%;
+	height:35%;
+	background-image: url("Images/Body.png");
+	margin:0;
+	padding:0;	
+}
+
+#keyboard_face
+{
+	position:relative;
+	top:59%;
+	width:100%;
+	height:100%;
+	background-image: url("Images/PianoFace.png");
+	background-repeat:no-repeat;
+	margin:0;
+	padding:0;	
+}
+
+#container
+{
+	position:relative;
+	width:100%;
+	height:35%;
+	white-space:nowrap;
+}
+
+#inside
+{
+	position:relative;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+
+#keys 
+{
+	position:relative;
+	height:100%;
+	width:100%;
+	left:5%;
+}
+
+.whitekey
+{
+	width:2.5%;
+    height:100%;
+    float:left;
+    background-image:url("Images/WhiteKey.png");
+    background-repeat:no-repeat;
+    cursor:pointer;
+}
+
+.blackkey
+{
+	position: relative;
+	float:left;
+    width: 2%;
+    height:55%;
+    left: -13px;
+    margin-right: -46px;
+    vertical-align: top;
+    background-image:url("Images/BlackKey.png");
+    background-repeat:no-repeat;
+}
+
+.whitekey_down
+{
+	width:2.5%;
+    height:100%;
+    float:left;
+    background-image:url("Images/WhiteKeyDown.png");
+    background-repeat:no-repeat;
+}
+
+.blackkey_down
+{
+	position: relative;
+	float:left;
+    width: 2%;
+    height:55%;
+    left: -13px;
+    margin-right: -46px;
+    vertical-align: top;
+    background-image:url("Images/BlackKeyDown.png");
+    background-repeat:no-repeat;	
+}
