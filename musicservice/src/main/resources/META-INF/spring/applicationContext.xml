@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+	<context:component-scan base-package="musicservice" />
+	<context:component-scan base-package="musicservice.rest" />	
+
+	<tx:annotation-driven />
+	
+	<util:properties id="MusicServiceProp" location="classpath:/MusicService.properties" />
+	
+	<!-- 
+	<bean id="corsFilter" class="com.emc.usd.framework.common.CorsFilter" />
+	/ -->
+	
+	<!--  to specify swagger properties
+        documentation.services.basePath=http://localhost:8080/swagger-springmvc-test
+        documentation.services.version=1.0
+    --> 
+	 <!-- context:property-placeholder location="classpath:swagger.properties" / --> 
+    <!-- pulls in the Controllers to document -->
+    <!-- context:component-scan base-package="com.emc.usd.framework.eventmanager" / -->
+    <!-- Configuration Bean -->
+    <!--  bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/ -->
+    <!-- Custom extensibility module (bean) Has override methods to customize the document generation-->
+    <!-- bean id="extensibilityModule" class="com.mangofactory.swagger.springmvc.example.config.ExampleExtensibilityModule" / -->
+	
+
+
+
+</beans>
