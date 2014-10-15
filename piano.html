@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Piano App</title>
+<link rel="stylesheet" type="text/css" href="Piano_Style.css">
+<script type = "text/javascript" src = "jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="Piano_Scripts.js"></script>
+<script type="text/javascript" src="mousetrap.js"></script>
+</head>
+<body>
+	<!--Here the audio for each note is declared pointing to the sound files-->
+	<audio id="c1">
+		<source src="Piano_Notes/C1.mp3">
+	</audio>
+	<audio id="csharp1">
+		<source src="Piano_Notes/C%231.mp3">
+	</audio>
+	<audio id="d1">
+		<source src="Piano_Notes/D1.mp3">
+	</audio>
+	<audio id="dsharp1">
+		<source src="Piano_Notes/D%231.mp3">
+	</audio>
+	<audio id="e1">
+		<source src="Piano_Notes/E1.mp3">
+	</audio>
+	<audio id="f1">
+		<source src="Piano_Notes/F1.mp3">
+	</audio>
+	<audio id="fsharp1">
+		<source src="Piano_Notes/F%231.mp3">
+	</audio>
+	<audio id="g1">
+		<source src="Piano_Notes/G1.mp3">
+	</audio>
+	<audio id="gsharp1">
+		<source src="Piano_Notes/G%231.mp3">
+	</audio>
+	<audio id="a2">
+		<source src="Piano_Notes/A2.mp3">
+	</audio>
+	<audio id="asharp2">
+		<source src="Piano_Notes/A%232.mp3">
+	</audio>
+	<audio id="b2">
+		<source src="Piano_Notes/B2.mp3">
+	</audio>
+	<audio id="c2">
+		<source src="Piano_Notes/C2.mp3">
+	</audio>
+	<audio id="csharp2">
+		<source src="Piano_Notes/C%232.mp3">
+	</audio>
+	<audio id="d2">
+		<source src="Piano_Notes/D2.mp3">
+	</audio>
+	<audio id="dsharp2">
+		<source src="Piano_Notes/D%232.mp3">
+	</audio>
+	<audio id="e2">
+		<source src="Piano_Notes/E2.mp3">
+	</audio>
+	<audio id="f2">
+		<source src="Piano_Notes/F2.mp3">
+	</audio>
+	<audio id="fsharp2">
+		<source src="Piano_Notes/F%232.mp3">
+	</audio>
+	<audio id="g2">
+		<source src="Piano_Notes/G2.mp3">
+	</audio>
+	<audio id="gsharp2">
+		<source src="Piano_Notes/G%232.mp3">
+	</audio>
+	<audio id="a3">
+		<source src="Piano_Notes/A3.mp3">
+	</audio>
+	<audio id="asharp3">
+		<source src="Piano_Notes/A%233.mp3">
+	</audio>
+	<audio id="b3">
+		<source src="Piano_Notes/B3.mp3">
+	</audio>
+	<audio id="c3">
+		<source src="Piano_Notes/C3.mp3">
+	</audio>
+	<audio id="csharp3">
+		<source src="Piano_Notes/C%233.mp3">
+	</audio>
+	<audio id="d3">
+		<source src="Piano_Notes/D3.mp3">
+	</audio>
+	<audio id="dsharp3">
+		<source src="Piano_Notes/D%233.mp3">
+	</audio>
+	<audio id="e3">
+		<source src="Piano_Notes/E3.mp3">
+	</audio>
+	<audio id="f3">
+		<source src="Piano_Notes/F3.mp3">
+	</audio>
+	<audio id="fsharp3">
+		<source src="Piano_Notes/F%233.mp3">
+	</audio>
+	<audio id="g3">
+		<source src="Piano_Notes/G3.mp3">
+	</audio>
+	<audio id="gsharp3">
+		<source src="Piano_Notes/G%233.mp3">
+	</audio>
+	<audio id="a4">
+		<source src="Piano_Notes/A4.mp3">
+	</audio>
+	<audio id="asharp4">
+		<source src="Piano_Notes/A%234.mp3">
+	</audio>
+	<audio id="b4">
+		<source src="Piano_Notes/B4.mp3">
+	</audio>
+	<audio id="c4">
+		<source src="Piano_Notes/C4.mp3">
+	</audio>
+	<audio id="csharp4">
+		<source src="Piano_Notes/C%234.mp3">
+	</audio>
+	<audio id="d4">
+		<source src="Piano_Notes/D4.mp3">
+	</audio>
+	<audio id="dsharp4">
+		<source src="Piano_Notes/D%234.mp3">
+	</audio>
+	<audio id="e4">
+		<source src="Piano_Notes/E4.mp3">
+	</audio>
+	<audio id="f4">
+		<source src="Piano_Notes/F4.mp3">
+	</audio>
+	<audio id="fsharp4">
+		<source src="Piano_Notes/F%234.mp3">
+	</audio>
+	<audio id="g4">
+		<source src="Piano_Notes/G4.mp3">
+	</audio>
+	<audio id="gsharp4">
+		<source src="Piano_Notes/G%234.mp3">
+	</audio>
+	<audio id="a5">
+		<source src="Piano_Notes/A5.mp3">
+	</audio>
+	<audio id="asharp5">
+		<source src="Piano_Notes/A%235.mp3">
+	</audio>
+	<audio id="b5">
+		<source src="Piano_Notes/B5.mp3">
+	</audio>
+	<audio id="c5">
+		<source src="Piano_Notes/C5.mp3">
+	</audio>
+	<audio id="csharp5">
+		<source src="Piano_Notes/C%235.mp3">
+	</audio>
+	<audio id="d5">
+		<source src="Piano_Notes/D5.mp3">
+	</audio>
+	<audio id="dsharp5">
+		<source src="Piano_Notes/D%235.mp3">
+	</audio>
+	<audio id="e5">
+		<source src="Piano_Notes/E5.mp3">
+	</audio>
+	<audio id="f5">
+		<source src="Piano_Notes/F5.mp3">
+	</audio>
+	<audio id="fsharp5">
+		<source src="Piano_Notes/F%235.mp3">
+	</audio>
+	<audio id="g5">
+		<source src="Piano_Notes/G5.mp3">
+	</audio>
+	<audio id="gsharp5">
+		<source src="Piano_Notes/G%235.mp3">
+	</audio>
+	<audio id="a6">
+		<source src="Piano_Notes/A6.mp3">
+	</audio>
+	<audio id="asharp6">
+		<source src="Piano_Notes/A%236.mp3">
+	</audio>
+	<audio id="b6">
+		<source src="Piano_Notes/B6.mp3">
+	</audio>
+	<audio id="c6">
+		<source src="Piano_Notes/C6.mp3">
+	</audio>
+	<audio id="csharp6">
+		<source src="Piano_Notes/C%236.mp3">
+	</audio>
+	<audio id="d6">
+		<source src="Piano_Notes/D6.mp3">
+	</audio>
+	<audio id="dsharp6">
+		<source src="Piano_Notes/D%236.mp3">
+	</audio>
+	<audio id="e6">
+		<source src="Piano_Notes/E6.mp3">
+	</audio>
+	<audio id="f6">
+		<source src="Piano_Notes/F6.mp3">
+	</audio>
+	<audio id="fsharp6">
+		<source src="Piano_Notes/F%236.mp3">
+	</audio>
+	<audio id="g6">
+		<source src="Piano_Notes/G6.mp3">
+	</audio>
+	<audio id="gsharp6">
+		<source src="Piano_Notes/G%236.mp3">
+	</audio><audio id="a7">
+		<source src="Piano_Notes/A7.mp3">
+	</audio>
+	<audio id="a#7">
+		<source src="Piano_Notes/A%237.mp3">
+	</audio>
+	<audio id="b7">
+		<source src="Piano_Notes/B7.mp3">
+	</audio>
+	<audio id="c7">
+		<source src="Piano_Notes/C7.mp3">
+	</audio>
+	<audio id="c#7">
+		<source src="Piano_Notes/C%237.mp3">
+	</audio>
+	<audio id="d7">
+		<source src="Piano_Notes/D7.mp3">
+	</audio>
+	<audio id="d#7">
+		<source src="Piano_Notes/D%237.mp3">
+	</audio>
+	<audio id="e7">
+		<source src="Piano_Notes/E7.mp3">
+	</audio>
+	<audio id="f7">
+		<source src="Piano_Notes/F7.mp3">
+	</audio>
+	<audio id="f#7">
+		<source src="Piano_Notes/F%237.mp3">
+	</audio>
+	<audio id="g7">
+		<source src="Piano_Notes/G7.mp3">
+	</audio>
+	<audio id="g#7">
+		<source src="Piano_Notes/G%237.mp3">
+	</audio>
+	<audio id="a8">
+		<source src="Piano_Notes/A8.mp3">
+	</audio>
+	<audio id="a#8">
+		<source src="Piano_Notes/A%238.mp3">
+	</audio>
+	<audio id="b8">
+		<source src="Piano_Notes/B8.mp3">
+	</audio>
+	<audio id="c8">
+		<source src="Piano_Notes/C8.mp3">
+	</audio>
+	
+	<button id="fullsize">Free Play</button>
+	<button id="smallsize">Tutorial/Game</button>
+
+<!--Container for the full length keyboard-->
+<div id="full_piano_container" class="center large">
+	<!--Here are the divs which contain background images to display the piano body and face -->
+	<div id="keyboard_body" class="large">
+		<div id="keyboard_face" class="large">
+		</div>
+	</div>
+	<!-- This div contains the white keys and black keys and calls to JS to implement sound -->
+	<div id="container" class="large">
+		<div id="inside" class="large">
+			<div id="keys" class="large">
+				<div id="c1" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="csharp1" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="d1" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="dsharp1" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="e1" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="f1" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="fsharp1" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="g1" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="gsharp1" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="a2" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="asharp2" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="b2" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="c2" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="csharp2" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="d2" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="dsharp2" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="e2" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="f2" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="fsharp2" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="g2" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="gsharp2" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="a3" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="asharp3" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="b3" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="c3" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="csharp3" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="d3" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="dsharp3" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="e3" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="f3" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="fsharp3" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="g3" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="gsharp3" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="a4" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="asharp4" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="b4" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="c4" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="csharp4" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="d4" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="dsharp4" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="e4" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="f4" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="fsharp4" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="g4" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="gsharp4" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="a5" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="asharp5" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="b5" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="c5" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="csharp5" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="d5" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="dsharp5" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="e5" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="f5" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="fsharp5" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="g5" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="gsharp5" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="a6" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="asharp6" class="blackkey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="b6" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="c6" class="whitekey" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Start of small keyboard for game/tutorial mode-->
+<div id="full_piano_container_small" class="center small">
+	<div id="keyboard_body_small" class="small">
+		<div id="keyboard_face_small" class="small"></div>
+	</div>
+		<div id="container_small" class="small">
+			<div id="inside_small" class="small">
+				<div id="keys_small" class="small">
+				<div id="f3" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="fsharp3" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="g3" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="gsharp3" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="a4" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="asharp4" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="b4" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="c4" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="csharp4" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="d4" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="dsharp4" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="e4" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="f4" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="fsharp4" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="g4" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="gsharp4" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="a5" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="asharp5" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="b5" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="c5" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="csharp5" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="d5" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="dsharp5" class="blackkey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				<div id="e5" class="whitekey_small" onmousedown="playNote(this.id)" onmouseup="stopNote(this.id)"></div>
+				</div>
+			</div>
+		</div>
+</div>
+
+<script>
+	Mousetrap.bind('shift+1', function() { playNote('c1'); keydown_white('c1'); }, 'keydown'); Mousetrap.bind('shift+1', function() { stopNote('c1'); }, 'keyup');
+	Mousetrap.bind('shift+2', function() { playNote('csharp1'); keydown_black('csharp1'); }, 'keydown'); Mousetrap.bind('shift+2', function() { stopNote('csharp1'); }, 'keyup');
+	Mousetrap.bind('shift+3', function() { playNote('d1'); keydown_white('d1'); }, 'keydown'); Mousetrap.bind('shift+3', function() { stopNote('d1'); }, 'keyup');
+	Mousetrap.bind('shift+4', function() { playNote('dsharp1'); keydown_black('dsharp1'); }, 'keydown'); Mousetrap.bind('shift+4', function() { stopNote('dsharp1'); }, 'keyup');
+	Mousetrap.bind('shift+5', function() { playNote('e1'); keydown_white('e1'); }, 'keydown'); Mousetrap.bind('shift+5', function() { stopNote('e1'); }, 'keyup');	
+	Mousetrap.bind('shift+6', function() { playNote('f1'); keydown_white('f1'); }, 'keydown'); Mousetrap.bind('shift+6', function() { stopNote('f1'); }, 'keyup');
+	Mousetrap.bind('shift+7', function() { playNote('fsharp1'); keydown_black('fsharp1'); }, 'keydown'); Mousetrap.bind('shift+7', function() { stopNote('fsharp1'); }, 'keyup');	
+	Mousetrap.bind('shift+8', function() { playNote('g1'); keydown_white('g1'); }, 'keydown'); Mousetrap.bind('shift+8', function() { stopNote('g1'); }, 'keyup');
+	Mousetrap.bind('shift+9', function() { playNote('gsharp1'); keydown_black('gsharp1'); }, 'keydown'); Mousetrap.bind('shift+9', function() { stopNote('gsharp1'); }, 'keyup');	
+	Mousetrap.bind('shift+0', function() { playNote('a2'); keydown_white('a2'); }, 'keydown'); Mousetrap.bind('shift+0', function() { stopNote('a2'); }, 'keyup');	
+	Mousetrap.bind('shift+q', function() { playNote('asharp2'); keydown_black('asharp2'); }, 'keydown'); Mousetrap.bind('shift+q', function() { stopNote('asharp2'); }, 'keyup');		
+	Mousetrap.bind('shift+w', function() { playNote('b2'); keydown_white('b2'); }, 'keydown'); Mousetrap.bind('shift+w', function() { stopNote('b2'); }, 'keyup');	
+	Mousetrap.bind('shift+e', function() { playNote('c2'); keydown_white('c2'); }, 'keydown'); Mousetrap.bind('shift+e', function() { stopNote('c2'); }, 'keyup');	
+	Mousetrap.bind('shift+r', function() { playNote('csharp2'); keydown_black('csharp2'); }, 'keydown'); Mousetrap.bind('shift+r', function() { stopNote('csharp2'); }, 'keyup');		
+	Mousetrap.bind('shift+t', function() { playNote('d2'); keydown_white('d2'); }, 'keydown'); Mousetrap.bind('shift+t', function() { stopNote('d2'); }, 'keyup');	
+	Mousetrap.bind('shift+y', function() { playNote('dsharp2'); keydown_black('dsharp2'); }, 'keydown'); Mousetrap.bind('shift+y', function() { stopNote('dsharp2'); }, 'keyup');		
+	Mousetrap.bind('shift+u', function() { playNote('e2'); keydown_white('e2'); }, 'keydown'); Mousetrap.bind('shift+u', function() { stopNote('e2'); }, 'keyup');		
+	Mousetrap.bind('shift+i', function() { playNote('f2'); keydown_white('f2'); }, 'keydown'); Mousetrap.bind('shift+i', function() { stopNote('f2'); }, 'keyup');		
+	Mousetrap.bind('shift+o', function() { playNote('fsharp2'); keydown_black('fsharp2'); }, 'keydown'); Mousetrap.bind('shift+o', function() { stopNote('fsharp2'); }, 'keyup');		
+	Mousetrap.bind('shift+p', function() { playNote('g2'); keydown_white('g2'); }, 'keydown'); Mousetrap.bind('shift+p', function() { stopNote('g2'); }, 'keyup');		
+	Mousetrap.bind('shift+a', function() { playNote('gsharp2'); keydown_black('gsharp2'); }, 'keydown'); Mousetrap.bind('shift+a', function() { stopNote('gsharp2'); }, 'keyup');		
+	Mousetrap.bind('shift+s', function() { playNote('a3'); keydown_white('a3'); }, 'keydown'); Mousetrap.bind('shift+s', function() { stopNote('a3'); }, 'keyup');		
+	Mousetrap.bind('shift+d', function() { playNote('asharp3'); keydown_black('asharp3'); }, 'keydown'); Mousetrap.bind('shift+d', function() { stopNote('asharp3'); }, 'keyup');		
+	Mousetrap.bind('shift+f', function() { playNote('b3'); keydown_white('b3'); }, 'keydown'); Mousetrap.bind('shift+f', function() { stopNote('b3'); }, 'keyup');		
+	Mousetrap.bind('1', function() { playNote('c3'); keydown_white('c3'); }, 'keydown'); Mousetrap.bind('1', function() { stopNote('c3'); }, 'keyup');		
+	Mousetrap.bind('2', function() { playNote('csharp3'); keydown_black('csharp3'); }, 'keydown'); Mousetrap.bind('2', function() { stopNote('csharp3'); }, 'keyup');		
+	Mousetrap.bind('3', function() { playNote('d3'); keydown_white('d3'); }, 'keydown'); Mousetrap.bind('3', function() { stopNote('d3'); }, 'keyup');		
+	Mousetrap.bind('4', function() { playNote('dsharp3'); keydown_black('dsharp3'); }, 'keydown'); Mousetrap.bind('4', function() { stopNote('dsharp3'); }, 'keyup');		
+	Mousetrap.bind('5', function() { playNote('e3'); keydown_white('e3'); }, 'keydown'); Mousetrap.bind('5', function() { stopNote('e3'); }, 'keyup');		
+	Mousetrap.bind('6', function() { playNote('f3'); keydown_white('f3'); }, 'keydown'); Mousetrap.bind('6', function() { stopNote('f3'); }, 'keyup');		
+	Mousetrap.bind('7', function() { playNote('fsharp3'); keydown_black('fsharp3'); }, 'keydown'); Mousetrap.bind('7', function() { stopNote('fsharp3'); }, 'keyup');		
+	Mousetrap.bind('8', function() { playNote('g3'); keydown_white('g3'); }, 'keydown'); Mousetrap.bind('8', function() { stopNote('g3'); }, 'keyup');		
+	Mousetrap.bind('9', function() { playNote('gsharp3'); keydown_black('gsharp3'); }, 'keydown'); Mousetrap.bind('9', function() { stopNote('gsharp3'); }, 'keyup');		
+	Mousetrap.bind('0', function() { playNote('a4'); keydown_white('a4'); }, 'keydown'); Mousetrap.bind('0', function() { stopNote('a4'); }, 'keyup');		
+	Mousetrap.bind('a', function() { playNote('gsharp4'); keydown_black('gsharp4'); }, 'keydown'); Mousetrap.bind('a', function() { stopNote('gsharp4'); }, 'keyup');		
+	Mousetrap.bind('s', function() { playNote('a5'); keydown_white('a5'); }, 'keydown'); Mousetrap.bind('s', function() { stopNote('a5'); }, 'keyup');		
+	Mousetrap.bind('d', function() { playNote('asharp5'); keydown_black('asharp5'); }, 'keydown'); Mousetrap.bind('d', function() { stopNote('asharp5'); }, 'keyup');
+	Mousetrap.bind('f', function() { playNote('b5'); keydown_white('b5'); }, 'keydown'); Mousetrap.bind('f', function() { stopNote('b5'); }, 'keyup');
+	Mousetrap.bind('g', function() { playNote('c5'); keydown_white('c5'); }, 'keydown'); Mousetrap.bind('g', function() { stopNote('c5'); }, 'keyup');	
+	Mousetrap.bind('h', function() { playNote('csharp5'); keydown_black('csharp5'); }, 'keydown'); Mousetrap.bind('h', function() { stopNote('csharp5'); }, 'keyup');	
+	Mousetrap.bind('j', function() { playNote('d5'); keydown_white('d5'); }, 'keydown'); Mousetrap.bind('j', function() { stopNote('d5'); }, 'keyup');		
+	Mousetrap.bind('k', function() { playNote('dsharp5'); keydown_black('dsharp5'); }, 'keydown'); Mousetrap.bind('k', function() { stopNote('dsharp5'); }, 'keyup');	
+	Mousetrap.bind('l', function() { playNote('e5'); keydown_white('e5'); }, 'keydown'); Mousetrap.bind('l', function() { stopNote('e5'); }, 'keyup');		
+	Mousetrap.bind('z', function() { playNote('f5'); keydown_white('f5'); }, 'keydown'); Mousetrap.bind('z', function() { stopNote('f5'); }, 'keyup');		
+	Mousetrap.bind('x', function() { playNote('fsharp5'); keydown_black('fsharp5'); }, 'keydown'); Mousetrap.bind('x', function() { stopNote('fsharp5'); }, 'keyup');		
+	Mousetrap.bind('c', function() { playNote('g5'); keydown_white('g5'); }, 'keydown'); Mousetrap.bind('c', function() { stopNote('g5'); }, 'keyup');		
+	Mousetrap.bind('v', function() { playNote('gsharp5'); keydown_black('gsharp5'); }, 'keydown'); Mousetrap.bind('v', function() { stopNote('gsharp5'); }, 'keyup');		
+	Mousetrap.bind('b', function() { playNote('a6'); keydown_white('a6'); }, 'keydown'); Mousetrap.bind('b', function() { stopNote('a6'); }, 'keyup');		
+	Mousetrap.bind('n', function() { playNote('asharp6'); keydown_black('asharp6'); }, 'keydown'); Mousetrap.bind('n', function() { stopNote('asharp6'); }, 'keyup');		
+	Mousetrap.bind('m', function() { playNote('b6'); keydown_white('b6'); }, 'keydown'); Mousetrap.bind('m', function() { stopNote('b6'); }, 'keyup');		
+	Mousetrap.bind('q', function() { playNote('asharp4'); keydown_black('asharp4'); }, 'keydown'); Mousetrap.bind('q', function() { stopNote('asharp4'); }, 'keyup');		
+	Mousetrap.bind('w', function() { playNote('b4'); keydown_white('b4'); }, 'keydown'); Mousetrap.bind('w', function() { stopNote('b4'); }, 'keyup');		
+	Mousetrap.bind('e', function() { playNote('c4'); keydown_white('c4'); }, 'keydown'); Mousetrap.bind('e', function() { stopNote('c4'); }, 'keyup');		
+	Mousetrap.bind('r', function() { playNote('csharp4'); keydown_black('csharp4'); }, 'keydown'); Mousetrap.bind('r', function() { stopNote('csharp4'); }, 'keyup');		
+	Mousetrap.bind('t', function() { playNote('d4'); keydown_white('d4'); }, 'keydown'); Mousetrap.bind('t', function() { stopNote('d4'); }, 'keyup');		
+	Mousetrap.bind('y', function() { playNote('dsharp4'); keydown_black('dsharp4'); }, 'keydown'); Mousetrap.bind('y', function() { stopNote('dsharp4'); }, 'keyup');		
+	Mousetrap.bind('u', function() { playNote('e4'); keydown_white('e4'); }, 'keydown'); Mousetrap.bind('u', function() { stopNote('e4'); }, 'keyup');		
+	Mousetrap.bind('i', function() { playNote('f4'); keydown_white('f4'); }, 'keydown'); Mousetrap.bind('i', function() { stopNote('f4'); }, 'keyup');		
+	Mousetrap.bind('o', function() { playNote('fsharp4'); keydown_black('fsharp4'); }, 'keydown'); Mousetrap.bind('o', function() { stopNote('fsharp4'); }, 'keyup');		
+	Mousetrap.bind('p', function() { playNote('g4'); keydown_white('g4'); }, 'keydown'); Mousetrap.bind('p', function() { stopNote('g4'); }, 'keyup');		
+	Mousetrap.bind('shift+m', function() { playNote('c6'); keydown_white('c6'); }, 'keydown'); Mousetrap.bind('shift+m', function() { stopNote('c6'); }, 'keyup');		
+</script>
+
+</body>
+</html>
