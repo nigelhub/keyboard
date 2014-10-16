@@ -28,7 +28,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	padding:0;
 }
 
-#keyboard_body_small
+#full_piano_container_small  #keyboard_body
 {
 	position:relative;
 	width:1149px;
@@ -38,7 +38,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	padding:0;	
 }
 
-#keyboard_face
+#full_piano_container #keyboard_face
 {
 	position:relative;
 	top:59%;
@@ -50,7 +50,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	padding:0;	
 }
 
-#keyboard_face_small
+#full_piano_container_small  #keyboard_face
 {
 	position:relative;
 	top:59%;
@@ -62,7 +62,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	padding:0;	
 }
 
-#container
+#full_piano_container #container
 {
 	position:relative;
 	width:1300px;
@@ -70,7 +70,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	white-space:nowrap;
 }
 
-#container_small
+#full_piano_container_small  #container
 {
 	position:relative;
 	width:1155px;
@@ -78,7 +78,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	white-space:nowrap;
 }
 
-#inside
+#full_piano_container .inside
 {
 	position:relative;
 	height:271px;
@@ -86,7 +86,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	overflow:hidden;
 }
 
-#inside_small
+#full_piano_container_small > .inside
 {
 	position:relative;
 	height:300px;
@@ -94,21 +94,21 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 	overflow:hidden;
 }
 
-#keys
+#full_piano_container .keys
 {
 	position:relative;
 	height:271px;
 	width:1300px;
 }
 
-#keys_small
+#full_piano_container_small  .keys
 {
 	position:relative;
 	height:300px;
 	width:1155px;
 }
 
-.whitekey
+#full_piano_container .whitekey
 {
 	width:36px;
     height:271px;
@@ -118,7 +118,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
     cursor:pointer;
 }
 
-.whitekey_small
+#full_piano_container_small .whitekey
 {
 	width:82px;
     height:300px;
@@ -128,7 +128,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
     cursor:pointer;
 }
 
-.blackkey
+#full_piano_container .blackkey
 {
 	position: relative;
 	float:left;
@@ -142,7 +142,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
     cursor:pointer;
 }
 
-.blackkey_small
+#full_piano_container_small  .blackkey
 {
 	position: relative;
 	float:left;
@@ -156,27 +156,28 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
     cursor:pointer;
 }
 
-.whitekey_down
+.keys * { cursor:pointer }
+
+.whitekey_down {
+  float:left;
+  background-repeat:no-repeat;
+}
+
+#full_piano_container .whitekey_down
 {
 	width:36px;
-    height:440px;
-    float:left;
-    background-image:url("Images/WhiteKeyDown.png");
-    background-repeat:no-repeat;
-    cursor:pointer;
+  height:440px;
+  background-image:url("Images/WhiteKeyDown.png");
 }
 
-.whitekey_down_small
+#full_piano_container_small  .whitekey_down
 {
 	width:82px;
-    height:300px;
-    float:left;
-    background-image:url("Images/WhiteKeyDown_Small.png");
-    background-repeat:no-repeat;
-    cursor:pointer;
+  height:300px;
+  background-image:url("Images/WhiteKeyDown_Small.png");
 }
 
-.blackkey_down
+#full_piano_container .blackkey_down
 {
 	position: relative;
 	float:left;
@@ -190,7 +191,7 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
     cursor:pointer;	
 }
 
-.blackkey_down_small
+#full_piano_container_small .blackkey_down
 {
 	position: relative;
 	float:left;
