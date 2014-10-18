@@ -2,27 +2,23 @@ $(document).ready(function() {
  	// THESE FUNCTIONS CHANGE THE CSS CLASS OF EACH KEY HIT TO PRESS KEY DOWN
  	$(".whitekey").mousedown(function () {
  			$(this).addClass("whitekey_down");
+ 			var note = $(this).attr("note");
+ 			playNote(note);
  		});
  	$(".whitekey").mouseup(function() {
  			$(this).removeClass("whitekey_down");
+ 			var note = $(this).attr("note");
+ 			stopNote(note);
  	});
  	$(".blackkey").mousedown(function () {
  			$(this).addClass("blackkey_down");
+ 			var note = $(this).attr("note");
+ 			playNote(note);
  	});
  	$(".blackkey").mouseup(function() {
  			$(this).removeClass("blackkey_down");
- 	});
- 	 $(".whitekey_small").mousedown(function () {
- 		$(this).addClass("whitekey_down_small");
- 	});
- 	$(".whitekey_small").mouseup(function() {
- 			$(this).removeClass("whitekey_down_small");
- 	});
- 	$(".blackkey_small").mousedown(function () {
- 			$(this).addClass("blackkey_down_small");
- 	});
- 	$(".blackkey_small").mouseup(function() {
- 			$(this).removeClass("blackkey_down_small");
+ 			var note = $(this).attr("note");
+ 			stopNote(note);
  	});
  	$(document).keyup(function () {
  		$("div").removeClass('whitekey_down');
@@ -42,29 +38,26 @@ $(document).ready(function() {
  	});
  });
 // THESE FUNCTIONS USE THE KEY PRESSED AS A REFERENCE, TAKE THE ID OF THAT KEY, AND PLAY THE RELATED SOUND FILE
-function playNote(soundObj) {
-	var audio1 = document.getElementById(soundObj);
-	audio1.play();
-	
+function playNote(note_name) {
+	//alert($(soundObj).attr("note"));
+	$("audio." + note_name).get(0).play();
 }
 
-function stopNote(soundObj) {
+function stopNote(note_name) {
 
-	var audio1 = document.getElementById(soundObj);
+	var audio1 = $("audio." + note_name).get(0);
 	audio1.pause();		
 	audio1.currentTime = 0;
 
 }
 // THESE FUNCTIONS CHANGE THE CLASS TO DISPLAY A KEY CHANGE ON KEY PRESS DOWN.  
 function keydown_white(key) {
-	
-	$("div#" + key).addClass('whitekey_down');
-
+	$("div[note=" + key + "]").addClass('whitekey_down');
 }
 
 function keydown_black(key) {
 	
-	$("div#" + key).addClass('blackkey_down');
+	$("div[note=" + key + "]").addClass('blackkey_down');
 	
 }
 

@@ -161,20 +161,23 @@ html,body { height:100%; width:100%;padding:0; margin:0;}
 .whitekey_down {
   float:left;
   background-repeat:no-repeat;
+  cursor:pointer;
 }
 
 #full_piano_container .whitekey_down
 {
-	width:36px;
+  width:36px;
   height:440px;
   background-image:url("Images/WhiteKeyDown.png");
+  cursor:pointer;
 }
 
 #full_piano_container_small  .whitekey_down
 {
-	width:82px;
+  width:82px;
   height:300px;
   background-image:url("Images/WhiteKeyDown_Small.png");
+  cursor:pointer;
 }
 
 #full_piano_container .blackkey_down
