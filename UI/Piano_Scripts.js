@@ -1,17 +1,17 @@
 $(document).ready(function() {
  	// THESE FUNCTIONS CHANGE THE CSS CLASS OF EACH KEY HIT TO PRESS KEY DOWN
  	$(".key").mousedown(function () {
- 			$(this).addClass("key_down");
- 			var note = $(this).attr("note");
- 			playNote(note);
- 		});
+		$(this).addClass("key_down");
+		var note = $(this).attr("note");
+		playNote(note);
+ 	});
 
  	$(".key").mouseup(function() {
- 			$(this).removeClass("key_down");
- 			var note = $(this).attr("note");
- 			stopNote(note);
+		$(this).removeClass("key_down");
+		var note = $(this).attr("note");
+		stopNote(note);
  	});
- 
+
  	$(document).keyup(function () {
  		$("div").removeClass('key_down');
  	});
@@ -93,7 +93,7 @@ $(document).ready(function() {
   for(var i = 0; i < key_mappings.length; i++) {
     (function(i) {
       var mapping = key_mappings[i];
-      Mousetrap.bind(mapping[0], function() { playNote(mapping[1]); key_down(mapping[1]); }, 'keydown'); Mousetrap.bind(mapping[0], function() { stopNote(mapping[1]); }, 'keyup'); 
+      Mousetrap.bind(mapping[0], function() { playNote(mapping[1]); key_down(mapping[1]); }, 'keydown'); Mousetrap.bind(mapping[0], function() { stopNote(mapping[1]); }, 'keyup');
     })(i);
   }
 });
@@ -105,11 +105,11 @@ function playNote(note_name) {
 
 function stopNote(note_name) {
 	var audio1 = $("audio." + note_name).get(0);
-	audio1.pause();		
+	audio1.pause();
 	audio1.currentTime = 0;
-
 }
-// THESE FUNCTIONS CHANGE THE CLASS TO DISPLAY A KEY CHANGE ON KEY PRESS DOWN.  
+
+// THESE FUNCTIONS CHANGE THE CLASS TO DISPLAY A KEY CHANGE ON KEY PRESS DOWN.
 function key_down(key) {
 	$("div[note=" + key + "]").addClass('key_down');
 }
