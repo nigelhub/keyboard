@@ -1,29 +1,21 @@
 $(document).ready(function() {
  	// THESE FUNCTIONS CHANGE THE CSS CLASS OF EACH KEY HIT TO PRESS KEY DOWN
- 	$(".whitekey").mousedown(function () {
- 			$(this).addClass("whitekey_down");
+ 	$(".key").mousedown(function () {
+ 			$(this).addClass("key_down");
  			var note = $(this).attr("note");
  			playNote(note);
  		});
- 	$(".whitekey").mouseup(function() {
- 			$(this).removeClass("whitekey_down");
+
+ 	$(".key").mouseup(function() {
+ 			$(this).removeClass("key_down");
  			var note = $(this).attr("note");
  			stopNote(note);
  	});
- 	$(".blackkey").mousedown(function () {
- 			$(this).addClass("blackkey_down");
- 			var note = $(this).attr("note");
- 			playNote(note);
- 	});
- 	$(".blackkey").mouseup(function() {
- 			$(this).removeClass("blackkey_down");
- 			var note = $(this).attr("note");
- 			stopNote(note);
- 	});
+ 
  	$(document).keyup(function () {
- 		$("div").removeClass('whitekey_down');
- 		$("div").removeClass('blackkey_down');
+ 		$("div").removeClass('key_down');
  	});
+
  	//THIS INITIALLY HIDES THE KEYBOARD TO DISPLAY FREE PLAY KEYBOARD AT DEFAULT
  	$(".small").hide();
  	//DISPLAYS FULL SIZE FREE PLAY KEYBOARD ON CLICK
@@ -101,11 +93,7 @@ $(document).ready(function() {
   for(var i = 0; i < key_mappings.length; i++) {
     (function(i) {
       var mapping = key_mappings[i];
-      if (mapping[1].indexOf("sharp") > -1){
-        Mousetrap.bind(mapping[0], function() { playNote(mapping[1]); keydown_black(mapping[1]); }, 'keydown'); Mousetrap.bind(mapping[0], function() { stopNote(mapping[1]); }, 'keyup');
-      } else {
-        Mousetrap.bind(mapping[0], function() { playNote(mapping[1]); keydown_white(mapping[1]); }, 'keydown'); Mousetrap.bind(mapping[0], function() { stopNote(mapping[1]); }, 'keyup');
-      }
+      Mousetrap.bind(mapping[0], function() { playNote(mapping[1]); key_down(mapping[1]); }, 'keydown'); Mousetrap.bind(mapping[0], function() { stopNote(mapping[1]); }, 'keyup'); 
     })(i);
   }
 });
@@ -116,21 +104,12 @@ function playNote(note_name) {
 }
 
 function stopNote(note_name) {
-
 	var audio1 = $("audio." + note_name).get(0);
 	audio1.pause();		
 	audio1.currentTime = 0;
 
 }
 // THESE FUNCTIONS CHANGE THE CLASS TO DISPLAY A KEY CHANGE ON KEY PRESS DOWN.  
-function keydown_white(key) {
-	$("div[note=" + key + "]").addClass('whitekey_down');
+function key_down(key) {
+	$("div[note=" + key + "]").addClass('key_down');
 }
-
-function keydown_black(key) {
-	
-	$("div[note=" + key + "]").addClass('blackkey_down');
-	
-}
-
-
