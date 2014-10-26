@@ -1,9 +1,11 @@
-app.controller('TutorialQuizController', function($timeout){
-    this.level = level_info;
+app.controller('TutorialQuizController', function($timeout, TutorialDataService, QuizDataService){
     this.mode = 'free_play';
     this.display = '';
     this.quiz_answer_status = '';
     this.level_number = 1;
+    this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
+    this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
+
     var thisController = this;
     var full_note_length = 4000;
     var short_wait = 100;
@@ -11,9 +13,15 @@ app.controller('TutorialQuizController', function($timeout){
 
     this.setMode = function(mode_value){
         this.mode = mode_value;
+        var tutorial_phase;
 
         if (mode_value === 'tutorial'){
-            playDemo();
+            for(var i = 0; i < this.tutorial_level_info.length; i++){
+                tutorial_phase = this.tutorial_level_info[i];
+                if (tutorial_phase.tutorial_phase_type == 'demonstration') {
+                    playDemo(tutorial_phase.demonstration_information);
+                }
+            }
         } else if (mode_value === 'quiz'){
             quiz_location = 0;
             showNextNoteInQuiz();
@@ -24,19 +32,17 @@ app.controller('TutorialQuizController', function($timeout){
         var recieved_level = parseInt(level_value);
         if (this.level_number !== recieved_level){
             this.level_number = recieved_level;
-
+            this.tutorial_data = TutorialDataService.level_num()
         }
     };
 
     this.recieveKeyPress = function(click_obj){
 
-        if (thisController.mode === 'quiz' && quiz_location < thisController.level.note_order.length) {
+        if (thisController.mode === 'quiz' && quiz_location < thisController.quiz_info.length) {
             var pressed_key = click_obj.target.getAttribute("note");
-            var expected_note = this.level.note_order[quiz_location].note_letter.toLowerCase();
+            var expected_note = this.quiz_info[quiz_location].answer;
 
-            if((pressed_key.indexOf(expected_note.replace(".", "")) !== -1)
-                    && ((pressed_key.indexOf('sharp') !== -1 && expected_note.indexOf('#') !== -1)
-                        || (pressed_key.indexOf('sharp') === -1 && expected_note.indexOf('#') === -1))) {
+            if(pressed_key ===  expected_note) {
                 quiz_location++;
                 showNextNoteInQuiz();
                 this.quiz_answer_status = 'correct';
@@ -54,65 +60,55 @@ app.controller('TutorialQuizController', function($timeout){
         }
     };
 
-    simulateKeyPress = function(note_pressed, position){
-        if (position !== 0){
-            previous_note = thisController.level.note_order[position - 1];
-            angular.element("div[note=" + previous_note.note_key + "]").trigger('mouseup');
+    simulateKeyPress = function(note_pressed, previous_note){
+        if (previous_note !== ""){
+            angular.element("div[note=" + previous_note + "]").trigger('mouseup');
         }
         angular.element("div[note=" + note_pressed + "]").trigger('mousedown');
     };
 
-    playDemo = function() {
-        this.display = thisController.level.tutorial_intro;
-
+    playDemo = function(demo_data_array) {
         var note_pos = 0;
         var wait_length = 900;
+        var prevous_note = { note_key: ""};
 
+        var playNextNote = function() {
+            var note = demo_data_array[note_pos];
+            setDisplayTop(note.display.text, 'tutorial');
+            simulateKeyPress(note.note_key, prevous_note.note_key);
 
-        var displayNote = function() {
-            var note = thisController.level.note_order[note_pos];
-            setDisplayTop(note.note_letter, 'tutorial');
-            simulateKeyPress(note.note_key, note_pos);
+            prevous_note = note;
             note_pos++;
 
             if (thisController.mode !== 'tutorial'){
                 angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
-            } else if (note_pos == thisController.level.note_order.length){
-                wait_length = full_note_length * thisController.level.note_order[note_pos-1].note_length - short_wait;
+            } else if (note_pos == demo_data_array.length){
+                wait_length = full_note_length * prevous_note.note_length - short_wait;
 
                 $timeout(function(){
-                    setDisplayTop("Press 'Quiz' to try it yourself.", 'tutorial');
-
-                    previous_note = thisController.level.note_order[note_pos - 1];
-                    angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
+                    angular.element("div[note=" + prevous_note.note_key + "]").trigger('mouseup');
                     },
                     wait_length
                 );
             } else {
-                wait_length = full_note_length * thisController.level.note_order[note_pos-1].note_length - short_wait;
+                wait_length = full_note_length * prevous_note.note_length - short_wait;
                 $timeout(function(){
                     setDisplayTop('', 'tutorial');
-                    $timeout(displayNote, short_wait);
+                    $timeout(playNextNote, short_wait);
                     },
                     wait_length
                 );
             }
         };
-
-        $timeout(function(){
-            setDisplayTop('', 'tutorial');
-            $timeout(displayNote, short_wait);
-            },
-            wait_length
-        );
+        playNextNote();
     };
 
     showNextNoteInQuiz = function() {
-        if(quiz_location >= thisController.level.note_order.length){
+        if(quiz_location >= thisController.quiz_info.length){
             setDisplayTop("Congratulations! You got it", "quiz");
         } else {
             setDisplayTop('', 'quiz');
-            $timeout(function() { setDisplayTop(thisController.level.note_order[quiz_location].note_letter, 'quiz') },
+            $timeout(function() { setDisplayTop(thisController.quiz_info[quiz_location].display.text, 'quiz') },
             short_wait);
         }
     };

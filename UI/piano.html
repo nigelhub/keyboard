@@ -276,7 +276,7 @@
 	  <button type="button" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</button>
 	  </br>
 	  Tutorial Level:
-	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level='1'">
+	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
 		<option ng-repeat="level in levels_info.level_overview" value={{level.id}}>
 		{{level.title}}
 		</option>
