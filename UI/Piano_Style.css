@@ -15,7 +15,7 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
 {
     position:relative;
     width:1155px;
-    top:140px;
+    top:60px;
 }
 
 #full_piano_container .keyboard_body
@@ -32,7 +32,7 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
 {
     position:relative;
     width:1149px;
-    height:280px;
+    height:200px;
     background-image: url("Images/Body.png");
     margin:0;
     padding:0;
@@ -204,4 +204,25 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
     background-image:url("Images/BlackKeyDown_Small.png");
     background-repeat:no-repeat;
     cursor:pointer;
+}
+
+#tutorial_screen {
+    position: relative;
+    text-align: center;
+    width: 30%;
+    height: 150px;
+    left:35%;
+    font-size:200%;
+    border-color:black;
+    background-color: lightgray;
+    border:solid;
+    overflow:auto;
+}
+
+#tutorial_screen.correct {
+    border-color:green;
+}
+
+#tutorial_screen.wrong {
+    border-color:red;
 }
