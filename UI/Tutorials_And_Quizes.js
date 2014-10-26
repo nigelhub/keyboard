@@ -139,7 +139,7 @@
 
     var app = angular.module('pianoTutorial', []);
 
-    app.controller('TutorialController', function($scope, $timeout){
+    app.controller('TutorialController', function($timeout){
         this.level = level_info;
         this.mode = 'free_play';
         this.display = '';
@@ -153,17 +153,11 @@
             this.mode = modeValue;
 
             if (modeValue === 'tutorial'){
-                this.playTutorial();
+                playTutorial();
             } else if (modeValue === 'quiz'){
                 quiz_location = 0;
-                this.showNextNoteInQuiz();
+                showNextNoteInQuiz();
             };
-        };
-
-        this.setDisplayTop = function(new_value, expected_mode){
-            if(theTutorial.mode === expected_mode){
-                theTutorial.display = new_value;
-            }
         };
 
         this.recieveKeyPress = function(click_obj){
@@ -176,7 +170,7 @@
                         && ((pressed_key.indexOf('sharp') !== -1 && expected_note.indexOf('#') !== -1)
                             || (pressed_key.indexOf('sharp') === -1 && expected_note.indexOf('#') === -1))) {
                     quiz_location++;
-                    this.showNextNoteInQuiz();
+                    showNextNoteInQuiz();
                     this.quiz_answer_status = 'correct';
                     $timeout(function(){theTutorial.quiz_answer_status = ''}, short_wait);
                 } else {
@@ -186,25 +180,29 @@
             }
         };
 
+        setDisplayTop = function(new_value, expected_mode){
+            if(theTutorial.mode === expected_mode){
+                theTutorial.display = new_value;
+            }
+        };
 
-
-        this.simulateKeyPress = function(note_pressed, position){
+        simulateKeyPress = function(note_pressed, position){
             if (position !== 0){
-                previous_note = this.level.note_order[position - 1];
+                previous_note = theTutorial.level.note_order[position - 1];
                 angular.element("div[note=" + previous_note.note_key + "]").trigger('mouseup');
             }
             angular.element("div[note=" + note_pressed + "]").trigger('mousedown');
         };
 
-        this.playTutorial = function() {
-            this.display = this.level.tutorial_intro;
+        playTutorial = function() {
+            this.display = theTutorial.level.tutorial_intro;
             var note_pos = 0;
             var wait_length = 900;
 
             var displayNote = function() {
                 var note = theTutorial.level.note_order[note_pos];
-                theTutorial.setDisplayTop(note.note_letter, 'tutorial');
-                theTutorial.simulateKeyPress(note.note_key, note_pos);
+                setDisplayTop(note.note_letter, 'tutorial');
+                simulateKeyPress(note.note_key, note_pos);
                 note_pos++;
 
                 if (theTutorial.mode !== 'tutorial'){
@@ -213,7 +211,7 @@
                     wait_length = full_note_length * theTutorial.level.note_order[note_pos-1].note_length - short_wait;
 
                     $timeout(function(){
-                        theTutorial.setDisplayTop("Press 'Quiz' to try it yourself.", 'tutorial');
+                        setDisplayTop("Press 'Quiz' to try it yourself.", 'tutorial');
 
                         previous_note = theTutorial.level.note_order[note_pos - 1];
                         angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
@@ -223,7 +221,7 @@
                 } else {
                     wait_length = full_note_length * theTutorial.level.note_order[note_pos-1].note_length - short_wait;
                     $timeout(function(){
-                        theTutorial.setDisplayTop('', 'tutorial');
+                        setDisplayTop('', 'tutorial');
                         $timeout(displayNote, short_wait);
                         },
                         wait_length
@@ -232,19 +230,19 @@
             };
 
             $timeout(function(){
-                theTutorial.setDisplayTop('', 'tutorial');
+                setDisplayTop('', 'tutorial');
                 $timeout(displayNote, short_wait);
                 },
                 wait_length
             );
         };
 
-        this.showNextNoteInQuiz = function() {
+        showNextNoteInQuiz = function() {
             if(quiz_location >= theTutorial.level.note_order.length){
-                this.setDisplayTop("Congratulations! You got it", "quiz");
+                setDisplayTop("Congratulations! You got it", "quiz");
             } else {
-                this.setDisplayTop('', 'quiz');
-                $timeout(function() { theTutorial.setDisplayTop(theTutorial.level.note_order[quiz_location].note_letter, 'quiz') },
+                setDisplayTop('', 'quiz');
+                $timeout(function() { setDisplayTop(theTutorial.level.note_order[quiz_location].note_letter, 'quiz') },
                 short_wait);
             }
         };
