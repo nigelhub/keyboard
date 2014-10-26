@@ -7,8 +7,8 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
 
     var thisController = this;
-    var full_note_length = 4000;
-    var short_wait = 100;
+    var full_note_length = 3000;
+    var short_wait = 50;
     var quiz_location = 0;
 
     this.setMode = function(mode_value){
@@ -32,7 +32,8 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         var recieved_level = parseInt(level_value);
         if (this.level_number !== recieved_level){
             this.level_number = recieved_level;
-            this.tutorial_data = TutorialDataService.level_num()
+            this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
+            this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
         }
     };
 

@@ -144,6 +144,154 @@ app.service('TutorialDataService', function() {
                     ]
                 }
             ]};
+        } else if (level_num == 2){
+                   return  { tutorial_information: [
+                {
+                    tutorial_phase_type: 'demonstration',
+                    demonstration_information: [
+                    //ROW ROW ROW YOUR BOAT
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.375,
+                            note_key: 'c4'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.375,
+                            note_key: 'c4'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.25,
+                            note_key: 'c4'
+                        },
+                        {
+                            display: { text: 'D' },
+                            note_length: 0.125,
+                            note_key: 'd4'
+                        },
+                        {
+                            display: { text: 'E' },
+                            note_length: 0.375,
+                            note_key: 'e4'
+                        },
+                        //GENTLY DOWN THE STREAM
+                        {
+                            display: { text: 'E' },
+                            note_length: 0.25,
+                            note_key: 'e4'
+                        },
+                        {
+                            display: { text: 'D' },
+                            note_length: 0.125,
+                            note_key: 'd4'
+                        },
+                        {
+                            display: { text: 'E' },
+                            note_length: 0.25,
+                            note_key: 'e4'
+                        },
+                        {
+                            display: { text: 'F' },
+                            note_length: 0.125,
+                            note_key: 'f4'
+                        },
+                        {
+                            display: { text: 'G' },
+                            note_length: 0.75,
+                            note_key: 'g4'
+                        },
+                        //MERRILY MERRILY MERRILY MERILY
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.125,
+                            note_key: 'c5'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.125,
+                            note_key: 'c5'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.125,
+                            note_key: 'c5'
+                        },
+                        {
+                            display: { text: 'G' },
+                            note_length: 0.125,
+                            note_key: 'g4'
+                        },
+                        {
+                            display: { text: 'G' },
+                            note_length: 0.125,
+                            note_key: 'g4'
+                        },
+                        {
+                            display: { text: 'G' },
+                            note_length: 0.125,
+                            note_key: 'g4'
+                        },
+                        {
+                            display: { text: 'E' },
+                            note_length: 0.125,
+                            note_key: 'e4'
+                        },
+                        {
+                            display: { text: 'E' },
+                            note_length: 0.125,
+                            note_key: 'e4'
+                        },
+                        {
+                            display: { text: 'E' },
+                            note_length: 0.125,
+                            note_key: 'e4'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.125,
+                            note_key: 'c4'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.125,
+                            note_key: 'c4'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.125,
+                            note_key: 'c4'
+                        },
+                        //LIFE IS BUT A DREAM
+                        {
+                            display: { text: 'G' },
+                            note_length: 0.25,
+                            note_key: 'g4'
+                        },
+
+                        {
+                            display: { text: 'F' },
+                            note_length: 0.125,
+                            note_key: 'f4'
+                        },
+                        {
+                            display: { text: 'E' },
+                            note_length: 0.25,
+                            note_key: 'e4'
+                        },
+                        {
+                            display: { text: 'D' },
+                            note_length: 0.125,
+                            note_key: 'd4'
+                        },
+                        {
+                            display: { text: 'C' },
+                            note_length: 0.75,
+                            note_key: 'c4'
+                        }
+                    ]
+                }
+            ]};
         }
     };
 });
@@ -285,6 +433,147 @@ app.service('QuizDataService', function() {
                     answer: 'f4'
                 }
 
+            ]};
+        } else if (level_num == 2){
+            return  { quiz_questions: [
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c4'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c4'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c4'
+                },
+                {
+                    display: { text: 'D' },
+                    question_type: "key_press",
+                    answer: 'd4'
+                },
+                {
+                    display: { text: 'E' },
+                    nquestion_type: "key_press",
+                    answer: 'e4'
+                },
+                //GENTLY DOWN THE STREAM
+                {
+                    display: { text: 'E' },
+                    question_type: "key_press",
+                    answer: 'e4'
+                },
+                {
+                    display: { text: 'D' },
+                    question_type: "key_press",
+                    answer: 'd4'
+                },
+                {
+                    display: { text: 'E' },
+                    question_type: "key_press",
+                    answer: 'e4'
+                },
+                {
+                    display: { text: 'F' },
+                    question_type: "key_press",
+                    answer: 'f4'
+                },
+                {
+                    display: { text: 'G' },
+                    question_type: "key_press",
+                    answer: 'g4'
+                },
+                //MERRILY MERRILY MERRILY MERILY
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c5'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c5'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c5'
+                },
+                {
+                    display: { text: 'G' },
+                    question_type: "key_press",
+                    answer: 'g4'
+                },
+                {
+                    display: { text: 'G' },
+                    question_type: "key_press",
+                    answer: 'g4'
+                },
+                {
+                    display: { text: 'G' },
+                    nquestion_type: "key_press",
+                    answer: 'g4'
+                },
+                {
+                    display: { text: 'E' },
+                    question_type: "key_press",
+                    answer: 'e4'
+                },
+                              {
+                    display: { text: 'E' },
+                    question_type: "key_press",
+                    answer: 'e4'
+                },
+                {
+                    display: { text: 'E' },
+                    question_type: "key_press",
+                    answer: 'e4'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c4'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c4'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c4'
+                },
+                //LIFE IS BUT A DREAM
+                {
+                    display: { text: 'G' },
+                    question_type: "key_press",
+                    answer: 'g4'
+                },
+                {
+                    display: { text: 'F' },
+                    question_type: "key_press",
+                    answer: 'f4'
+                },
+                {
+                    display: { text: 'E' },
+                    question_type: "key_press",
+                    answer: 'e4'
+                },
+                {
+                    display: { text: 'D' },
+                    question_type: "key_press",
+                    answer: 'd4'
+                },
+                {
+                    display: { text: 'C' },
+                    question_type: "key_press",
+                    answer: 'c4'
+                }
             ]};
         }
     };
