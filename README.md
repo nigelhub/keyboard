@@ -14,11 +14,11 @@ Here is an overview of the code structure within this project.
 
 musicservice
 ====
-* /src/main/java/musicservice        - Base for the Java code
-* /src/main/java/musicservice/common - Base for common functionality that can use used throughout the project.
-* /src/main/java/musicservice/rest   - contains a file per REST resource
-* /src/main/java/musicservice/dao    - data access objects used to interact with the database via hibernate.
-* /src/main/java/musicservice/model  - contains all the data model ob jects for the backend.
+* /musicservice/src/main/java/musicservice        - Base for the Java code
+* /musicservice/src/main/java/musicservice/common - Base for common functionality that can use used throughout the project.
+* /musicservice/src/main/java/musicservice/rest   - contains a file per REST resource
+* /musicservice/src/main/java/musicservice/dao    - data access objects used to interact with the database via hibernate.
+* /musicservice/src/main/java/musicservice/model  - contains all the data model ob jects for the backend.
 
 
 ui
