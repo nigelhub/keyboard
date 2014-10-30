@@ -19,6 +19,7 @@ musicservice
 * /musicservice/src/main/java/musicservice/rest   - contains a file per REST resource
 * /musicservice/src/main/java/musicservice/dao    - data access objects used to interact with the database.
 * /musicservice/src/main/java/musicservice/model  - contains all the data model ob jects for the backend.
+* /musicservice/src/test/java/musicservice        - contains all our Maven/JUnit tests for the backend.
 
 
 ui
