@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html ng-app="pianoApp">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>The Piano App</title>
+		<link rel="stylesheet" type="text/css" href="Piano_Style.css">
+		<script type = "text/javascript" src = "jquery-1.11.1.min.js"></script>
+		<script src="angular.min.js"></script>
+		<script type="text/javascript" src="Piano_Scripts.js"></script>
+		<script type="text/javascript" src="Tutorial_and_Quiz_Module.js"></script>
+		<script type="text/javascript" src="Tutorial_and_Quiz_Services.js"></script>
+		<script type="text/javascript" src="Tutorial_and_Quiz_Controllers.js"></script>
+		<script type="text/javascript" src="mousetrap.js"></script>
+	</head>
+	<body ng-controller="TutorialQuizController as tutorial">
+		<!--Here the audio for each note is declared pointing to the sound files-->
+		<audio class="c1">
+			<source src="Piano_Notes/C1.mp3">
+		</audio>
+		<audio class="csharp1">
+			<source src="Piano_Notes/C%231.mp3">
+		</audio>
+		<audio class="d1">
+			<source src="Piano_Notes/D1.mp3">
+		</audio>
+		<audio class="dsharp1">
+			<source src="Piano_Notes/D%231.mp3">
+		</audio>
+		<audio class="e1">
+			<source src="Piano_Notes/E1.mp3">
+		</audio>
+		<audio class="f1">
+			<source src="Piano_Notes/F1.mp3">
+		</audio>
+		<audio class="fsharp1">
+			<source src="Piano_Notes/F%231.mp3">
+		</audio>
+		<audio class="g1">
+			<source src="Piano_Notes/G1.mp3">
+		</audio>
+		<audio class="gsharp1">
+			<source src="Piano_Notes/G%231.mp3">
+		</audio>
+		<audio class="a2">
+			<source src="Piano_Notes/A2.mp3">
+		</audio>
+		<audio class="asharp2">
+			<source src="Piano_Notes/A%232.mp3">
+		</audio>
+		<audio class="b2">
+			<source src="Piano_Notes/B2.mp3">
+		</audio>
+		<audio class="c2">
+			<source src="Piano_Notes/C2.mp3">
+		</audio>
+		<audio class="csharp2">
+			<source src="Piano_Notes/C%232.mp3">
+		</audio>
+		<audio class="d2">
+			<source src="Piano_Notes/D2.mp3">
+		</audio>
+		<audio class="dsharp2">
+			<source src="Piano_Notes/D%232.mp3">
+		</audio>
+		<audio class="e2">
+			<source src="Piano_Notes/E2.mp3">
+		</audio>
+		<audio class="f2">
+			<source src="Piano_Notes/F2.mp3">
+		</audio>
+		<audio class="fsharp2">
+			<source src="Piano_Notes/F%232.mp3">
+		</audio>
+		<audio class="g2">
+			<source src="Piano_Notes/G2.mp3">
+		</audio>
+		<audio class="gsharp2">
+			<source src="Piano_Notes/G%232.mp3">
+		</audio>
+		<audio class="a3">
+			<source src="Piano_Notes/A3.mp3">
+		</audio>
+		<audio class="asharp3">
+			<source src="Piano_Notes/A%233.mp3">
+		</audio>
+		<audio class="b3">
+			<source src="Piano_Notes/B3.mp3">
+		</audio>
+		<audio class="c3">
+			<source src="Piano_Notes/C3.mp3">
+		</audio>
+		<audio class="csharp3">
+			<source src="Piano_Notes/C%233.mp3">
+		</audio>
+		<audio class="d3">
+			<source src="Piano_Notes/D3.mp3">
+		</audio>
+		<audio class="dsharp3">
+			<source src="Piano_Notes/D%233.mp3">
+		</audio>
+		<audio class="e3">
+			<source src="Piano_Notes/E3.mp3">
+		</audio>
+		<audio class="f3">
+			<source src="Piano_Notes/F3.mp3">
+		</audio>
+		<audio class="fsharp3">
+			<source src="Piano_Notes/F%233.mp3">
+		</audio>
+		<audio class="g3">
+			<source src="Piano_Notes/G3.mp3">
+		</audio>
+		<audio class="gsharp3">
+			<source src="Piano_Notes/G%233.mp3">
+		</audio>
+		<audio class="a4">
+			<source src="Piano_Notes/A4.mp3">
+		</audio>
+		<audio class="asharp4">
+			<source src="Piano_Notes/A%234.mp3">
+		</audio>
+		<audio class="b4">
+			<source src="Piano_Notes/B4.mp3">
+		</audio>
+		<audio class="c4">
+			<source src="Piano_Notes/C4.mp3">
+		</audio>
+		<audio class="csharp4">
+			<source src="Piano_Notes/C%234.mp3">
+		</audio>
+		<audio class="d4">
+			<source src="Piano_Notes/D4.mp3">
+		</audio>
+		<audio class="dsharp4">
+			<source src="Piano_Notes/D%234.mp3">
+		</audio>
+		<audio class="e4">
+			<source src="Piano_Notes/E4.mp3">
+		</audio>
+		<audio class="f4">
+			<source src="Piano_Notes/F4.mp3">
+		</audio>
+		<audio class="fsharp4">
+			<source src="Piano_Notes/F%234.mp3">
+		</audio>
+		<audio class="g4">
+			<source src="Piano_Notes/G4.mp3">
+		</audio>
+		<audio class="gsharp4">
+			<source src="Piano_Notes/G%234.mp3">
+		</audio>
+		<audio class="a5">
+			<source src="Piano_Notes/A5.mp3">
+		</audio>
+		<audio class="asharp5">
+			<source src="Piano_Notes/A%235.mp3">
+		</audio>
+		<audio class="b5">
+			<source src="Piano_Notes/B5.mp3">
+		</audio>
+		<audio class="c5">
+			<source src="Piano_Notes/C5.mp3">
+		</audio>
+		<audio class="csharp5">
+			<source src="Piano_Notes/C%235.mp3">
+		</audio>
+		<audio class="d5">
+			<source src="Piano_Notes/D5.mp3">
+		</audio>
+		<audio class="dsharp5">
+			<source src="Piano_Notes/D%235.mp3">
+		</audio>
+		<audio class="e5">
+			<source src="Piano_Notes/E5.mp3">
+		</audio>
+		<audio class="f5">
+			<source src="Piano_Notes/F5.mp3">
+		</audio>
+		<audio class="fsharp5">
+			<source src="Piano_Notes/F%235.mp3">
+		</audio>
+		<audio class="g5">
+			<source src="Piano_Notes/G5.mp3">
+		</audio>
+		<audio class="gsharp5">
+			<source src="Piano_Notes/G%235.mp3">
+		</audio>
+		<audio class="a6">
+			<source src="Piano_Notes/A6.mp3">
+		</audio>
+		<audio class="asharp6">
+			<source src="Piano_Notes/A%236.mp3">
+		</audio>
+		<audio class="b6">
+			<source src="Piano_Notes/B6.mp3">
+		</audio>
+		<audio class="c6">
+			<source src="Piano_Notes/C6.mp3">
+		</audio>
+		<audio class="csharp6">
+			<source src="Piano_Notes/C%236.mp3">
+		</audio>
+		<audio class="d6">
+			<source src="Piano_Notes/D6.mp3">
+		</audio>
+		<audio class="dsharp6">
+			<source src="Piano_Notes/D%236.mp3">
+		</audio>
+		<audio class="e6">
+			<source src="Piano_Notes/E6.mp3">
+		</audio>
+		<audio class="f6">
+			<source src="Piano_Notes/F6.mp3">
+		</audio>
+		<audio class="fsharp6">
+			<source src="Piano_Notes/F%236.mp3">
+		</audio>
+		<audio class="g6">
+			<source src="Piano_Notes/G6.mp3">
+		</audio>
+		<audio class="gsharp6">
+			<source src="Piano_Notes/G%236.mp3">
+		</audio><audio class="a7">
+			<source src="Piano_Notes/A7.mp3">
+		</audio>
+		<audio class="a#7">
+			<source src="Piano_Notes/A%237.mp3">
+		</audio>
+		<audio class="b7">
+			<source src="Piano_Notes/B7.mp3">
+		</audio>
+		<audio class="c7">
+			<source src="Piano_Notes/C7.mp3">
+		</audio>
+		<audio class="c#7">
+			<source src="Piano_Notes/C%237.mp3">
+		</audio>
+		<audio class="d7">
+			<source src="Piano_Notes/D7.mp3">
+		</audio>
+		<audio class="d#7">
+			<source src="Piano_Notes/D%237.mp3">
+		</audio>
+		<audio class="e7">
+			<source src="Piano_Notes/E7.mp3">
+		</audio>
+		<audio class="f7">
+			<source src="Piano_Notes/F7.mp3">
+		</audio>
+		<audio class="f#7">
+			<source src="Piano_Notes/F%237.mp3">
+		</audio>
+		<audio class="g7">
+			<source src="Piano_Notes/G7.mp3">
+		</audio>
+		<audio class="g#7">
+			<source src="Piano_Notes/G%237.mp3">
+		</audio>
+		<audio class="a8">
+			<source src="Piano_Notes/A8.mp3">
+		</audio>
+		<audio class="a#8">
+			<source src="Piano_Notes/A%238.mp3">
+		</audio>
+		<audio class="b8">
+			<source src="Piano_Notes/B8.mp3">
+		</audio>
+		<audio class="c8">
+			<source src="Piano_Notes/C8.mp3">
+		</audio>
+
+	<div id="actions" ng-controller="LevelsListController as levels_info">
+	  <button type="button" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</button>
+	  <button type="button" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button>
+	  <button type="button" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</button>
+	  </br>
+	  Tutorial Level:
+	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
+		<option ng-repeat="level in levels_info.level_overview" value={{level.id}}>
+		{{level.title}}
+		</option>
+	  </select>
+	</div>
+
+  	<div id="tutorial_screen" class = {{tutorial.quiz_answer_status}} ng-hide="tutorial.mode=='free_play'">
+			<div>{{tutorial.display}}</div>
+		</div>
+
+		<!--Container for the full length keyboard-->
+		<div id="full_piano_container" class="center large">
+			<!--Here are the divs which contain background images to display the piano body and face -->
+			<div class="keyboard_body large">
+				<div class="keyboard_face large">
+				</div>
+			</div>
+			<!-- This div contains the white keys and black keys and calls to JS to implement sound -->
+			<div class="container large">
+				<div class="inside large">
+					<div id="keys" class="large">
+						<div note="c1" class="white key"></div>
+						<div note="csharp1" class="black key"></div>
+						<div note="d1" class="white key"></div>
+						<div note="dsharp1" class="black key"></div>
+						<div note="e1" class="white key"></div>
+						<div note="f1" class="white key"></div>
+						<div note="fsharp1" class="black key"></div>
+						<div note="g1" class="white key"></div>
+						<div note="gsharp1" class="black key"></div>
+						<div note="a2" class="white key"></div>
+						<div note="asharp2" class="black key"></div>
+						<div note="b2" class="white key"></div>
+						<div note="c2" class="white key"></div>
+						<div note="csharp2" class="black key"></div>
+						<div note="d2" class="white key"></div>
+						<div note="dsharp2" class="black key"></div>
+						<div note="e2" class="white key"></div>
+						<div note="f2" class="white key"></div>
+						<div note="fsharp2" class="black key"></div>
+						<div note="g2" class="white key"></div>
+						<div note="gsharp2" class="black key"></div>
+						<div note="a3" class="white key"></div>
+						<div note="asharp3" class="black key"></div>
+						<div note="b3" class="white key"></div>
+						<div note="c3" class="white key"></div>
+						<div note="csharp3" class="black key"></div>
+						<div note="d3" class="white key"></div>
+						<div note="dsharp3" class="black key"></div>
+						<div note="e3" class="white key"></div>
+						<div note="f3" class="white key"></div>
+						<div note="fsharp3" class="black key"></div>
+						<div note="g3" class="white key"></div>
+						<div note="gsharp3" class="black key"></div>
+						<div note="a4" class="white key"></div>
+						<div note="asharp4" class="black key"></div>
+						<div note="b4" class="white key"></div>
+						<div note="c4" class="white key"></div>
+						<div note="csharp4" class="black key"></div>
+						<div note="d4" class="white key"></div>
+						<div note="dsharp4" class="black key"></div>
+						<div note="e4" class="white key"></div>
+						<div note="f4" class="white key"></div>
+						<div note="fsharp4" class="black key"></div>
+						<div note="g4" class="white key"></div>
+						<div note="gsharp4" class="black key"></div>
+						<div note="a5" class="white key"></div>
+						<div note="asharp5" class="black key"></div>
+						<div note="b5" class="white key"></div>
+						<div note="c5" class="white key"></div>
+						<div note="csharp5" class="black key"></div>
+						<div note="d5" class="white key"></div>
+						<div note="dsharp5" class="black key"></div>
+						<div note="e5" class="white key"></div>
+						<div note="f5" class="white key"></div>
+						<div note="fsharp5" class="black key"></div>
+						<div note="g5" class="white key"></div>
+						<div note="gsharp5" class="black key"></div>
+						<div note="a6" class="white key"></div>
+						<div note="asharp6" class="black key"></div>
+						<div note="b6" class="white key"></div>
+						<div note="c6" class="white key"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Start of small keyboard for game/tutorial mode-->
+		<div id="full_piano_container_small" class="center small">
+			<div class="keyboard_body small">
+				<div class="keyboard_face small"></div>
+			</div>
+			<div class="container_small small" ng-click="tutorial.recieveKeyPress($event)">
+				<div class="inside small">
+					<div id="keys_small" class="small">
+					<div note="f3" class="white key" ></div>
+					<div note="fsharp3" class="black key" ></div>
+					<div note="g3" class="white key" ></div>
+					<div note="gsharp3" class="black key" ></div>
+					<div note="a4" class="white key" ></div>
+					<div note="asharp4" class="black key" ></div>
+					<div note="b4" class="white key" ></div>
+					<div note="c4" class="white key" ></div>
+					<div note="csharp4" class="black key" ></div>
+					<div note="d4" class="white key" ></div>
+					<div note="dsharp4" class="black key" ></div>
+					<div note="e4" class="white key" ></div>
+					<div note="f4" class="white key" ></div>
+					<div note="fsharp4" class="black key" ></div>
+					<div note="g4" class="white key" ></div>
+					<div note="gsharp4" class="black key" ></div>
+					<div note="a5" class="white key" ></div>
+					<div note="asharp5" class="black key" ></div>
+					<div note="b5" class="white key" ></div>
+					<div note="c5" class="white key" ></div>
+					<div note="csharp5" class="black key" ></div>
+					<div note="d5" class="white key" ></div>
+					<div note="dsharp5" class="black key" ></div>
+					<div note="e5" class="white key" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
