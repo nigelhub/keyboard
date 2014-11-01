@@ -16,16 +16,9 @@ import musicservice.common.LoggerUtils;
 import musicservice.model.User;
 
 /**
- * Class that deals with interface to the QueueAttribute object.
- * 
- * This is the main interface to the QueueAttribute object. Today class is only
- * called from the REST interface.
- * 
- * @see ApiRegisterRestController
- * @see QueueAttributeDao
- * @see QueueAttribute
- * 
- * 
+ * Class is the Data Access Object (DAO) used to interact with the 
+ * user table within the database.  This is the main interface to 
+ * the User object. 
  */
 
 @Repository
@@ -35,7 +28,6 @@ public class UserDao {
 
     @Autowired
     private EntityManager entityManager;
-
 
     /**
      * Retrieve a user from the database which matches 
@@ -79,7 +71,7 @@ public class UserDao {
         	logger.debug("user is not null");
         	
         	if ( user.getUserId() != 0 ) {
-              logger.debug("queueAttributeId is not 0");
+              logger.debug("user is not 0");
               if ( findById(user.getUserId()) != null ) {
                   logger.debug("lookup of user '" + user.getUserId() + "' is not null" );
               }
@@ -88,11 +80,11 @@ public class UserDao {
               }
           }
           else {
-              logger.debug("queueAttributeId is 0");
+              logger.debug("User is 0");
           }
         }
         else {
-            logger.debug("queueAttributeId is null");
+            logger.debug("User is null");
         }
         
         
