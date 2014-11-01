@@ -205,3 +205,25 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
     background-repeat:no-repeat;
     cursor:pointer;
 }
+
+#tutorial_screen {
+    position: relative;
+    text-align: center;
+    width: 300px;
+    height: 110px;
+    top:280px;
+    z-index:1000;
+    font-size:200%;
+    border-color:black;
+    background-color: lightgray;
+    border:solid;
+    overflow:auto;
+}
+
+#tutorial_screen.correct {
+    border-color:green;
+}
+
+#tutorial_screen.wrong {
+    border-color:red;
+}

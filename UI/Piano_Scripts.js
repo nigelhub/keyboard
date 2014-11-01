@@ -19,12 +19,12 @@ $(document).ready(function() {
     //THIS INITIALLY HIDES THE KEYBOARD TO DISPLAY FREE PLAY KEYBOARD AT DEFAULT
     $(".small").hide();
     //DISPLAYS FULL SIZE FREE PLAY KEYBOARD ON CLICK
-    $("#fullsize").click(function() {
+    $(".fullsize").click(function() {
         $('.small').hide();
         $('.large').show();
      });
      //DISPLAYS TUTORIAL SIZE KEYBOARD ON CLICK
-    $("#smallsize").click(function() {
+    $(".smallsize").click(function() {
         $('.large').hide();
         $('.small').show();
     });
