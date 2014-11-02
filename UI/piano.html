@@ -224,7 +224,7 @@
 		</audio><audio class="a7">
 			<source src="Piano_Notes/A7.mp3">
 		</audio>
-		<audio class="a#7">
+		<audio class="asharp7">
 			<source src="Piano_Notes/A%237.mp3">
 		</audio>
 		<audio class="b7">
@@ -233,13 +233,13 @@
 		<audio class="c7">
 			<source src="Piano_Notes/C7.mp3">
 		</audio>
-		<audio class="c#7">
+		<audio class="csharp7">
 			<source src="Piano_Notes/C%237.mp3">
 		</audio>
 		<audio class="d7">
 			<source src="Piano_Notes/D7.mp3">
 		</audio>
-		<audio class="d#7">
+		<audio class="dsharp7">
 			<source src="Piano_Notes/D%237.mp3">
 		</audio>
 		<audio class="e7">
@@ -248,19 +248,19 @@
 		<audio class="f7">
 			<source src="Piano_Notes/F7.mp3">
 		</audio>
-		<audio class="f#7">
+		<audio class="fsharp7">
 			<source src="Piano_Notes/F%237.mp3">
 		</audio>
 		<audio class="g7">
 			<source src="Piano_Notes/G7.mp3">
 		</audio>
-		<audio class="g#7">
+		<audio class="gsharp7">
 			<source src="Piano_Notes/G%237.mp3">
 		</audio>
 		<audio class="a8">
 			<source src="Piano_Notes/A8.mp3">
 		</audio>
-		<audio class="a#8">
+		<audio class="asharp8">
 			<source src="Piano_Notes/A%238.mp3">
 		</audio>
 		<audio class="b8">
@@ -271,9 +271,13 @@
 		</audio>
 
 	<div id="actions" ng-controller="LevelsListController as levels_info">
-	  <button type="button" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</button>
-	  <button type="button" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button>
-	  <button type="button" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</button>
+		<div id="header">
+			<ul>
+			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
+			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button></a></li>
+			  <li><a href="#" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
+			</ul>
+		</div>
 	  </br>
 	  Tutorial Level:
 	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
@@ -283,125 +287,125 @@
 	  </select>
 	</div>
 
-  	<div id="tutorial_screen" class = '{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode=='free_play'">
-  		<img src="Images/Tutorial_Game_Images/Tutorial/Level3/Tutorial_Level3_2.png" alt="The official HTML5 Icon">
-  		<div>{{tutorial.display_image}}</div>
-			<div>{{tutorial.display_text}}</div>
-			<div id=tutorial_screen_continue class={{tutorial.tutorial_screen_continue}}>CLICK TO CONTINUE</div>
+	<!--Container for the full length keyboard-->
+	<div id="full_piano_container" class="center large">
+		<!--Here are the divs which contain background images to display the piano body and face -->
+		<div class="keyboard_body large">
+			<div class="keyboard_face large">
+			</div>
+		</div>
+		<!-- This div contains the white keys and black keys and calls to JS to implement sound -->
+		<div class="container large">
+			<div class="inside large">
+				<div id="keys" class="large">
+					<div note="c1" class="white key"></div>
+					<div note="csharp1" class="black key"></div>
+					<div note="d1" class="white key"></div>
+					<div note="dsharp1" class="black key"></div>
+					<div note="e1" class="white key"></div>
+					<div note="f1" class="white key"></div>
+					<div note="fsharp1" class="black key"></div>
+					<div note="g1" class="white key"></div>
+					<div note="gsharp1" class="black key"></div>
+					<div note="a2" class="white key"></div>
+					<div note="asharp2" class="black key"></div>
+					<div note="b2" class="white key"></div>
+					<div note="c2" class="white key"></div>
+					<div note="csharp2" class="black key"></div>
+					<div note="d2" class="white key"></div>
+					<div note="dsharp2" class="black key"></div>
+					<div note="e2" class="white key"></div>
+					<div note="f2" class="white key"></div>
+					<div note="fsharp2" class="black key"></div>
+					<div note="g2" class="white key"></div>
+					<div note="gsharp2" class="black key"></div>
+					<div note="a3" class="white key"></div>
+					<div note="asharp3" class="black key"></div>
+					<div note="b3" class="white key"></div>
+					<div note="c3" class="white key"></div>
+					<div note="csharp3" class="black key"></div>
+					<div note="d3" class="white key"></div>
+					<div note="dsharp3" class="black key"></div>
+					<div note="e3" class="white key"></div>
+					<div note="f3" class="white key"></div>
+					<div note="fsharp3" class="black key"></div>
+					<div note="g3" class="white key"></div>
+					<div note="gsharp3" class="black key"></div>
+					<div note="a4" class="white key"></div>
+					<div note="asharp4" class="black key"></div>
+					<div note="b4" class="white key"></div>
+					<div note="c4" class="white key"></div>
+					<div note="csharp4" class="black key"></div>
+					<div note="d4" class="white key"></div>
+					<div note="dsharp4" class="black key"></div>
+					<div note="e4" class="white key"></div>
+					<div note="f4" class="white key"></div>
+					<div note="fsharp4" class="black key"></div>
+					<div note="g4" class="white key"></div>
+					<div note="gsharp4" class="black key"></div>
+					<div note="a5" class="white key"></div>
+					<div note="asharp5" class="black key"></div>
+					<div note="b5" class="white key"></div>
+					<div note="c5" class="white key"></div>
+					<div note="csharp5" class="black key"></div>
+					<div note="d5" class="white key"></div>
+					<div note="dsharp5" class="black key"></div>
+					<div note="e5" class="white key"></div>
+					<div note="f5" class="white key"></div>
+					<div note="fsharp5" class="black key"></div>
+					<div note="g5" class="white key"></div>
+					<div note="gsharp5" class="black key"></div>
+					<div note="a6" class="white key"></div>
+					<div note="asharp6" class="black key"></div>
+					<div note="b6" class="white key"></div>
+					<div note="c6" class="white key"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Start of small keyboard for game/tutorial mode-->
+	<div id="tutorial_screen" class = '{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode=='free_play'">
+		<img src="Images/Tutorial_Game_Images/Tutorial/Level3/Tutorial_Level3_2.png" alt="The official HTML5 Icon">
+		<div>{{tutorial.display_image}}</div>
+		<div>{{tutorial.display_text}}</div>
+		<div id=tutorial_screen_continue class={{tutorial.tutorial_screen_continue}}>CLICK TO CONTINUE</div>
+	</div>
+	<div id="tutorial_question"><img src="Images/Tutorial_Game_Images/Tutorial/Level3/Tutorial_Level3_1.png" class="center"/></div>
+	<div id="full_piano_container_small" class="center small">
+		<div class="keyboard_body small">
+			<div class="keyboard_face small"></div>
+		</div>
+		<div class="container_small small" ng-click="tutorial.recieveKeyPress($event)">
+			<div class="inside small">
+				<div id="keys_small" class="small">
+				<div note="f3" class="white key" ></div>
+				<div note="fsharp3" class="black key" ></div>
+				<div note="g3" class="white key" ></div>
+				<div note="gsharp3" class="black key" ></div>
+				<div note="a4" class="white key" ></div>
+				<div note="asharp4" class="black key" ></div>
+				<div note="b4" class="white key" ></div>
+				<div note="c4" class="white key" ></div>
+				<div note="csharp4" class="black key" ></div>
+				<div note="d4" class="white key" ></div>
+				<div note="dsharp4" class="black key" ></div>
+				<div note="e4" class="white key" ></div>
+				<div note="f4" class="white key" ></div>
+				<div note="fsharp4" class="black key" ></div>
+				<div note="g4" class="white key" ></div>
+				<div note="gsharp4" class="black key" ></div>
+				<div note="a5" class="white key" ></div>
+				<div note="asharp5" class="black key" ></div>
+				<div note="b5" class="white key" ></div>
+				<div note="c5" class="white key" ></div>
+				<div note="csharp5" class="black key" ></div>
+				<div note="d5" class="white key" ></div>
+				<div note="dsharp5" class="black key" ></div>
+				<div note="e5" class="white key" ></div>
+				</div>
+			</div>
 		</div>
 
-		<!--Container for the full length keyboard-->
-		<div id="full_piano_container" class="center large">
-			<!--Here are the divs which contain background images to display the piano body and face -->
-			<div class="keyboard_body large">
-				<div class="keyboard_face large">
-				</div>
-			</div>
-			<!-- This div contains the white keys and black keys and calls to JS to implement sound -->
-			<div class="container large">
-				<div class="inside large">
-					<div id="keys" class="large">
-						<div note="c1" class="white key"></div>
-						<div note="csharp1" class="black key"></div>
-						<div note="d1" class="white key"></div>
-						<div note="dsharp1" class="black key"></div>
-						<div note="e1" class="white key"></div>
-						<div note="f1" class="white key"></div>
-						<div note="fsharp1" class="black key"></div>
-						<div note="g1" class="white key"></div>
-						<div note="gsharp1" class="black key"></div>
-						<div note="a2" class="white key"></div>
-						<div note="asharp2" class="black key"></div>
-						<div note="b2" class="white key"></div>
-						<div note="c2" class="white key"></div>
-						<div note="csharp2" class="black key"></div>
-						<div note="d2" class="white key"></div>
-						<div note="dsharp2" class="black key"></div>
-						<div note="e2" class="white key"></div>
-						<div note="f2" class="white key"></div>
-						<div note="fsharp2" class="black key"></div>
-						<div note="g2" class="white key"></div>
-						<div note="gsharp2" class="black key"></div>
-						<div note="a3" class="white key"></div>
-						<div note="asharp3" class="black key"></div>
-						<div note="b3" class="white key"></div>
-						<div note="c3" class="white key"></div>
-						<div note="csharp3" class="black key"></div>
-						<div note="d3" class="white key"></div>
-						<div note="dsharp3" class="black key"></div>
-						<div note="e3" class="white key"></div>
-						<div note="f3" class="white key"></div>
-						<div note="fsharp3" class="black key"></div>
-						<div note="g3" class="white key"></div>
-						<div note="gsharp3" class="black key"></div>
-						<div note="a4" class="white key"></div>
-						<div note="asharp4" class="black key"></div>
-						<div note="b4" class="white key"></div>
-						<div note="c4" class="white key"></div>
-						<div note="csharp4" class="black key"></div>
-						<div note="d4" class="white key"></div>
-						<div note="dsharp4" class="black key"></div>
-						<div note="e4" class="white key"></div>
-						<div note="f4" class="white key"></div>
-						<div note="fsharp4" class="black key"></div>
-						<div note="g4" class="white key"></div>
-						<div note="gsharp4" class="black key"></div>
-						<div note="a5" class="white key"></div>
-						<div note="asharp5" class="black key"></div>
-						<div note="b5" class="white key"></div>
-						<div note="c5" class="white key"></div>
-						<div note="csharp5" class="black key"></div>
-						<div note="d5" class="white key"></div>
-						<div note="dsharp5" class="black key"></div>
-						<div note="e5" class="white key"></div>
-						<div note="f5" class="white key"></div>
-						<div note="fsharp5" class="black key"></div>
-						<div note="g5" class="white key"></div>
-						<div note="gsharp5" class="black key"></div>
-						<div note="a6" class="white key"></div>
-						<div note="asharp6" class="black key"></div>
-						<div note="b6" class="white key"></div>
-						<div note="c6" class="white key"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--Start of small keyboard for game/tutorial mode-->
-		<div id="full_piano_container_small" class="center small">
-			<div class="keyboard_body small">
-				<div class="keyboard_face small"></div>
-			</div>
-			<div class="container_small small" ng-click="tutorial.recieveKeyPress($event)">
-				<div class="inside small">
-					<div id="keys_small" class="small">
-					<div note="f3" class="white key" ></div>
-					<div note="fsharp3" class="black key" ></div>
-					<div note="g3" class="white key" ></div>
-					<div note="gsharp3" class="black key" ></div>
-					<div note="a4" class="white key" ></div>
-					<div note="asharp4" class="black key" ></div>
-					<div note="b4" class="white key" ></div>
-					<div note="c4" class="white key" ></div>
-					<div note="csharp4" class="black key" ></div>
-					<div note="d4" class="white key" ></div>
-					<div note="dsharp4" class="black key" ></div>
-					<div note="e4" class="white key" ></div>
-					<div note="f4" class="white key" ></div>
-					<div note="fsharp4" class="black key" ></div>
-					<div note="g4" class="white key" ></div>
-					<div note="gsharp4" class="black key" ></div>
-					<div note="a5" class="white key" ></div>
-					<div note="asharp5" class="black key" ></div>
-					<div note="b5" class="white key" ></div>
-					<div note="c5" class="white key" ></div>
-					<div note="csharp5" class="black key" ></div>
-					<div note="d5" class="white key" ></div>
-					<div note="dsharp5" class="black key" ></div>
-					<div note="e5" class="white key" ></div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</body>
 </html>
