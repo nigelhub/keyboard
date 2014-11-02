@@ -1,10 +1,14 @@
 app.service('ListLevelsService', function() {
-    this.level_overview = function() { return [ { id: 1, title: "1. Happy Birthday" }, { id: 2, title: "2. Row, Row, Row Your Boat" }] };
+    this.level_overview = function() { return [
+        { id: 1, title: "1. Happy Birthday" },
+        { id: 2, title: "2. Row, Row, Row Your Boat" },
+        { id: 3, title: "Tutorial: Level 3" }
+    ] };
 });
 
 app.service('TutorialDataService', function() {
     this.tutorial_data = function(level_num) {
-        if (level_num == 1){
+        if (level_num === 1){
             return  { tutorial_information: [
                 {
                     tutorial_phase_type: 'demonstration',
@@ -144,8 +148,8 @@ app.service('TutorialDataService', function() {
                     ]
                 }
             ]};
-        } else if (level_num == 2){
-                   return  { tutorial_information: [
+        } else if (level_num === 2){
+            return  { tutorial_information: [
                 {
                     tutorial_phase_type: 'demonstration',
                     demonstration_information: [
@@ -292,13 +296,28 @@ app.service('TutorialDataService', function() {
                     ]
                 }
             ]};
+        } else if (level_num == 3){
+            return  { tutorial_information: [
+                {
+                    tutorial_phase_type: 'press_continue',
+                    display: { image: 'Tutorial/Level3/Tutorial_Level3_1.png' }
+                },
+                {
+                    tutorial_phase_type: 'press_continue',
+                    display: { image: 'Tutorial/Level3/Tutorial_Level3_2.png' }
+                },
+                {
+                    tutorial_phase_type: 'press_continue',
+                    display: { image: 'Tutorial/Level3/Tutorial_Level3_3.png' }
+                }
+            ]};
         }
     };
 });
 
 app.service('QuizDataService', function() {
     this.quiz_data = function(level_num) {
-        if (level_num == 1){
+        if (level_num === 1){
             return  { quiz_questions: [
             //HAPPY BIRTHDAY TO YOU
                 {
@@ -434,7 +453,7 @@ app.service('QuizDataService', function() {
                 }
 
             ]};
-        } else if (level_num == 2){
+        } else if (level_num === 2){
             return  { quiz_questions: [
                 {
                     display: { text: 'C' },
@@ -575,6 +594,8 @@ app.service('QuizDataService', function() {
                     answer: 'c4'
                 }
             ]};
+        } else if (level_num ===3){
+            return  { quiz_questions: []};
         }
     };
 });

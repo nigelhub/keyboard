@@ -227,3 +227,19 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
 #tutorial_screen.wrong {
     border-color:red;
 }
+
+#tutorial_screen #tutorial_screen_continue {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: green;
+    font-size: 15px;
+    cursor:pointer;
+    visibility: hidden;
+
+}
+
+#tutorial_screen #tutorial_screen_continue.clickable {
+    visibility: visible;
+}
+
