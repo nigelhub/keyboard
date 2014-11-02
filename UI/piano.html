@@ -224,7 +224,7 @@
 		</audio><audio class="a7">
 			<source src="Piano_Notes/A7.mp3">
 		</audio>
-		<audio class="a#7">
+		<audio class="asharp7">
 			<source src="Piano_Notes/A%237.mp3">
 		</audio>
 		<audio class="b7">
@@ -233,13 +233,13 @@
 		<audio class="c7">
 			<source src="Piano_Notes/C7.mp3">
 		</audio>
-		<audio class="c#7">
+		<audio class="csharp7">
 			<source src="Piano_Notes/C%237.mp3">
 		</audio>
 		<audio class="d7">
 			<source src="Piano_Notes/D7.mp3">
 		</audio>
-		<audio class="d#7">
+		<audio class="dsharp7">
 			<source src="Piano_Notes/D%237.mp3">
 		</audio>
 		<audio class="e7">
@@ -248,19 +248,19 @@
 		<audio class="f7">
 			<source src="Piano_Notes/F7.mp3">
 		</audio>
-		<audio class="f#7">
+		<audio class="fsharp7">
 			<source src="Piano_Notes/F%237.mp3">
 		</audio>
 		<audio class="g7">
 			<source src="Piano_Notes/G7.mp3">
 		</audio>
-		<audio class="g#7">
+		<audio class="gsharp7">
 			<source src="Piano_Notes/G%237.mp3">
 		</audio>
 		<audio class="a8">
 			<source src="Piano_Notes/A8.mp3">
 		</audio>
-		<audio class="a#8">
+		<audio class="asharp8">
 			<source src="Piano_Notes/A%238.mp3">
 		</audio>
 		<audio class="b8">
@@ -271,9 +271,13 @@
 		</audio>
 
 	<div id="actions" ng-controller="LevelsListController as levels_info">
-	  <button type="button" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</button>
-	  <button type="button" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button>
-	  <button type="button" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</button>
+		<div id="header">
+			<ul>
+			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
+			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button></a></li>
+			  <li><a href="#" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
+			</ul>
+		</div>
 	  </br>
 	  Tutorial Level:
 	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
@@ -282,10 +286,6 @@
 		</option>
 	  </select>
 	</div>
-
-  	<div id="tutorial_screen" class = '{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode=='free_play'">
-			<div>{{tutorial.display}}</div>
-		</div>
 
 		<!--Container for the full length keyboard-->
 		<div id="full_piano_container" class="center large">
@@ -365,6 +365,10 @@
 		</div>
 
 		<!--Start of small keyboard for game/tutorial mode-->
+		<div id="tutorial_screen" class = '{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode=='free_play'">
+			<div>{{tutorial.display}}</div>
+		</div>
+		<div id="tutorial_question"><img src="Images/Tutorial_Game_Images/Tutorial/Level3/Tutorial_Level3_1.png" class="center"/></div>
 		<div id="full_piano_container_small" class="center small">
 			<div class="keyboard_body small">
 				<div class="keyboard_face small"></div>

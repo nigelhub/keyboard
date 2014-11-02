@@ -22,11 +22,13 @@ $(document).ready(function() {
     $(".fullsize").click(function() {
         $('.small').hide();
         $('.large').show();
+        $('#tutorial_question').hide();
      });
      //DISPLAYS TUTORIAL SIZE KEYBOARD ON CLICK
     $(".smallsize").click(function() {
         $('.large').hide();
         $('.small').show();
+        $('#tutorial_question').show();
     });
 
     var key_mappings = [
@@ -54,6 +56,9 @@ $(document).ready(function() {
         ['shift+s', 'a3'],
         ['shift+d', 'asharp3'],
         ['shift+f', 'b3'],
+        ['1', 'c3'],
+        ['2', 'csharp3'],
+        ['3', 'd3'],
         ['4', 'dsharp3'],
         ['5', 'e3'],
         ['6', 'f3'],
