@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="pianoApp">
 	<head>
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
 		<title>The Piano App</title>
 		<link rel="stylesheet" type="text/css" href="Piano_Style.css">
 		<script type = "text/javascript" src = "jquery-1.11.1.min.js"></script>
+		<script src="angular.min.js"></script>
 		<script type="text/javascript" src="Piano_Scripts.js"></script>
+		<script type="text/javascript" src="Tutorial_and_Quiz_Module.js"></script>
+		<script type="text/javascript" src="Tutorial_and_Quiz_Services.js"></script>
+		<script type="text/javascript" src="Tutorial_and_Quiz_Controllers.js"></script>
 		<script type="text/javascript" src="mousetrap.js"></script>
 	</head>
-	<body>
+	<body ng-controller="TutorialQuizController as tutorial">
 		<!--Here the audio for each note is declared pointing to the sound files-->
 		<audio class="c1">
 			<source src="Piano_Notes/C1.mp3">
@@ -266,8 +270,22 @@
 			<source src="Piano_Notes/C8.mp3">
 		</audio>
 
-		<button id="fullsize">Free Play</button>
-		<button id="smallsize">Tutorial/Game</button>
+	<div id="actions" ng-controller="LevelsListController as levels_info">
+	  <button type="button" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</button>
+	  <button type="button" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button>
+	  <button type="button" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</button>
+	  </br>
+	  Tutorial Level:
+	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
+		<option ng-repeat="level in levels_info.level_overview" value={{level.id}}>
+		{{level.title}}
+		</option>
+	  </select>
+	</div>
+
+  	<div id="tutorial_screen" class = '{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode=='free_play'">
+			<div>{{tutorial.display}}</div>
+		</div>
 
 		<!--Container for the full length keyboard-->
 		<div id="full_piano_container" class="center large">
@@ -351,7 +369,7 @@
 			<div class="keyboard_body small">
 				<div class="keyboard_face small"></div>
 			</div>
-			<div class="container_small small">
+			<div class="container_small small" ng-click="tutorial.recieveKeyPress($event)">
 				<div class="inside small">
 					<div id="keys_small" class="small">
 					<div note="f3" class="white key" ></div>
