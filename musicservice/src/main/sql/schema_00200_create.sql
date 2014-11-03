@@ -332,7 +332,7 @@ INSERT INTO `music_service`.`question` (`question_id`, `quiz_id`, `question_name
 INSERT INTO `music_service`.`question` (`question_id`, `quiz_id`, `question_name`, `sequence_id`, `question_type`, `question_text`, `question_image`, `answer`) VALUES (NULL, 8, 'Question 2', 2, 'press_key', 'Which notes are displayed? Can you play them on the keyboard?', 'Quizzes_Level8_2.png', 'Gsharp4');
 INSERT INTO `music_service`.`question` (`question_id`, `quiz_id`, `question_name`, `sequence_id`, `question_type`, `question_text`, `question_image`, `answer`) VALUES (NULL, 8, 'Question 3', 3, 'press_key', 'Which notes are displayed? Can you play them on the keyboard?', 'Quizzes_Level8_3.png', 'B4 Gsharp3 Asharp4 Csharp4 B4 Asharp3');
 INSERT INTO `music_service`.`question` (`question_id`, `quiz_id`, `question_name`, `sequence_id`, `question_type`, `question_text`, `question_image`, `answer`) VALUES (NULL, 8, 'Question 4', 4, 'press_key', 'Which notes are displayed? Can you play them on the keyboard?', 'Quizzes_Level8_4.png', 'Csharp4 Csharp4 Csharp4 B4 Asharp4 Gsharp3 Asharp4');
-INSERT INTO `music_service`.`question` (`question_id`, `quiz_id`, `question_name`, `sequence_id`, `question_type`, `question_text`, `question_image`, `answer`) VALUES (NULL, 8, 'Question 5', 5, 'press_key', 'Which notes are displayed? Can you play them on the keyboard?', 'Quizzes_Level8_5.png', '?');
+INSERT INTO `music_service`.`question` (`question_id`, `quiz_id`, `question_name`, `sequence_id`, `question_type`, `question_text`, `question_image`, `answer`) VALUES (NULL, 8, 'Question 5', 5, 'press_key', 'Which notes are displayed? Can you play them on the keyboard?', 'Quizzes_Level8_5.png', 'gsharp3 asharp4 b4 csharp4 dsharp5 fsharp4');
 
 COMMIT;
 
