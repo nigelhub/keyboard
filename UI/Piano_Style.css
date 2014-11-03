@@ -14,7 +14,7 @@ html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAF
 
 li { display:inline; padding:10px; }
 
-ul 
+ul
 {
     padding: 35px;
     list-style-type: none;
@@ -22,14 +22,14 @@ ul
 }
 
 
-#header a, #footer a 
+#header a, #footer a
 {
 	position: relative;
 	color: #000;
 	text-decoration: none;
 }
 
-#header a:hover, #footer a:hover 
+#header a:hover, #footer a:hover
 {
 	color: #000;
 }
@@ -57,11 +57,10 @@ ul
 	transform: scaleX(1);
 }
 
-#tutorial_question 
+#tutorial_question
 {
 	position:relative;
 	display:none;
-	top:-150px;
 }
 
 #full_piano_container
@@ -75,7 +74,6 @@ ul
 {
     position:relative;
     width:1155px;
-    top:-100px;
     padding-bottom:100px;
 }
 
@@ -268,9 +266,9 @@ ul
 #tutorial_screen {
     position: relative;
     text-align: center;
-    width: 300px;
+    width: 1050px;
     height: 110px;
-    top:340px;
+    top: -250px;
     z-index:1000;
     font-size:200%;
     border-color:black;

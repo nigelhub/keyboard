@@ -1,10 +1,13 @@
 app.controller('TutorialQuizController', function($timeout, TutorialDataService, QuizDataService){
+    //variables with data binding to UI
     this.mode = 'free_play';
     this.display_text = '';
+    this.display_image = '';
     this.quiz_answer_status = '';
     this.level_number = 1;
     this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
     this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
+    //when tutorial_screen_continue is set to "clickable", "click to continue" is shown on screen
     this.tutorial_screen_continue = "";
 
     var thisController = this;
@@ -12,6 +15,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     var short_wait = 50;
     var quiz_location = 0;
     var tutorial_location = 0;
+    var images_folder = "Images/Tutorial_Game_Images/";
 
     this.setMode = function(mode_value){
         if (this.mode !== mode_value) {
@@ -33,12 +37,13 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             this.level_number = recieved_level;
             this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
             this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
+            this.mode = 'free_play';
         }
     };
 
-    this.recieveKeyPress = function(click_obj){
+    this.recieveKeyboardPress = function(click_obj){
 
-        if (thisController.mode === 'quiz' && quiz_location < thisController.quiz_info.length) {
+        if (this.mode === 'quiz' && quiz_location < this.quiz_info.length) {
             var pressed_key = click_obj.target.getAttribute("note");
             var expected_note = this.quiz_info[quiz_location].answer;
 
@@ -54,6 +59,12 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         }
     };
 
+    this.recieveClickToContinue = function(click_obj){
+        if (this.tutorial_screen_continue === "clickable") {
+            iterateTutorial();
+        }
+    };
+
     iterateTutorial = function(){
         if (thisController.tutorial_level_info.length > tutorial_location){
             var tutorial_phase = thisController.tutorial_level_info[tutorial_location];
@@ -62,12 +73,16 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 playDemo(tutorial_phase.demonstration_information);
                 tutorial_location++;
                 iterateTutorial();
-            } else if (tutorial_phase.tutorial_phase_type == 'click_to_continue') {
-                thisController.tutorial_screen_continue = "clickable";
+            } else if (tutorial_phase.tutorial_phase_type == 'press_continue') {
+                thisController.tutorial_screen_continue = 'clickable';
                 setDisplayText(tutorial_phase.display.text, 'tutorial');
-                setDisplayImage(tutorial_phase.display.image, 'tutorial');
+                setDisplayImage(images_folder + tutorial_phase.display.image, 'tutorial');
                 tutorial_location++;
             }
+        } else {
+            setDisplayText('', 'tutorial');
+            setDisplayImage('', 'tutorial');
+            thisController.tutorial_screen_continue = '';
         }
     }
 
@@ -79,6 +94,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
 
     setDisplayImage = function(new_value, expected_mode){
         if(thisController.mode === expected_mode){
+            thisController.display_image = new_value;
         }
     };
 
@@ -97,6 +113,8 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         var playNextNote = function() {
             var note = demo_data_array[note_pos];
             setDisplayText(note.display.text, 'tutorial');
+            setDisplayImage(note.display.image, 'tutorial');
+
             simulateKeyPress(note.note_key, prevous_note.note_key);
 
             prevous_note = note;
@@ -116,6 +134,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 wait_length = full_note_length * prevous_note.note_length - short_wait;
                 $timeout(function(){
                     setDisplayText('', 'tutorial');
+                    setDisplayImage('', 'tutorial');
                     $timeout(playNextNote, short_wait);
                     },
                     wait_length
@@ -128,9 +147,13 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
 
     iterateQuiz = function() {
         if(quiz_location >= thisController.quiz_info.length){
-            setDisplayText("Congratulations! You got it", "quiz");
+            setDisplayText('Congratulations! You got it', 'quiz');
+            setDisplayImage('', 'quiz');
+
         } else {
             setDisplayText('', 'quiz');
+            setDisplayImage('', 'quiz');
+
             $timeout(function() { setDisplayText(thisController.quiz_info[quiz_location].display.text, 'quiz') },
             short_wait);
         }
