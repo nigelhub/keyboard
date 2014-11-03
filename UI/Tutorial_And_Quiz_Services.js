@@ -332,133 +332,133 @@ app.service('QuizDataService', function() {
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'D' },
                     question_type: "key_press",
-                    answer: 'd4'
+                    answer: ['d4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'F' },
                     question_type: "key_press",
-                    answer: 'f4'
+                    answer: ['f4']
                 },
                 {
                     display: { text: 'E' },
                     question_type: "key_press",
-                    answer: 'e4'
+                    answer: ['e4']
                 },
 
                 //HAPPY BIRTHDAY TO YOU
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'D' },
                     question_type: "key_press",
-                    answer: 'd4'
+                    answer: ['d4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'G' },
                     question_type: "key_press",
-                    answer: 'g4'
+                    answer: ['g4']
                 },
                 {
                     display: { text: 'F' },
                     question_type: "key_press",
-                    answer: 'f4'
+                    answer: ['f4']
                 },
 
                 //HAPPY BIRTHDAY, DEAR SOME-ONE
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c5'
+                    answer: ['c5']
                 },
                 {
                     display: { text: 'A' },
                     question_type: "key_press",
-                    answer: 'a5'
+                    answer: ['a5']
                 },
                 {
                     display: { text: 'F' },
                     question_type: "key_press",
-                    answer: 'f4'
+                    answer: ['f4']
                 },
                 {
                     display: { text: 'E' },
                     note_length: 0.25,
-                    answer: 'e4'
+                    answer: ['e4']
                 },
                 {
                     display: { text: 'D' },
                     question_type: "key_press",
-                    answer: 'd4'
+                    answer: ['d4']
                 },
 
                  //HAPPY BIRTHDAY TO YOU!
                 {
                     display: { text: 'A#' },
                     question_type: "key_press",
-                    answer: "asharp5"
+                    answer: ['asharp5']
                 },
                 {
                     display: { text: 'A#' },
                     question_type: "key_press",
-                    answer: "asharp5"
+                    answer: ['asharp5']
                 },
                 {
                     display: { text: 'A' },
                     question_type: "key_press",
-                    answer: 'a5'
+                    answer: ['a5']
                 },
                 {
                     display: { text: 'F' },
                     question_type: "key_press",
-                    answer: 'f4'
+                    answer: ['f4']
                 },
                 {
                     display: { text: 'G' },
                     question_type: "key_press",
-                    answer: 'g4'
+                    answer: ['g4']
                 },
                 {
                     display: { text: 'F' },
                     question_type: "key_press",
-                    answer: 'f4'
+                    answer: ['f4']
                 }
 
             ]};
@@ -467,144 +467,187 @@ app.service('QuizDataService', function() {
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'D' },
                     question_type: "key_press",
-                    answer: 'd4'
+                    answer: ['d4']
                 },
                 {
                     display: { text: 'E' },
                     nquestion_type: "key_press",
-                    answer: 'e4'
+                    answer: ['e4']
                 },
                 //GENTLY DOWN THE STREAM
                 {
                     display: { text: 'E' },
                     question_type: "key_press",
-                    answer: 'e4'
+                    answer: ['e4']
                 },
                 {
                     display: { text: 'D' },
                     question_type: "key_press",
-                    answer: 'd4'
+                    answer: ['d4']
                 },
                 {
                     display: { text: 'E' },
                     question_type: "key_press",
-                    answer: 'e4'
+                    answer: ['e4']
                 },
                 {
                     display: { text: 'F' },
                     question_type: "key_press",
-                    answer: 'f4'
+                    answer: ['f4']
                 },
                 {
                     display: { text: 'G' },
                     question_type: "key_press",
-                    answer: 'g4'
+                    answer: ['g4']
                 },
                 //MERRILY MERRILY MERRILY MERILY
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c5'
+                    answer: ['c5']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c5'
+                    answer: ['c5']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c5'
+                    answer: ['c5']
                 },
                 {
                     display: { text: 'G' },
                     question_type: "key_press",
-                    answer: 'g4'
+                    answer: ['g4']
                 },
                 {
                     display: { text: 'G' },
                     question_type: "key_press",
-                    answer: 'g4'
+                    answer: ['g4']
                 },
                 {
                     display: { text: 'G' },
                     nquestion_type: "key_press",
-                    answer: 'g4'
+                    answer: ['g4']
                 },
                 {
                     display: { text: 'E' },
                     question_type: "key_press",
-                    answer: 'e4'
-                },
-                              {
-                    display: { text: 'E' },
-                    question_type: "key_press",
-                    answer: 'e4'
+                    answer: ['e4']
                 },
                 {
                     display: { text: 'E' },
                     question_type: "key_press",
-                    answer: 'e4'
+                    answer: ['e4']
+                },
+                {
+                    display: { text: 'E' },
+                    question_type: "key_press",
+                    answer: ['e4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 },
                 //LIFE IS BUT A DREAM
                 {
                     display: { text: 'G' },
                     question_type: "key_press",
-                    answer: 'g4'
+                    answer: ['g4']
                 },
                 {
                     display: { text: 'F' },
                     question_type: "key_press",
-                    answer: 'f4'
+                    answer: ['f4']
                 },
                 {
                     display: { text: 'E' },
                     question_type: "key_press",
-                    answer: 'e4'
+                    answer: ['e4']
                 },
                 {
                     display: { text: 'D' },
                     question_type: "key_press",
-                    answer: 'd4'
+                    answer: ['d4']
                 },
                 {
                     display: { text: 'C' },
                     question_type: "key_press",
-                    answer: 'c4'
+                    answer: ['c4']
                 }
             ]};
         } else if (level_num ===3){
-            return  { quiz_questions: []};
+            return  { quiz_questions: [
+                {
+                    display: {
+                        text: 'What note is displayed? Can you play it on the piano?',
+                        image: 'Quizzes/Level3/Quizzes_Level3_1.png'
+                    },
+                    question_type: "key_press",
+                    answer: ['c4']
+                },
+                {
+                    display: {
+                        text: 'What note is displayed? Can you play it on the piano?',
+                        image: 'Quizzes/Level3/Quizzes_Level3_2.png'
+                    },
+                    question_type: "key_press",
+                    answer: ['c4']
+                },
+                {
+                    display: {
+                        text: 'What note is displayed? Can you play it on the piano?',
+                        image: 'Quizzes/Level3/Quizzes_Level3_3.png'
+                    },
+                    question_type: "key_press",
+                    answer: ['c4']
+                },
+                {
+                    display: {
+                        text: 'What note is displayed? Can you play it on the piano?',
+                        image: 'Quizzes/Level3/Quizzes_Level3_4.png'
+                    },
+                    question_type: "key_press",
+                    answer: ['c4']
+                },
+                {
+                    display: {
+                        text: 'What notes are displayed? Enter them in the correct order.',
+                        image: 'Quizzes/Level3/Quizzes_Level3_5.png'
+                    },
+                    question_type: "key_press",
+                    answer: ['c4', 'c4', 'c4', 'c4', 'c4', 'c4']
+                }
+
+
+            ]};
         }
     };
 });

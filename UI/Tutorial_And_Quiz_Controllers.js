@@ -14,8 +14,8 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     var full_note_length = 3000;
     var short_wait = 50;
     var quiz_location = 0;
+    var quiz_answer_location = 0; //Position in array of answers for current quiz question
     var tutorial_location = 0;
-    var images_folder = "Images/Tutorial_Game_Images/";
 
     this.setMode = function(mode_value){
         if (this.mode !== mode_value) {
@@ -26,6 +26,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             } else if (mode_value === 'quiz'){
                 this.tutorial_screen_continue = "";
                 quiz_location = 0;
+                quiz_answer_location = 0;
                 iterateQuiz();
             }
         }
@@ -45,16 +46,19 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
 
         if (this.mode === 'quiz' && quiz_location < this.quiz_info.length) {
             var pressed_key = click_obj.target.getAttribute("note");
-            var expected_note = this.quiz_info[quiz_location].answer;
-
+            var expected_note = this.quiz_info[quiz_location].answer[quiz_answer_location];
             if(pressed_key ===  expected_note) {
-                quiz_location++;
-                iterateQuiz();
+                quiz_answer_location++;
+                if (quiz_answer_location >= this.quiz_info[quiz_location].answer.length) {
+                    quiz_location++;
+                    quiz_answer_location = 0;
+                    iterateQuiz();
+                }
                 this.quiz_answer_status = 'correct';
-                $timeout(function(){thisController.quiz_answer_status = ''}, short_wait);
+                $timeout(function(){thisController.quiz_answer_status = ''}, 300);
             } else {
                 this.quiz_answer_status = 'wrong';
-                $timeout(function(){thisController.quiz_answer_status = ''}, short_wait);
+                $timeout(function(){thisController.quiz_answer_status = ''}, 300);
             }
         }
     };
@@ -76,7 +80,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             } else if (tutorial_phase.tutorial_phase_type == 'press_continue') {
                 thisController.tutorial_screen_continue = 'clickable';
                 setDisplayText(tutorial_phase.display.text, 'tutorial');
-                setDisplayImage(images_folder + tutorial_phase.display.image, 'tutorial');
+                setDisplayImage(tutorial_phase.display.image, 'tutorial');
                 tutorial_location++;
             }
         } else {
@@ -152,10 +156,9 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
 
         } else {
             setDisplayText('', 'quiz');
-            setDisplayImage('', 'quiz');
-
             $timeout(function() { setDisplayText(thisController.quiz_info[quiz_location].display.text, 'quiz') },
-            short_wait);
+                short_wait);
+            setDisplayImage(thisController.quiz_info[quiz_location].display.image, 'quiz');
         }
     };
 });
