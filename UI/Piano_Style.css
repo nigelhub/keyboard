@@ -296,7 +296,7 @@ ul
 
 }
 
-#tutorial_screen #tutorial_screen_continue.clickable {
+#tutorial_screen #tutorial_screen_continue.clickable_true {
     visibility: visible;
 }
 

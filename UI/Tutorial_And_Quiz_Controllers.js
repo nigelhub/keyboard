@@ -7,8 +7,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     this.level_number = 1;
     this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
     this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
-    //when tutorial_screen_continue is set to "clickable", "click to continue" is shown on screen
-    this.tutorial_screen_continue = "";
+    this.tutorial_screen_continue = false;
 
     var thisController = this;
     var full_note_length = 3000;
@@ -24,7 +23,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 tutorial_location = 0;
                 iterateTutorial();
             } else if (mode_value === 'quiz'){
-                this.tutorial_screen_continue = "";
+                this.tutorial_screen_continue = false;
                 quiz_location = 0;
                 quiz_answer_location = 0;
                 iterateQuiz();
@@ -39,6 +38,8 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
             this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
             this.mode = 'free_play';
+            this.display_text = '';
+            this.display_image = '';
         }
     };
 
@@ -64,7 +65,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     };
 
     this.recieveClickToContinue = function(click_obj){
-        if (this.tutorial_screen_continue === "clickable") {
+        if (this.tutorial_screen_continue) {
             iterateTutorial();
         }
     };
@@ -73,12 +74,12 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         if (thisController.tutorial_level_info.length > tutorial_location){
             var tutorial_phase = thisController.tutorial_level_info[tutorial_location];
             if (tutorial_phase.tutorial_phase_type == 'demonstration') {
-                thisController.tutorial_screen_continue = "";
+                thisController.tutorial_screen_continue = false;
                 playDemo(tutorial_phase.demonstration_information);
                 tutorial_location++;
                 iterateTutorial();
             } else if (tutorial_phase.tutorial_phase_type == 'press_continue') {
-                thisController.tutorial_screen_continue = 'clickable';
+                thisController.tutorial_screen_continue = true;
                 setDisplayText(tutorial_phase.display.text, 'tutorial');
                 setDisplayImage(tutorial_phase.display.image, 'tutorial');
                 tutorial_location++;
@@ -86,7 +87,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         } else {
             setDisplayText('', 'tutorial');
             setDisplayImage('', 'tutorial');
-            thisController.tutorial_screen_continue = '';
+            thisController.tutorial_screen_continue = false;
         }
     }
 

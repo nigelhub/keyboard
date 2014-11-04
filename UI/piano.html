@@ -371,7 +371,7 @@
 			<div class="keyboard_face small"></div>
 			<div id="tutorial_screen" class='{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode==='free_play'">
 				<div>{{tutorial.display_text}}</div>
-				<div id=tutorial_screen_continue class={{tutorial.tutorial_screen_continue}} ng-click="tutorial.recieveClickToContinue($event)">
+				<div id=tutorial_screen_continue class='clickable_{{tutorial.tutorial_screen_continue}}' ng-click="tutorial.recieveClickToContinue($event)">
 					CLICK TO CONTINUE
 				</div>
 			</div>
