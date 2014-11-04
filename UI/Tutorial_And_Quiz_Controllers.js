@@ -1,6 +1,6 @@
 app.controller('TutorialQuizController', function($timeout, TutorialDataService, QuizDataService){
     //variables with data binding to UI
-    this.mode = 'free_play';
+    this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none
     this.display_text = '';
     this.display_image = '';
     this.quiz_answer_status = '';
@@ -10,7 +10,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     this.tutorial_screen_continue = false;
 
     var thisController = this;
-    var full_note_length = 3000;
+    var whole_note_length = 3000;
     var short_wait = 50;
     var quiz_location = 0;
     var quiz_answer_location = 0; //Position in array of answers for current quiz question
@@ -37,14 +37,13 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             this.level_number = recieved_level;
             this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
             this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
-            this.mode = 'free_play';
+            this.mode = 'none';
             this.display_text = '';
             this.display_image = '';
         }
     };
 
     this.recieveKeyboardPress = function(click_obj){
-
         if (this.mode === 'quiz' && quiz_location < this.quiz_info.length) {
             var pressed_key = click_obj.target.getAttribute("note");
             var expected_note = this.quiz_info[quiz_location].answer[quiz_answer_location];
@@ -128,7 +127,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             if (thisController.mode !== 'tutorial'){
                 angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
             } else if (note_pos == demo_data_array.length){
-                wait_length = full_note_length * prevous_note.note_length - short_wait;
+                wait_length = whole_note_length * prevous_note.note_length - short_wait;
 
                 $timeout(function(){
                     angular.element("div[note=" + prevous_note.note_key + "]").trigger('mouseup');
@@ -136,7 +135,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                     wait_length
                 );
             } else {
-                wait_length = full_note_length * prevous_note.note_length - short_wait;
+                wait_length = whole_note_length * prevous_note.note_length - short_wait;
                 $timeout(function(){
                     setDisplayText('', 'tutorial');
                     setDisplayImage('', 'tutorial');
@@ -154,7 +153,6 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         if(quiz_location >= thisController.quiz_info.length){
             setDisplayText('Congratulations! You got it', 'quiz');
             setDisplayImage('', 'quiz');
-
         } else {
             setDisplayText('', 'quiz');
             $timeout(function() { setDisplayText(thisController.quiz_info[quiz_location].display.text, 'quiz') },
