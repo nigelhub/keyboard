@@ -58,6 +58,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 $timeout(function(){thisController.quiz_answer_status = ''}, 300);
             } else {
                 this.quiz_answer_status = 'wrong';
+                quiz_answer_location = 0;
                 $timeout(function(){thisController.quiz_answer_status = ''}, 300);
             }
         }
