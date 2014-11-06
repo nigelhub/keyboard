@@ -366,7 +366,7 @@
 	<div id="tutorial_question" ng-hide="tutorial.display_image===''">
 		<img src='Images/Tutorial_Game_Images/{{tutorial.display_image}}' class='center'/>
 	</div>
-	<div id="tutorial_screen" class='{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode==='free_play'">
+	<div id="tutorial_screen" class='{{tutorial.quiz_answer_status}} center small' ng-hide="tutorial.mode==='free_play'">
 		<div>{{tutorial.display_text}}</div>
 		<div id=tutorial_screen_continue class='clickable_{{tutorial.tutorial_screen_continue}}' ng-click="tutorial.recieveClickToContinue($event)">
 			CLICK TO CONTINUE
@@ -403,9 +403,8 @@
 				<div note="d5" class="white key" ></div>
 				<div note="dsharp5" class="black key" ></div>
 				<div note="e5" class="white key" ></div>
-				</div>
 			</div>
 		</div>
-
+	</div>
 	</body>
 </html>
