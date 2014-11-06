@@ -366,15 +366,15 @@
 	<div id="tutorial_question" ng-hide="tutorial.display_image===''">
 		<img src='Images/Tutorial_Game_Images/{{tutorial.display_image}}' class='center'/>
 	</div>
+	<div id="tutorial_screen" class='{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode==='free_play'">
+		<div>{{tutorial.display_text}}</div>
+		<div id=tutorial_screen_continue class='clickable_{{tutorial.tutorial_screen_continue}}' ng-click="tutorial.recieveClickToContinue($event)">
+			CLICK TO CONTINUE
+		</div>
+	</div>
 	<div id="full_piano_container_small" class="center small">
 		<div class="keyboard_body small">
 			<div class="keyboard_face small"></div>
-			<div id="tutorial_screen" class='{{tutorial.quiz_answer_status}} center' ng-hide="tutorial.mode==='free_play'">
-				<div>{{tutorial.display_text}}</div>
-				<div id=tutorial_screen_continue class='clickable_{{tutorial.tutorial_screen_continue}}' ng-click="tutorial.recieveClickToContinue($event)">
-					CLICK TO CONTINUE
-				</div>
-			</div>
 		</div>
 		<div class="container_small small" ng-click="tutorial.recieveKeyboardPress($event)">
 			<div class="inside small">
