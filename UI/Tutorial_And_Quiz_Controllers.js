@@ -1,63 +1,136 @@
+
 app.controller('TutorialQuizController', function($timeout, TutorialDataService, QuizDataService){
-    this.mode = 'free_play';
-    this.display = '';
+    //variables with data binding to UI
+    this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none
+    this.display_text = '';
+    this.display_image = '';
     this.quiz_answer_status = '';
     this.level_number = 1;
     this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
     this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
+    this.click_to_continue_true = false;
+    this.multiple_choices = [];
+    this.selected_multiple_choice="";
 
     var thisController = this;
-    var full_note_length = 3000;
+    var whole_note_length = 3000;
     var short_wait = 50;
     var quiz_location = 0;
+    var quiz_answer_location = 0; //Position in array of answers for current quiz question
+    var tutorial_location = 0;
 
     this.setMode = function(mode_value){
-        this.mode = mode_value;
-        var tutorial_phase;
-
-        if (mode_value === 'tutorial'){
-            for(var i = 0; i < this.tutorial_level_info.length; i++){
-                tutorial_phase = this.tutorial_level_info[i];
-                if (tutorial_phase.tutorial_phase_type == 'demonstration') {
-                    playDemo(tutorial_phase.demonstration_information);
-                }
+        if (this.mode !== mode_value) {//checks for state change
+            this.mode = mode_value;
+            this.selected_multiple_choice="";
+            this.multiple_choices = [];
+            this.display_text = '';
+            this.display_image = '';
+            this.click_to_continue_true = false;
+            if (mode_value === 'tutorial'){
+                tutorial_location = 0;
+                iterateTutorial();
+            } else if (mode_value === 'quiz'){
+                quiz_location = 0;
+                quiz_answer_location = 0;
+                iterateQuiz();
             }
-        } else if (mode_value === 'quiz'){
-            quiz_location = 0;
-            showNextNoteInQuiz();
-        };
+        }
     };
 
     this.setLevel = function(level_value){
         var recieved_level = parseInt(level_value);
-        if (this.level_number !== recieved_level){
+        if (this.level_number !== recieved_level){//checks for state change
             this.level_number = recieved_level;
             this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
             this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
+            this.setMode('none');
         }
     };
 
-    this.recieveKeyPress = function(click_obj){
+    this.setMCChoice = function(choice){
+        this.selected_multiple_choice=choice;
+    }
 
-        if (thisController.mode === 'quiz' && quiz_location < thisController.quiz_info.length) {
+    this.recieveKeyboardPress = function(click_obj){
+        if (this.mode === 'quiz' && quiz_location < this.quiz_info.length &&
+            this.quiz_info[quiz_location].questionType == "key_press") {
+
             var pressed_key = click_obj.target.getAttribute("note");
-            var expected_note = this.quiz_info[quiz_location].answer;
-
+            var expected_note = this.quiz_info[quiz_location].answer[quiz_answer_location];
             if(pressed_key ===  expected_note) {
-                quiz_location++;
-                showNextNoteInQuiz();
-                this.quiz_answer_status = 'correct';
-                $timeout(function(){thisController.quiz_answer_status = ''}, short_wait);
+                quiz_answer_location++;
+                if (quiz_answer_location >= this.quiz_info[quiz_location].answer.length) {
+                    quiz_location++;
+                    quiz_answer_location = 0;
+                    iterateQuiz();
+                }
+                correctAnswerDisplay();
             } else {
-                this.quiz_answer_status = 'wrong';
-                $timeout(function(){thisController.quiz_answer_status = ''}, short_wait);
+                quiz_answer_location = 0;
+                wrongAnswerDisplay();
             }
         }
     };
 
-    setDisplayTop = function(new_value, expected_mode){
+    this.recieveClickToContinue = function(click_obj){
+        if (this.click_to_continue_true) {
+            if (this.mode === 'tutorial'){
+                iterateTutorial();
+            } else if (this.mode === 'quiz' && this.quiz_info[quiz_location].questionType == "multiple_choice") {
+                if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
+                    correctAnswerDisplay();
+                    this.selected_multiple_choice = "";
+                    correctAnswerDisplay();
+                    quiz_location++;
+                    iterateQuiz();
+                } else {
+                    wrongAnswerDisplay();
+                }
+            }
+        }
+    };
+
+    wrongAnswerDisplay = function(){
+        thisController.quiz_answer_status = 'wrong';
+        $timeout(function(){thisController.quiz_answer_status = ''}, 300);
+    };
+
+    correctAnswerDisplay = function(){
+        thisController.quiz_answer_status = 'correct';
+        $timeout(function(){thisController.quiz_answer_status = ''}, 300);
+    }
+
+    iterateTutorial = function(){
+        if (thisController.tutorial_level_info.length > tutorial_location){
+            var tutorial_phase = thisController.tutorial_level_info[tutorial_location];
+            if (tutorial_phase.tutorial_phase_type == 'demonstration') {
+                thisController.click_to_continue_true = false;
+                playDemo(tutorial_phase.demonstration_information);
+                tutorial_location++;
+                iterateTutorial();
+            } else if (tutorial_phase.tutorial_phase_type == 'press_continue') {
+                thisController.click_to_continue_true = true;
+                setDisplayText(tutorial_phase.display.text, 'tutorial');
+                setDisplayImage(tutorial_phase.display.image, 'tutorial');
+                tutorial_location++;
+            }
+        } else {
+            setDisplayText('', 'tutorial');
+            setDisplayImage('', 'tutorial');
+            thisController.click_to_continue_true = false;
+        }
+    }
+
+    setDisplayText = function(new_value, expected_mode){
         if(thisController.mode === expected_mode){
-            thisController.display = new_value;
+            thisController.display_text = new_value;
+        }
+    };
+
+    setDisplayImage = function(new_value, expected_mode){
+        if(thisController.mode === expected_mode){
+            thisController.display_image = new_value;
         }
     };
 
@@ -75,7 +148,9 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
 
         var playNextNote = function() {
             var note = demo_data_array[note_pos];
-            setDisplayTop(note.display.text, 'tutorial');
+            setDisplayText(note.display.text, 'tutorial');
+            setDisplayImage(note.display.image, 'tutorial');
+
             simulateKeyPress(note.note_key, prevous_note.note_key);
 
             prevous_note = note;
@@ -84,7 +159,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             if (thisController.mode !== 'tutorial'){
                 angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
             } else if (note_pos == demo_data_array.length){
-                wait_length = full_note_length * prevous_note.note_length - short_wait;
+                wait_length = whole_note_length * prevous_note.note_length - short_wait;
 
                 $timeout(function(){
                     angular.element("div[note=" + prevous_note.note_key + "]").trigger('mouseup');
@@ -92,9 +167,10 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                     wait_length
                 );
             } else {
-                wait_length = full_note_length * prevous_note.note_length - short_wait;
+                wait_length = whole_note_length * prevous_note.note_length - short_wait;
                 $timeout(function(){
-                    setDisplayTop('', 'tutorial');
+                    setDisplayText('', 'tutorial');
+                    setDisplayImage('', 'tutorial');
                     $timeout(playNextNote, short_wait);
                     },
                     wait_length
@@ -104,13 +180,26 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         playNextNote();
     };
 
-    showNextNoteInQuiz = function() {
+    iterateQuiz = function() {
         if(quiz_location >= thisController.quiz_info.length){
-            setDisplayTop("Congratulations! You got it", "quiz");
+            setDisplayText('Congratulations! You got it', 'quiz');
+            setDisplayImage('', 'quiz');
+            thisController.multiple_choices = [];
+            thisController.selected_multiple_choice="";
+            thisController.click_to_continue_true = false;
         } else {
-            setDisplayTop('', 'quiz');
-            $timeout(function() { setDisplayTop(thisController.quiz_info[quiz_location].display.text, 'quiz') },
-            short_wait);
+            var question_info = thisController.quiz_info[quiz_location]
+            setDisplayText('', 'quiz');
+            $timeout(function() { setDisplayText(question_info.display.text, 'quiz') },
+                short_wait);
+            setDisplayImage(question_info.display.image, 'quiz');
+            if (question_info.questionType == "multiple_choice") {
+                thisController.multiple_choices = question_info.choices;
+                thisController.click_to_continue_true = true;
+            } else {
+                this.multiple_choices = [];
+                thisController.click_to_continue_true = false;
+            }
         }
     };
 });
@@ -119,3 +208,5 @@ app.controller('LevelsListController', function(ListLevelsService) {
     this.new_level;
     this.level_overview = ListLevelsService.level_overview();
 });
+
+
