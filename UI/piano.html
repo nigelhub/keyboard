@@ -372,14 +372,14 @@
 		<div>{{tutorial.display_text}}</div>
 		<form id=multiple_choices class=center ng-hide="tutorial.multiple_choices.length===0">
 			<li ng-repeat="choice in tutorial.multiple_choices">
-				<input type="radio" name="choice" value={{choice}}/> {{choice}}<br
+				<input type="radio" name="choice" value={{choice.id}}/> {{choice.text}}<br
 		  </li>
 		</form>
-		<div id=tutorial_screen_continue class='clickable_{{tutorial.tutorial_screen_continue}}' ng-click="tutorial.recieveClickToContinue($event)">
+		<div id=click_to_continue_true class='clickable_{{tutorial.click_to_continue_true}}' ng-click="tutorial.recieveClickToContinue($event)">
 			CLICK TO CONTINUE
 		</div>
 	</div>
-	<div id="full_piano_container_small" class="center small" ng-hide="tutorial.multiple_choices.length>==0">
+	<div id="full_piano_container_small" class="center small" ng-hide="tutorial.multiple_choices.length!==0">
 		<div class="keyboard_body small">
 			<div class="keyboard_face small"></div>
 		</div>

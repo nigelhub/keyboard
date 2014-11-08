@@ -285,7 +285,7 @@ ul
     border-color:red;
 }
 
-#tutorial_screen #tutorial_screen_continue {
+#tutorial_screen #click_to_continue_true {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -296,7 +296,7 @@ ul
 
 }
 
-#tutorial_screen #tutorial_screen_continue.clickable_true {
+#tutorial_screen #click_to_continue_true.clickable_true {
     visibility: visible;
 }
 
