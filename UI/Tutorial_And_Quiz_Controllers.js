@@ -8,6 +8,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
     this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
     this.tutorial_screen_continue = false;
+    this.multiple_choices = [];
 
     var thisController = this;
     var whole_note_length = 3000;

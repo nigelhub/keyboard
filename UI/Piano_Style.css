@@ -300,3 +300,7 @@ ul
     visibility: visible;
 }
 
+#tutorial_screen.multiple_choice_mode_true {
+    height: 250px;
+}
+
