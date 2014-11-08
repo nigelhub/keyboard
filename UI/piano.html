@@ -370,9 +370,9 @@
 			multiple_choice_mode_{{(tutorial.multiple_choices.length>0)}}"
 			ng-hide="tutorial.mode==='free_play' || tutorial.mode==='none'">
 		<div>{{tutorial.display_text}}</div>
-		<form id=multiple_choices class=center ng-hide="tutorial.multiple_choices.length===0">
-			<li ng-repeat="choice in tutorial.multiple_choices">
-				<input type="radio" name="choice" value={{choice.id}}/> {{choice.text}}<br
+		<form id=multiple_choices class=center  ng-hide="tutorial.multiple_choices.length===0">
+			  <li ng-repeat="choice in tutorial.multiple_choices">
+				<input type="radio" name="choice" value={{choice.id}} ng-model="tutorial.selected_multiple_choice"/> {{choice.text}}<br>
 		  </li>
 		</form>
 		<div id=click_to_continue_true class='clickable_{{tutorial.click_to_continue_true}}' ng-click="tutorial.recieveClickToContinue($event)">
