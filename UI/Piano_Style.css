@@ -20,26 +20,6 @@ ul
     padding-left:100px;
     list-style-type: none;
 }
-/*
-#nav :nth-child(5) 
-{
-	margin:0;
-	float:right;
-	padding-left:0px;
-}
-
-#nav :nth-child(4) 
-{
-	margin:0;
-	float:right;
-}
-
-ul li:last-child 
-{
-	float:right;display:inline; padding-left:0px; margin-top:-5px;
-}
-*/
-
 
 #header a, #footer a
 {
@@ -315,7 +295,7 @@ ul li:last-child
     border-color:red;
 }
 
-#tutorial_screen #tutorial_screen_continue {
+#tutorial_screen #click_to_continue_true {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -323,9 +303,18 @@ ul li:last-child
     font-size: 15px;
     cursor:pointer;
     visibility: hidden;
-
 }
 
-#tutorial_screen #tutorial_screen_continue.clickable_true {
+#tutorial_screen #click_to_continue_true.clickable_true {
     visibility: visible;
+    font-size: 20px;
+}
+
+#tutorial_screen.multiple_choice_mode_true { height: 250px; }
+
+#tutorial_screen form { text-align: center; }
+
+input[type="radio"] {
+    width: 4em;
+    height: 2em;
 }

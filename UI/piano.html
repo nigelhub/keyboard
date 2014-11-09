@@ -276,15 +276,13 @@
 			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
 			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button></a></li>
 			  <li><a href="#" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
-			 <!-- <li style="float:right"><a href="#" ng-click="tutorial.setMode('free_play')">Sign up</a></li>
-			  <li style="float:right"><a href="#" ng-click="tutorial.setMode('free_play')">Sign in</a></li>-->
 			</ul>
 		</div>
 	  </br>
 	  Tutorial Level:
 	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
 		<option ng-repeat="level in levels_info.level_overview" value={{level.id}}>
-		{{level.title}}
+			{{level.title}}
 		</option>
 	  </select>
 	</div>
@@ -368,13 +366,21 @@
 	<div id="tutorial_question" ng-hide="tutorial.display_image===''">
 		<img src='Images/Tutorial_Game_Images/{{tutorial.display_image}}' class='center'/>
 	</div>
-	<div id="tutorial_screen" class='{{tutorial.quiz_answer_status}} center small' ng-hide="tutorial.mode==='free_play' || tutorial.mode==='none'">
+	<div id="tutorial_screen" class="{{tutorial.quiz_answer_status}} center small
+			multiple_choice_mode_{{(tutorial.multiple_choices.length>0)}}"
+			ng-hide="tutorial.mode==='free_play' || tutorial.mode==='none'">
 		<div>{{tutorial.display_text}}</div>
-		<div id=tutorial_screen_continue class='clickable_{{tutorial.tutorial_screen_continue}}' ng-click="tutorial.recieveClickToContinue($event)">
+		<form id=multiple_choices class=center  ng-hide="tutorial.multiple_choices.length===0">
+			<br>
+			<li ng-repeat="choice in tutorial.multiple_choices">
+				<input type="radio" name="choice" value={{choice.id}} ng-model="tutorial.selected_multiple_choice"/>{{choice.text}}
+		  </li>
+		</form>
+		<div id=click_to_continue_true class='clickable_{{tutorial.click_to_continue_true}}' ng-click="tutorial.recieveClickToContinue($event)">
 			CLICK TO CONTINUE
 		</div>
 	</div>
-	<div id="full_piano_container_small" class="center small">
+	<div id="full_piano_container_small" class="center small" ng-hide="tutorial.multiple_choices.length!==0">
 		<div class="keyboard_body small">
 			<div class="keyboard_face small"></div>
 		</div>
@@ -408,6 +414,6 @@
 			</div>
 		</div>
 	</div>
-	
+
 	</body>
 </html>
