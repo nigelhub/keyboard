@@ -1,21 +1,99 @@
-html,body { height:100%; width:100%;padding:0; margin:0; }
+html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAFA; }
 
-.center {margin-left:auto; margin-right:auto; }
+.center {display:block;margin-left:auto; margin-right:auto; }
 
 .blue {color:blue;}
+
+#header
+{
+	position:relative;
+	height:100px;
+	width:100%;
+	background-color:#0070BA;
+}
+
+li { display:inline; padding:10px; padding-right:0px; }
+
+ul
+{
+    padding: 35px;
+    padding-left:100px;
+    list-style-type: none;
+}
+/*
+#nav :nth-child(5) 
+{
+	margin:0;
+	float:right;
+	padding-left:0px;
+}
+
+#nav :nth-child(4) 
+{
+	margin:0;
+	float:right;
+}
+
+ul li:last-child 
+{
+	float:right;display:inline; padding-left:0px; margin-top:-5px;
+}
+*/
+
+
+#header a, #footer a
+{
+	position: relative;
+	color: #000;
+	text-decoration: none;
+}
+
+#header a:hover, #footer a:hover
+{
+	color: #000;
+}
+
+#header a:before, #footer a:before
+{
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #000;
+	visibility: hidden;
+	-webkit-transform: scaleX(0);
+	transform: scaleX(0);
+	-webkit-transition: all 0.3s ease-in-out 0s;
+	transition: all 0.3s ease-in-out 0s;
+}
+
+#header a:hover:before, #footer a:hover:before
+{
+	visibility: visible;
+	-webkit-transform: scaleX(1);
+	transform: scaleX(1);
+}
+
+#tutorial_question
+{
+	position:relative;
+	display:none;
+}
 
 #full_piano_container
 {
     position:relative;
     width:1300px;
-    top:140px;
+    top:36px;
 }
 
 #full_piano_container_small
 {
     position:relative;
     width:1155px;
-    top:140px;
+    padding-bottom:100px;
 }
 
 #full_piano_container .keyboard_body
@@ -66,7 +144,6 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
 {
     position:relative;
     width:1300px;
-    height:35%;
     white-space:nowrap;
 }
 
@@ -74,7 +151,6 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
 {
     position:relative;
     width:1155px;
-    height:300px;
     white-space:nowrap;
 }
 
@@ -117,6 +193,17 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
     background-repeat:no-repeat;
     cursor:pointer;
 }
+
+#full_piano_container .white.highlight
+{
+	width:36px;
+    height:271px;
+    float:left;
+    background-image:url("Images/WhiteKeyHighlight.png");
+    background-repeat:no-repeat;
+    cursor:pointer;
+}
+
 
 #full_piano_container_small .white.key
 {
@@ -209,9 +296,9 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
 #tutorial_screen {
     position: relative;
     text-align: center;
-    width: 300px;
+    width: 1050px;
     height: 110px;
-    top:280px;
+    top: 140px;
     z-index:1000;
     font-size:200%;
     border-color:black;
@@ -226,4 +313,19 @@ html,body { height:100%; width:100%;padding:0; margin:0; }
 
 #tutorial_screen.wrong {
     border-color:red;
+}
+
+#tutorial_screen #tutorial_screen_continue {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: green;
+    font-size: 15px;
+    cursor:pointer;
+    visibility: hidden;
+
+}
+
+#tutorial_screen #tutorial_screen_continue.clickable_true {
+    visibility: visible;
 }
