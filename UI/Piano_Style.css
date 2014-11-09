@@ -293,14 +293,18 @@ ul
     font-size: 15px;
     cursor:pointer;
     visibility: hidden;
-
 }
 
 #tutorial_screen #click_to_continue_true.clickable_true {
     visibility: visible;
+    font-size: 20px;
 }
 
-#tutorial_screen.multiple_choice_mode_true {
-    height: 250px;
-}
+#tutorial_screen.multiple_choice_mode_true { height: 250px; }
 
+#tutorial_screen form { text-align: center; }
+
+input[type="radio"] {
+    width: 4em;
+    height: 2em;
+}

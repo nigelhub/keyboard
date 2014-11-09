@@ -336,6 +336,7 @@ app.service('TutorialDataService', function() {
                         image: 'Tutorial/Level3/Tutorial_Level3_1.png',
                         text: 'This is the middle C. This is the first note mose people learn to play on the piano. The line through the note comes from the invisible line we saw earlier that divides the two staves.'
                     }
+
                 },
                 {
                     tutorial_phase_type: 'press_continue',
