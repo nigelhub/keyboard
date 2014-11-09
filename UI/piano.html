@@ -276,15 +276,13 @@
 			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
 			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button></a></li>
 			  <li><a href="#" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
-			 <!-- <li style="float:right"><a href="#" ng-click="tutorial.setMode('free_play')">Sign up</a></li>
-			  <li style="float:right"><a href="#" ng-click="tutorial.setMode('free_play')">Sign in</a></li>-->
 			</ul>
 		</div>
 	  </br>
 	  Tutorial Level:
 	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
 		<option ng-repeat="level in levels_info.level_overview" value={{level.id}}>
-		{{level.title}}
+			{{level.title}}
 		</option>
 	  </select>
 	</div>
@@ -416,6 +414,6 @@
 			</div>
 		</div>
 	</div>
-	
+
 	</body>
 </html>

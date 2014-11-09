@@ -20,7 +20,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     var tutorial_location = 0;
 
     this.setMode = function(mode_value){
-        if (this.mode !== mode_value) {
+        if (this.mode !== mode_value) {//checks for state change
             this.mode = mode_value;
             this.selected_multiple_choice="";
             this.multiple_choices = [];
@@ -40,7 +40,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
 
     this.setLevel = function(level_value){
         var recieved_level = parseInt(level_value);
-        if (this.level_number !== recieved_level){
+        if (this.level_number !== recieved_level){//checks for state change
             this.level_number = recieved_level;
             this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
             this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
@@ -180,7 +180,6 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
         playNextNote();
     };
 
-
     iterateQuiz = function() {
         if(quiz_location >= thisController.quiz_info.length){
             setDisplayText('Congratulations! You got it', 'quiz');
@@ -209,3 +208,5 @@ app.controller('LevelsListController', function(ListLevelsService) {
     this.new_level;
     this.level_overview = ListLevelsService.level_overview();
 });
+
+
