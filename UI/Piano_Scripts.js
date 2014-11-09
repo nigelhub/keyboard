@@ -5,13 +5,11 @@ $(document).ready(function() {
         var note = $(this).attr("note");
         playNote(note);
     });
-
     $(".key").mouseup(function() {
         $(this).removeClass("key_down");
         var note = $(this).attr("note");
         stopNote(note);
     });
-
     $(document).keyup(function () {
         $("div").removeClass('key_down');
     });

@@ -272,10 +272,12 @@
 
 	<div id="actions" ng-controller="LevelsListController as levels_info">
 		<div id="header">
-			<ul>
+			<ul id="nav" class="center">
 			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
 			  <li><a href="#" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</button></a></li>
 			  <li><a href="#" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
+			 <!-- <li style="float:right"><a href="#" ng-click="tutorial.setMode('free_play')">Sign up</a></li>
+			  <li style="float:right"><a href="#" ng-click="tutorial.setMode('free_play')">Sign in</a></li>-->
 			</ul>
 		</div>
 	  </br>
@@ -406,5 +408,6 @@
 			</div>
 		</div>
 	</div>
+	
 	</body>
 </html>

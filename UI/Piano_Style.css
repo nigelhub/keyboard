@@ -12,14 +12,33 @@ html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAF
 	background-color:#0070BA;
 }
 
-li { display:inline; padding:10px; }
+li { display:inline; padding:10px; padding-right:0px; }
 
 ul
 {
     padding: 35px;
+    padding-left:100px;
     list-style-type: none;
-    text-align:center;
 }
+/*
+#nav :nth-child(5) 
+{
+	margin:0;
+	float:right;
+	padding-left:0px;
+}
+
+#nav :nth-child(4) 
+{
+	margin:0;
+	float:right;
+}
+
+ul li:last-child 
+{
+	float:right;display:inline; padding-left:0px; margin-top:-5px;
+}
+*/
 
 
 #header a, #footer a
@@ -175,6 +194,17 @@ ul
     cursor:pointer;
 }
 
+#full_piano_container .white.highlight
+{
+	width:36px;
+    height:271px;
+    float:left;
+    background-image:url("Images/WhiteKeyHighlight.png");
+    background-repeat:no-repeat;
+    cursor:pointer;
+}
+
+
 #full_piano_container_small .white.key
 {
     width:82px;
@@ -299,4 +329,3 @@ ul
 #tutorial_screen #tutorial_screen_continue.clickable_true {
     visibility: visible;
 }
-
