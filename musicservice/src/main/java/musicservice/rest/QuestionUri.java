@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import musicservice.common.LoggerUtils;
 import musicservice.dao.QuestionDao;
+import musicservice.model.Note;
 import musicservice.model.Question;
 
 /**
@@ -49,6 +51,7 @@ public class QuestionUri {
      * API and Example
      * {@code 
      * HTTP GET http://localhost:8080/MusicService/question 
+     * HTTP GET http://localhost:8080/MusicService/question ?quizId=1
      * 
      * Example
      * curl -X GET http://localhost:8080/MusicService/question  
@@ -57,9 +60,15 @@ public class QuestionUri {
      */
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    List<Question> displayQuestions() {
+    List<Question> displayQuestions(@RequestParam(value="quizId", required=false) Long quizId) {
         logger.trace("Entering displayQuestions():");
-        return questionDao.findAll();
+        
+    	if (quizId == null) {
+    		return questionDao.findAll();
+    	}
+    	else {
+    	    return questionDao.findByDemoId(quizId);
+    	}
     }
 
     

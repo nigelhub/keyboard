@@ -2,6 +2,13 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+
+-- -----------------------------------------------------
+-- Data for table `automatosx`.`db_version`
+-- -----------------------------------------------------
+INSERT INTO `mydb`.`db_version` (`version`, `description`) VALUES ('2.00', 'Added core tables for entire projet.');
+
+
 -- -----------------------------------------------------
 -- Data for table `music_service`.`user`
 -- -----------------------------------------------------

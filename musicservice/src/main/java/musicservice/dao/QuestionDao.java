@@ -1,8 +1,10 @@
 package musicservice.dao;
 
 import musicservice.common.LoggerUtils;
+import musicservice.model.Note;
 import musicservice.model.Question;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -57,5 +59,29 @@ public class QuestionDao {
         criteria.select(questions);
         return entityManager.createQuery(criteria).getResultList();
     }
+
+
+    /**
+     * Retrieve all questions which related to a particular quiz.
+     * @param quizId
+     * @return
+     */
+	public List<Question> findByDemoId(Long quizId) {
+		
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Question> criteria = builder.createQuery(Question.class);
+        Root<Question> notes = criteria.from(Question.class);
+        criteria.select(notes);
+        List<Question> results = entityManager.createQuery(criteria).getResultList();
+        
+        List<Question> matches = new ArrayList<Question>();
+        for (Question question : results) {
+        	if (question.getQuizId().equals(quizId)) {
+        		matches.add(question);
+        	}
+        }
+        
+        return matches;
+	}
 
 }

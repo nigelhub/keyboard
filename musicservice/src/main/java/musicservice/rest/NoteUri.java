@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import musicservice.common.LoggerUtils;
@@ -49,6 +50,7 @@ public class NoteUri {
      * API and Example
      * {@code 
      * HTTP GET http://localhost:8080/MusicService/note 
+     * HTTP GET http://localhost:8080/MusicService/note?demoId=1
      * 
      * Example
      * curl -X GET http://localhost:8080/MusicService/note  
@@ -57,9 +59,16 @@ public class NoteUri {
      */
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    List<Note> displayNotess() {
-        logger.trace("Entering displayNotes():");
-        return noteDao.findAll();
+    List<Note> displayNotess(@RequestParam(value="demoId", required=false) Long demoId) {
+    	
+    	logger.trace("Entering displayNotes():");
+    	
+    	if (demoId == null) {
+    		return noteDao.findAll();
+    	}
+    	else {
+    	    return noteDao.findByDemoId(demoId);
+    	}
     }
 
     

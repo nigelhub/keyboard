@@ -2,12 +2,17 @@ package musicservice.dao;
 
 import musicservice.common.LoggerUtils;
 import musicservice.model.Note;
+import musicservice.model.Demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.jboss.logging.Logger;
@@ -40,7 +45,31 @@ public class NoteDao {
         logger.trace("Entering findById: id: " + id);
         return entityManager.find(Note.class, id);
     }
+
     
+    /**
+     * Retrieve all notes which related to a particular demo.
+     * @param quizId
+     * @return
+     */    
+    public List<Note> findByDemoId(Long demoId)  {
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Note> criteria = builder.createQuery(Note.class);
+        Root<Note> notes = criteria.from(Note.class);
+        criteria.select(notes);
+        List<Note> results = entityManager.createQuery(criteria).getResultList();
+        
+        List<Note> matches = new ArrayList<Note>();
+        for (Note note : results) {
+        	if (note.getDemoId().equals(demoId)) {
+        		matches.add(note);
+        	}
+        }
+        
+        return matches;
+     }
+   
 
     /**
      * This method will return a list of all note objects 
