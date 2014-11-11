@@ -64,7 +64,11 @@ public class User {
     
     @Column(name = User.ROLE, unique = false, nullable = false)
     @XmlElement(name = User.ROLE)
-    private String role;
+    private String role;    
+    
+    @Column(name = User.LEVEL_COMPLETED, unique = false, nullable = false)
+    @XmlElement(name = User.LEVEL_COMPLETED)
+    private int levelCompleted;
     
     
     /**
@@ -104,6 +108,16 @@ public class User {
      */
     public String getEmail() {
         return email;
+    }
+    
+    
+    /**
+     * Return the highest level that the user has completed.
+     * 
+     * @return the email address.
+     */
+    public int getLevelCompleted() {
+        return levelCompleted;
     }
     
     
@@ -205,32 +219,43 @@ public class User {
 	    this.role = role;
 	}
 
+	
+    /**
+     * Set the highest level that the user has completed.
+     * 
+     * @return the email address.
+     */
+    public int setLevelCompleted() {
+        return levelCompleted;
+    }
+    
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return "User [ id=" + userId 
-        		  + ", first="    + firstname 
-        		  + ", last="     + lastname 
-        		  + ", role="     + role 
-        		  + ", username=" + username 
-        		  + ", password=" + password 
-        		  + ", email="    + email + "]";
+        return "User [ id="              + userId 
+        		  + ", first="           + firstname 
+        		  + ", last="            + lastname 
+        		  + ", role="            + role 
+        		  + ", username="        + username 
+        		  + ", password="        + password 
+        		  + ", level_completed=" + levelCompleted
+        		  + ", email="           + email + "]";
     }
 
 
 
     // Static constants used to reference table and column names.
-    public static final String TABLE      = "user";
-    public static final String USER_ID    = "user_id";
-    public static final String FIRSTNAME  = "first";
-    public static final String LASTNAME   = "last";
-    public static final String USERNAME   = "username";
-    public static final String PASSWORD   = "password";
-    public static final String ROLE       = "role";
-    public static final String EMAIL      = "email";
-    
+    public static final String TABLE            = "user";
+    public static final String USER_ID          = "user_id";
+    public static final String FIRSTNAME        = "first";
+    public static final String LASTNAME         = "last";
+    public static final String USERNAME         = "username";
+    public static final String PASSWORD         = "password";
+    public static final String ROLE             = "role";
+    public static final String EMAIL            = "email";
+    public static final String LEVEL_COMPLETED  = "level_completed";
 
 }
