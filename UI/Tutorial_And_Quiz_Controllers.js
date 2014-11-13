@@ -53,29 +53,44 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     }
 
     this.recieveKeyboardPress = function(click_obj){
+        var pressed_key = click_obj.target.getAttribute("note");
+
         if (this.mode === 'quiz' && quiz_location < this.quiz_info.length &&
             this.quiz_info[quiz_location].questionType == "key_press") {
 
-            var pressed_key = click_obj.target.getAttribute("note");
             var expected_note = this.quiz_info[quiz_location].answer[quiz_answer_location];
-            if(pressed_key ===  expected_note) {
-                quiz_answer_location++;
-                if (quiz_answer_location >= this.quiz_info[quiz_location].answer.length) {
-                    quiz_location++;
-                    quiz_answer_location = 0;
-                    iterateQuiz();
-                }
-                correctAnswerDisplay();
-            } else {
+            var answer_length = this.quiz_info[quiz_location].answer.length;
+
+            quiz_answer_location = checkKeyboardPressAnswer(pressed_key, expected_note, quiz_answer_location, answer_length);
+            if (quiz_answer_location >= this.quiz_info[quiz_location].answer.length) {
+                quiz_location++;
                 quiz_answer_location = 0;
-                wrongAnswerDisplay();
+                iterateQuiz();
+            }
+        } else if (this.mode === 'tutorial' && tutorial_location < this.tutorial_level_info.length &&
+            this.tutorial_level_info[tutorial_location].tutorial_phase_type == "key_press") {
+
+            angular.element("div[note=" + pressed_key + "]").removeClass('highlight');
+
+            var expected_note = this.tutorial_level_info[tutorial_location].expected_keys[quiz_answer_location];
+            var answer_length = this.tutorial_level_info[tutorial_location].expected_keys.length;
+            quiz_answer_location = checkKeyboardPressAnswer(pressed_key, expected_note, quiz_answer_location, answer_length);
+            if (quiz_answer_location >= this.tutorial_level_info[tutorial_location].expected_keys.length) {
+                tutorial_location++;
+                quiz_answer_location = 0;
+                iterateTutorial();
+            } else {
+                var next_key = this.tutorial_level_info[tutorial_location].expected_keys[quiz_answer_location];
+                angular.element("div[note=" + next_key + "]").addClass('highlight');
             }
         }
+
     };
 
     this.recieveClickToContinue = function(click_obj){
         if (this.click_to_continue_true) {
             if (this.mode === 'tutorial'){
+                tutorial_location++;
                 iterateTutorial();
             } else if (this.mode === 'quiz' && this.quiz_info[quiz_location].questionType == "multiple_choice") {
                 if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
@@ -89,6 +104,18 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 }
             }
         }
+    };
+
+    checkKeyboardPressAnswer = function(pressed_key, expected_note, location_in_answer, answer_length){
+
+        if(pressed_key ===  expected_note) {
+            location_in_answer++;
+            correctAnswerDisplay();
+        } else {
+            location_in_answer = 0;
+            wrongAnswerDisplay();
+        }
+        return location_in_answer;
     };
 
     wrongAnswerDisplay = function(){
@@ -109,11 +136,18 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 playDemo(tutorial_phase.demonstration_information);
                 tutorial_location++;
                 iterateTutorial();
-            } else if (tutorial_phase.tutorial_phase_type == 'press_continue') {
-                thisController.click_to_continue_true = true;
+            } else {
                 setDisplayText(tutorial_phase.display.text, 'tutorial');
                 setDisplayImage(tutorial_phase.display.image, 'tutorial');
-                tutorial_location++;
+
+                if (tutorial_phase.tutorial_phase_type == 'press_continue') {
+                    thisController.click_to_continue_true = true;
+                } else if (tutorial_phase.tutorial_phase_type == 'key_press'){
+                    thisController.click_to_continue_true = false;
+                    quiz_answer_location = 0;
+                    var next_key = thisController.tutorial_level_info[tutorial_location].expected_keys[0];
+                    angular.element("div[note=" + next_key + "]").addClass('highlight');
+                }
             }
         } else {
             setDisplayText('', 'tutorial');
