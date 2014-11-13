@@ -114,6 +114,9 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 setDisplayText(tutorial_phase.display.text, 'tutorial');
                 setDisplayImage(tutorial_phase.display.image, 'tutorial');
                 tutorial_location++;
+                if (tutorial_phase.instrumentAide != null) {
+					simulateKeyPress(tutorial_phase.instrumentAide);            			
+           		}
             }
         } else {
             setDisplayText('', 'tutorial');

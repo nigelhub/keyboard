@@ -1,5 +1,6 @@
 $(document).ready(function() {
      // THESE FUNCTIONS CHANGE THE CSS CLASS OF EACH KEY HIT TO PRESS KEY DOWN
+    $('body').hide().fadeIn(800);
     $(".key").mousedown(function () {
         $(this).addClass("key_down");
         var note = $(this).attr("note");
@@ -28,6 +29,28 @@ $(document).ready(function() {
         $('.small').show();
         $('#tutorial_question').show();
     });
+    $("#tutorial, #quiz").click(function() {
+    	$('.large').hide();
+    	$('.small').hide();
+    	$("img").hide();
+    	$("body").load("level_selection.html");
+    });
+    
+var data = [ [ "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>" ], 
+[ "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>" ], 
+["<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>" ] ];
+
+var html = '<table><thead><tr>...</tr></thead><tbody>';
+for (var i = 0, len = data.length; i < len; ++i) {
+    html += '<tr>';
+    for (var j = 0, rowLen = data[i].length; j < rowLen; ++j ) {
+        html += '<td>' + data[i][j] + '</td>';
+    }
+    html += "</tr>";
+}
+html += '</tbody><tfoot><tr>....</tr></tfoot></table>';
+
+$(html).appendTo('#test');
 
     var key_mappings = [
         ['shift+1', 'c1'],
