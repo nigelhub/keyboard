@@ -12,8 +12,10 @@ app.service('ListLevelsService', ['$http', function($http) {
         return $http.get('http://keyboard.cloudapp.net:3010/MusicService/level').
             success(function(data) {
                 console.log(data);
+                alert('Success!');
                 return data;
             }).error(function(data,status) {
+                alert('Nope!')
                 return [];
             });
 
