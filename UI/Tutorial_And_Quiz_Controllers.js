@@ -1,5 +1,5 @@
 
-app.controller('TutorialQuizController', function($timeout, TutorialDataService, QuizDataService){
+app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, TutorialDataService, QuizDataService){
     //variables with data binding to UI
     this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none
     this.display_text = '';
@@ -28,12 +28,24 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             this.display_image = '';
             this.click_to_continue_true = false;
             if (mode_value === 'tutorial'){
+                angular.element(".large").hide();
+                angular.element(".small").show();
+                angular.element('#tutorial_question').show();
+
                 tutorial_location = 0;
                 iterateTutorial();
             } else if (mode_value === 'quiz'){
+                angular.element(".large").hide();
+                angular.element(".small").show();
+                angular.element('#tutorial_question').show();
+
                 quiz_location = 0;
                 quiz_answer_location = 0;
                 iterateQuiz();
+            } else if (mode_value === 'free_play'){
+                angular.element(".small").hide();
+                angular.element(".large").show();
+                angular.element('#tutorial_question').hide();
             }
         }
     };
@@ -44,8 +56,8 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             this.level_number = recieved_level;
             this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
             this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
-            this.setMode('none');
         }
+        this.setMode('free_play');
     };
 
     this.setMCChoice = function(choice){
@@ -90,6 +102,17 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             }
         }
     };
+
+
+    $scope.$on('$routeChangeSuccess', function() {
+        if($routeParams.levelId && $routeParams.levelId != thisController.level_number){
+            thisController.setLevel($routeParams.levelId);
+        }
+        if($routeParams.modeName && $routeParams.modeName != thisController.mode){
+            thisController.setMode($routeParams.modeName);
+        }
+    });
+
 
     wrongAnswerDisplay = function(){
         thisController.quiz_answer_status = 'wrong';
@@ -197,7 +220,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 thisController.multiple_choices = question_info.choices;
                 thisController.click_to_continue_true = true;
             } else {
-                this.multiple_choices = [];
+                thisController.multiple_choices = [];
                 thisController.click_to_continue_true = false;
             }
         }
@@ -208,5 +231,3 @@ app.controller('LevelsListController', function(ListLevelsService) {
     this.new_level;
     this.level_overview = ListLevelsService.level_overview();
 });
-
-
