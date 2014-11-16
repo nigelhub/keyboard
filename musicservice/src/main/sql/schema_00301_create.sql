@@ -247,6 +247,22 @@ INSERT INTO `music_service`.`db_version` (`db_version_id`, `version`, `descripti
 COMMIT;
 
 -- -----------------------------------------------------
+-- Data for table `music_service`.`level`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `music_service`;
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 1, 'Learn when to use your right and left hand to play a note.');
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 2, 'Learn how to understand the lines in a note.');
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 3, 'Learn about all the variations of the C4 note.');
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 4, 'Learn about the D4 and E4 notes.');
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 5, 'Learn about the F4 and G4 notes');
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 6, 'Learn about the B4, A4 and G3 notes.');
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 7, 'Learn about the D#4, F#4, G#4 and C#4 notes.');
+INSERT INTO `music_service`.`level` (`level_id`, `level_number`, `level_description`) VALUES (NULL, 8, 'The grand finale! Put all the items you have learned together and play a song!');
+
+COMMIT;
+
+-- -----------------------------------------------------
 -- Data for table `music_service`.`tutorial`
 -- -----------------------------------------------------
 START TRANSACTION;
