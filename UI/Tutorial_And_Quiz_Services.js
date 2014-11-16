@@ -1,11 +1,26 @@
-app.service('ListLevelsService', function() {
+/*app.service('ListLevelsService', function() {
     this.level_overview = function() { return [
         { id: 1, title: "Tutorial: Level 1" },
         { id: 3, title: "Tutorial: Level 3" },
         { id: 20, title: "1. Happy Birthday" },
         { id: 30, title: "2. Row, Row, Row Your Boat" }
     ] };
-});
+});*/
+
+app.service('ListLevelsService', ['$http', function($http) {
+    this.level_overview = function() {
+        return $http.get('http://keyboard.cloudapp.net:3010/MusicService/level').
+            success(function(data) {
+                console.log(data);
+                return data;
+            }).error(function(data,status) {
+                return [];
+            });
+
+    };
+}]);
+
+
 
 app.service('TutorialDataService', function() {
     this.tutorial_data = function(level_num) {
