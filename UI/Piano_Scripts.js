@@ -16,18 +16,6 @@ $(document).ready(function() {
 
     //THIS INITIALLY HIDES THE KEYBOARD TO DISPLAY FREE PLAY KEYBOARD AT DEFAULT
     $(".small").hide();
-    //DISPLAYS FULL SIZE FREE PLAY KEYBOARD ON CLICK
-    $(".fullsize").click(function() {
-        $('.small').hide();
-        $('.large').show();
-        $('#tutorial_question').hide();
-     });
-     //DISPLAYS TUTORIAL SIZE KEYBOARD ON CLICK
-    $(".smallsize").click(function() {
-        $('.large').hide();
-        $('.small').show();
-        $('#tutorial_question').show();
-    });
 
     var key_mappings = [
         ['shift+1', 'c1'],
