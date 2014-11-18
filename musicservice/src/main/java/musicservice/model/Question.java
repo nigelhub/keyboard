@@ -50,7 +50,7 @@ public class Question {
     
     @Column(name = Question.QUESTION_NAME, unique = false, nullable = false)
     @XmlElement(name = Question.QUESTION_NAME)
-    private String questionName;
+    private String name;
     
     @Column(name = Question.SEQUENCE_ID, unique = false, nullable = false)
     @XmlElement(name = Question.SEQUENCE_ID)
@@ -58,15 +58,15 @@ public class Question {
     
     @Column(name = Question.QUESTION_TYPE, unique = false, nullable = false)
     @XmlElement(name = Question.QUESTION_TYPE)
-    private String questionType;
+    private String type;
     
     @Column(name = Question.QUESTION_TEXT, unique = false, nullable = false)
     @XmlElement(name = Question.QUESTION_TEXT)
-    private String questionText;
+    private String text;
     
     @Column(name = Question.QUESTION_IMAGE, unique = false, nullable = false)
     @XmlElement(name = Question.QUESTION_IMAGE)
-    private String questionImage;
+    private String image;
     
     @Column(name = Question.ANSWER, unique = false, nullable = false)
     @XmlElement(name = Question.ANSWER)
@@ -97,8 +97,8 @@ public class Question {
      * 
      * @return the name
      */
-    public String getQuestionName() {
-        return questionName;
+    public String getName() {
+        return name;
     }
     
     
@@ -117,8 +117,8 @@ public class Question {
      * 
      * @return the sequence id.
      */
-    public String getQuestionType() {
-        return questionType;
+    public String getType() {
+        return type;
     }
     
     
@@ -127,8 +127,8 @@ public class Question {
      * 
      * @return the question text.
      */
-    public String getQuestionText() {
-        return questionText;
+    public String getText() {
+        return text;
     }
     
     
@@ -138,7 +138,7 @@ public class Question {
      * @return the image location.
      */
     public String getImage() {
-        return questionImage;
+        return image;
     }
     
     /**
@@ -174,8 +174,8 @@ public class Question {
 	  * @param name
 	  * @return
 	  */
-	 public void setQuestionName(String name) {
-	     questionName = name;
+	 public void setName(String name) {
+	     this.name = name;
 	 }
 	    
 		    
@@ -194,8 +194,8 @@ public class Question {
 	  * @param type
 	  * @return
 	  */
-	 public void setQuestionType(String type) {
-	     questionType = type;
+	 public void setType(String type) {
+	     this.type = type;
 	 }
 	   
 		    
@@ -205,8 +205,8 @@ public class Question {
 	  * @param text
 	  * @return
 	  */
-	 public void setQuestionText(String text) {
-	     questionText = text;
+	 public void setText(String text) {
+	     this.text = text;
 	 }
 	   
 	   
@@ -228,11 +228,11 @@ public class Question {
     public String toString() {
         return "Level [ question_id="     + questionId 
         		   + ", quiz_id="         + quizId 
-        		   + ", question_name="   + questionName 
+        		   + ", question_name="   + name 
         		   + ", sequence_id="     + sequenceId 
-        		   + ", question_type="   + questionType 
-        		   + ", question_text="   + questionText 
-        		   + ", question_image="  + questionImage 
+        		   + ", question_type="   + type 
+        		   + ", question_text="   + text 
+        		   + ", question_image="  + image 
         		   + ", answer="          + questionAnswer 
         		   + "]";
     }
