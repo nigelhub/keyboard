@@ -27,6 +27,7 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
             this.display_text = '';
             this.display_image = '';
             this.click_to_continue_true = false;
+            angular.element(".highlight").removeClass('highlight');
             if (mode_value === 'tutorial'){
                 angular.element(".large").hide();
                 angular.element(".small").show();
