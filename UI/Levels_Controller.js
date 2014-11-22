@@ -17,13 +17,13 @@ levels_app.controller('LevelsListController', function($scope, $route, $routePar
     setNavigationData = function(mode_set) {
         switch(mode_set) {
             case 'tutorial':
-                TutorialsNavService.tutorial_overview( function(data){ updateLevelsPage(data); } );
+                TutorialsNavService.tutorial_overview( function(data){ updateLevelsPage(thisController.mode, data); } );
                 break;
             case 'quiz':
-                TutorialsNavService.quiz_overview( function(data){ updateLevelsPage(data); } );
+                TutorialsNavService.quiz_overview( function(data){ updateLevelsPage(thisController.mode, data); } );
                 break;
             case 'demo':
-                TutorialsNavService.demo_overview( function(data){ updateLevelsPage(data); } );
+                TutorialsNavService.demo_overview( function(data){ updateLevelsPage(thisController.mode, data); } );
                 break;
         }
     }
