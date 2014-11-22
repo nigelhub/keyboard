@@ -247,6 +247,11 @@ ul
     cursor:pointer;
 }
 
+#full_piano_container_small .white.highlight
+{
+    background-image:url("Images/WhiteKey_Small_Highlight.png");
+}
+
 #full_piano_container .black.key
 {
     position:relative;

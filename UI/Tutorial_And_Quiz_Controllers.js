@@ -1,5 +1,5 @@
 
-app.controller('TutorialQuizController', function($timeout, TutorialDataService, QuizDataService){
+app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, TutorialDataService, QuizDataService){
     //variables with data binding to UI
     this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none
     this.display_text = '';
@@ -27,13 +27,26 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             this.display_text = '';
             this.display_image = '';
             this.click_to_continue_true = false;
+            angular.element(".highlight").removeClass('highlight');
             if (mode_value === 'tutorial'){
+                angular.element(".large").hide();
+                angular.element(".small").show();
+                angular.element('#tutorial_question').show();
+
                 tutorial_location = 0;
                 iterateTutorial();
             } else if (mode_value === 'quiz'){
+                angular.element(".large").hide();
+                angular.element(".small").show();
+                angular.element('#tutorial_question').show();
+
                 quiz_location = 0;
                 quiz_answer_location = 0;
                 iterateQuiz();
+            } else if (mode_value === 'free_play'){
+                angular.element(".small").hide();
+                angular.element(".large").show();
+                angular.element('#tutorial_question').hide();
             }
         }
     };
@@ -44,8 +57,8 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             this.level_number = recieved_level;
             this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
             this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
-            this.setMode('none');
         }
+        this.setMode('free_play');
     };
 
     this.setMCChoice = function(choice){
@@ -53,29 +66,44 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
     }
 
     this.recieveKeyboardPress = function(click_obj){
+        var pressed_key = click_obj.target.getAttribute("note");
+
         if (this.mode === 'quiz' && quiz_location < this.quiz_info.length &&
             this.quiz_info[quiz_location].questionType == "key_press") {
 
-            var pressed_key = click_obj.target.getAttribute("note");
             var expected_note = this.quiz_info[quiz_location].answer[quiz_answer_location];
-            if(pressed_key ===  expected_note) {
-                quiz_answer_location++;
-                if (quiz_answer_location >= this.quiz_info[quiz_location].answer.length) {
-                    quiz_location++;
-                    quiz_answer_location = 0;
-                    iterateQuiz();
-                }
-                correctAnswerDisplay();
-            } else {
+            var answer_length = this.quiz_info[quiz_location].answer.length;
+
+            quiz_answer_location = checkKeyboardPressAnswer(pressed_key, expected_note, quiz_answer_location, answer_length);
+            if (quiz_answer_location >= this.quiz_info[quiz_location].answer.length) {
+                quiz_location++;
                 quiz_answer_location = 0;
-                wrongAnswerDisplay();
+                iterateQuiz();
+            }
+        } else if (this.mode === 'tutorial' && tutorial_location < this.tutorial_level_info.length &&
+            this.tutorial_level_info[tutorial_location].tutorial_phase_type == "key_press") {
+
+            angular.element("div[note=" + pressed_key + "]").removeClass('highlight');
+
+            var expected_note = this.tutorial_level_info[tutorial_location].expected_keys[quiz_answer_location];
+            var answer_length = this.tutorial_level_info[tutorial_location].expected_keys.length;
+            quiz_answer_location = checkKeyboardPressAnswer(pressed_key, expected_note, quiz_answer_location, answer_length);
+            if (quiz_answer_location >= this.tutorial_level_info[tutorial_location].expected_keys.length) {
+                tutorial_location++;
+                quiz_answer_location = 0;
+                iterateTutorial();
+            } else {
+                var next_key = this.tutorial_level_info[tutorial_location].expected_keys[quiz_answer_location];
+                angular.element("div[note=" + next_key + "]").addClass('highlight');
             }
         }
+
     };
 
     this.recieveClickToContinue = function(click_obj){
         if (this.click_to_continue_true) {
             if (this.mode === 'tutorial'){
+                tutorial_location++;
                 iterateTutorial();
             } else if (this.mode === 'quiz' && this.quiz_info[quiz_location].questionType == "multiple_choice") {
                 if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
@@ -90,6 +118,27 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
             }
         }
     };
+
+    checkKeyboardPressAnswer = function(pressed_key, expected_note, location_in_answer, answer_length){
+
+        if(pressed_key ===  expected_note) {
+            location_in_answer++;
+            correctAnswerDisplay();
+        } else {
+            location_in_answer = 0;
+            wrongAnswerDisplay();
+        }
+        return location_in_answer;
+    };
+
+    $scope.$on('$routeChangeSuccess', function() {
+        if($routeParams.levelId && $routeParams.levelId != thisController.level_number){
+            thisController.setLevel($routeParams.levelId);
+        }
+        if($routeParams.modeName && $routeParams.modeName != thisController.mode){
+            thisController.setMode($routeParams.modeName);
+        }
+    });
 
     wrongAnswerDisplay = function(){
         thisController.quiz_answer_status = 'wrong';
@@ -109,14 +158,18 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 playDemo(tutorial_phase.demonstration_information);
                 tutorial_location++;
                 iterateTutorial();
-            } else if (tutorial_phase.tutorial_phase_type == 'press_continue') {
-                thisController.click_to_continue_true = true;
+            } else {
                 setDisplayText(tutorial_phase.display.text, 'tutorial');
                 setDisplayImage(tutorial_phase.display.image, 'tutorial');
-                tutorial_location++;
-                if (tutorial_phase.instrumentAide != null) {
-					simulateKeyPress(tutorial_phase.instrumentAide);            			
-           		}
+
+                if (tutorial_phase.tutorial_phase_type == 'press_continue') {
+                    thisController.click_to_continue_true = true;
+                } else if (tutorial_phase.tutorial_phase_type == 'key_press'){
+                    thisController.click_to_continue_true = false;
+                    quiz_answer_location = 0;
+                    var next_key = thisController.tutorial_level_info[tutorial_location].expected_keys[0];
+                    angular.element("div[note=" + next_key + "]").addClass('highlight');
+                }
             }
         } else {
             setDisplayText('', 'tutorial');
@@ -200,7 +253,7 @@ app.controller('TutorialQuizController', function($timeout, TutorialDataService,
                 thisController.multiple_choices = question_info.choices;
                 thisController.click_to_continue_true = true;
             } else {
-                this.multiple_choices = [];
+                thisController.multiple_choices = [];
                 thisController.click_to_continue_true = false;
             }
         }
@@ -211,5 +264,3 @@ app.controller('LevelsListController', function(ListLevelsService) {
     this.new_level;
     this.level_overview = ListLevelsService.level_overview();
 });
-
-

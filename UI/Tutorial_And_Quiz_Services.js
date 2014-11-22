@@ -331,28 +331,29 @@ app.service('TutorialDataService', function() {
         } else if (level_num == 3){
             return  { tutorial_information: [
                 {
-                    tutorial_phase_type: 'press_continue',
+                    tutorial_phase_type: 'key_press',
                     display: {
                         image: 'Tutorial/Level3/Tutorial_Level3_1.png',
                         text: 'This is the middle C. This is the first note mose people learn to play on the piano. The line through the note comes from the invisible line we saw earlier that divides the two staves.'
                     },
-					instrumentAide: 'c4'
+                    expected_keys : ['c4']
+
                 },
                 {
-                    tutorial_phase_type: 'press_continue',
+                    tutorial_phase_type: 'key_press',
                     display: {
                         image: 'Tutorial/Level3/Tutorial_Level3_2.png',
                         text: 'This is the same physical note on the piano. Here the note is closer to the Bass clef though. This means that the left hand will play the note instead of the right hand.'
                     },
-                    instrumentAide: 'c4'
+                    expected_keys : ['c4']
                 },
                 {
-                    tutorial_phase_type: 'press_continue',
+                    tutorial_phase_type: 'key_press',
                     display: {
                         image: 'Tutorial/Level3/Tutorial_Level3_3.png',
                         text: 'Here there are 6 middle C notes in a row. The first three should be played withe the right hand and the next three should be played with the left hand on a real piano.'
                     },
-                    instrumentAide: 'c4'
+                    expected_keys : ['c4', 'c4', 'c4', 'c4', 'c4', 'c4']
                 }
             ]};
         }
@@ -647,7 +648,7 @@ app.service('QuizDataService', function() {
                     },
                     questionType: "key_press",
                     answer: ['c4']
-                }, 
+                },
                 {
                     display: {
                         text: 'What note is displayed? Can you play it on the piano?',
