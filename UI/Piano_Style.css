@@ -21,7 +21,7 @@ table
 	text-align:center;
 }
 
-td 
+td
 {
 	display:inline-block;
 	width:30%;
@@ -51,7 +51,7 @@ td
 	top:10px;
 }
 
-#level_select 
+#level_select
 {
 	position:relative;
 	width:30%;
@@ -59,7 +59,7 @@ td
 	background-color:#70AFD8;
 	height:100px;
 	top:10px;
-	text-align:left;	
+	text-align:left;
 }
 
 li { display:inline; }
@@ -109,14 +109,16 @@ ul
 
 #tutorial_question
 {
-	float:left;
-	width:100%;
+    position:relative;
+    display:none;
+    clear: both;
 }
 
 #full_piano_container
 {
     position:relative;
     width:1300px;
+    clear: both;
     top:135px;
 }
 
@@ -124,8 +126,9 @@ ul
 {
     position:relative;
     width:1155px;
-    top:-110px;
     padding-bottom:100px;
+    top:-100px;
+    clear: both;
 }
 
 #full_piano_container .keyboard_body
@@ -335,13 +338,14 @@ ul
     text-align: center;
     width: 1050px;
     height: 110px;
-    top: 28px;
+    top: 42px;
     z-index:1000;
     font-size:200%;
     border-color:black;
     background-color:#8195D5;
     border:solid;
     overflow:auto;
+    clear:both;
 }
 
 img

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="pianoApp">
+<html>
 	<head>
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
@@ -8,19 +8,16 @@
 		<script type = "text/javascript" src = "jquery-1.11.1.min.js"></script>
 		<script src="angular.min.js"></script>
 		<script type="text/javascript" src="Piano_Scripts.js"></script>
-		<script type="text/javascript" src="Tutorial_and_Quiz_Module.js"></script>
-		<script type="text/javascript" src="Tutorial_and_Quiz_Services.js"></script>
-		<script type="text/javascript" src="Tutorial_and_Quiz_Controllers.js"></script>
 		<script type="text/javascript" src="mousetrap.js"></script>
 	</head>
 	<body>
 
-	<div id="actions" ng-controller="LevelsListController as levels_info">	
-	
+	<div id="actions">
+
 		<div class="header2">
 			<img src="Images/noteable2.png" style="float:right;"/>
 		</div>
-		
+
 		<div id="header">
 			<ul id="nav" class="center">
 			  <li><a href="piano.html">Home</a></li>
@@ -29,14 +26,12 @@
 			  <li><a href="piano.html" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
 			</ul>
 		</div>
-		
+
 	  <div class="header2">
 		  <img src="Images/noteable.png"/>
 	  </div>
-	  
+
 	</div>
-	
 	<div id="test"></div>
-	
 	</body>
 </html>

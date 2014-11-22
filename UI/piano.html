@@ -271,28 +271,18 @@
 			<source src="Piano_Notes/C8.mp3">
 		</audio>
 
-	<div id="actions" ng-controller="LevelsListController as levels_info">	
+	<div>
 		<div class="header2"><img src="Images/noteable2.png" style="float:right;"/></div>
 		<div id="header">
 			<ul id="nav" class="center">
 			  <li><a href="piano.html">Home</a></li>
-			  <li><a href="level_selection.html" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
-			  <li><a href="level_selection.html" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</a></li>
-			  <li><a href="piano.html" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
+			  <li><a href="level_selection.html" class="smallsize">Tutorial</a></li>
+			  <li><a href="level_selection.html" class="smallsize">Quiz</a></li>
+			  <li><a href="piano.html" class="fullsize">Free Play Mode</a></li>
 			</ul>
 		</div>
 	  <div class="header2">
-	  <!--
-	  <ul>
-	  Tutorial Level:
-	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
-		<option ng-repeat="level in levels_info.level_overview" value={{level.id}}>
-			{{level.title}}
-		</option>
-	  </select>
-	  </ul>
-	  -->
-	  <img src="Images/noteable.png"/>
+	    <img src="Images/noteable.png"/>
 	  </div>
 	</div>
 
@@ -389,7 +379,7 @@
 			CLICK TO CONTINUE
 		</div>
 	</div>
-	
+
 	<div id="full_piano_container_small" class="center small" ng-hide="tutorial.multiple_choices.length!==0">
 		<div class="keyboard_body small">
 			<div class="keyboard_face small"></div>
