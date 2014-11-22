@@ -1,13 +1,4 @@
-app.service('ListLevelsService', function() {
-    this.level_overview = function() { return [
-        { id: 1, title: "Tutorial: Level 1" },
-        { id: 3, title: "Tutorial: Level 3" },
-        { id: 20, title: "1. Happy Birthday" },
-        { id: 30, title: "2. Row, Row, Row Your Boat" }
-    ] };
-});
-
-app.service('TutorialDataService', function() {
+piano_app.service('TutorialDataService', function() {
     this.tutorial_data = function(level_num) {
         if (level_num === 20){
             return  { tutorial_information: [
@@ -360,7 +351,7 @@ app.service('TutorialDataService', function() {
     };
 });
 
-app.service('QuizDataService', function() {
+piano_app.service('QuizDataService', function() {
     this.quiz_data = function(level_num) {
         if (level_num === 20){
             return  { quiz_questions: [

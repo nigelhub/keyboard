@@ -1,5 +1,4 @@
-
-app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, TutorialDataService, QuizDataService){
+piano_app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, TutorialDataService, QuizDataService){
     //variables with data binding to UI
     this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none
     this.display_text = '';
@@ -119,6 +118,15 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
         }
     };
 
+    $scope.$on('$routeChangeSuccess', function() {
+        if($routeParams.levelId && $routeParams.levelId != thisController.level_number){
+            thisController.setLevel($routeParams.levelId);
+        }
+        if($routeParams.modeName && $routeParams.modeName != thisController.mode){
+            thisController.setMode($routeParams.modeName);
+        }
+    });
+
     checkKeyboardPressAnswer = function(pressed_key, expected_note, location_in_answer, answer_length){
 
         if(pressed_key ===  expected_note) {
@@ -130,15 +138,6 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
         }
         return location_in_answer;
     };
-
-    $scope.$on('$routeChangeSuccess', function() {
-        if($routeParams.levelId && $routeParams.levelId != thisController.level_number){
-            thisController.setLevel($routeParams.levelId);
-        }
-        if($routeParams.modeName && $routeParams.modeName != thisController.mode){
-            thisController.setMode($routeParams.modeName);
-        }
-    });
 
     wrongAnswerDisplay = function(){
         thisController.quiz_answer_status = 'wrong';
@@ -258,9 +257,4 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
             }
         }
     };
-});
-
-app.controller('LevelsListController', function(ListLevelsService) {
-    this.new_level;
-    this.level_overview = ListLevelsService.level_overview();
 });

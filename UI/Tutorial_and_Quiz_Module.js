@@ -1,6 +1,6 @@
-var app = angular.module('pianoApp', ['ngRoute']);
+var piano_app = angular.module('pianoApp', ['ngRoute']);
 
-app.config(['$routeProvider',
+piano_app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
         when('/mode/:modeName', {

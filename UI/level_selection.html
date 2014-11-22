@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="levelsApp">
 	<head>
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
@@ -7,31 +7,31 @@
 		<link rel="stylesheet" type="text/css" href="Piano_Style.css">
 		<script type = "text/javascript" src = "jquery-1.11.1.min.js"></script>
 		<script src="angular.min.js"></script>
-		<script type="text/javascript" src="Piano_Scripts.js"></script>
-		<script type="text/javascript" src="mousetrap.js"></script>
+		<script src="angular-route.min.js"></script>
+		<script type="text/javascript" src="Levels_Module.js"></script>
+		<script type="text/javascript" src="Levels_Controller.js"></script>
+		<script type="text/javascript" src="Levels_Services.js"></script>
+		<script type="text/javascript" src="Level_Page_Scripts.js"></script>
 	</head>
-	<body>
-
+	<body ng-controller="LevelsListController as levels_controller">
 	<div id="actions">
-
 		<div class="header2">
 			<img src="Images/noteable2.png" style="float:right;"/>
 		</div>
-
 		<div id="header">
 			<ul id="nav" class="center">
-			  <li><a href="piano.html">Home</a></li>
-			  <li><a href="level_selection.html" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
-			  <li><a href="level_selection.html" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</a></li>
-			  <li><a href="piano.html" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
+			  <li><a href="level_selection.html#/demo">Demo</a></li>
+			  <li><a href="level_selection.html#/tutorial">Tutorial</a></li>
+			  <li><a href="level_selection.html#/quiz">Quiz</a></li>
+			  <li><a href="piano.html#/mode/free_play">Free Play Mode</a></li>
 			</ul>
 		</div>
-
 	  <div class="header2">
 		  <img src="Images/noteable.png"/>
 	  </div>
-
 	</div>
-	<div id="test"></div>
+	<h1 id="level_select_title" class="center title">{{levels_controller.mode}}</h1>
+
+	<div id="level_select"></div>
 	</body>
 </html>
