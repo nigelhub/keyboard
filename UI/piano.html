@@ -271,21 +271,17 @@
 		</audio>
 
 	<div id="actions" ng-controller="LevelsListController as levels_info">	
-		<div id="header2">
-			<ul id="nav">
-			  <li><a href="#">Log in</a></li>
-			  <li><a href="#">Sign up</a></li>
-			</ul>
-		</div>
+		<div class="header2"><img src="Images/noteable2.png" style="float:right;"/></div>
 		<div id="header">
 			<ul id="nav" class="center">
-			  <li id="home"><a href="piano.html">Home</a></li>
-			  <li id="tutorial"><a href="#" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
-			  <li id="quiz"><a href="#" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</a></li>
-			  <li id="freeplay"><a href="piano.html" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
+			  <li><a href="piano.html">Home</a></li>
+			  <li><a href="level_selection.html" class="smallsize" ng-click="tutorial.setMode('tutorial')">Tutorial</a></li>
+			  <li><a href="level_selection.html" class="smallsize" ng-click="tutorial.setMode('quiz')">Quiz</a></li>
+			  <li><a href="piano.html" class="fullsize" ng-click="tutorial.setMode('free_play')">Free Play Mode</a></li>
 			</ul>
 		</div>
-	  <div id="level_select">
+	  <div class="header2">
+	  <!--
 	  <ul>
 	  Tutorial Level:
 	  <select ng-model="new_level" ng-change="tutorial.setLevel(new_level)" ng-init="new_level=1">
@@ -294,6 +290,8 @@
 		</option>
 	  </select>
 	  </ul>
+	  -->
+	  <img src="Images/noteable.png"/>
 	  </div>
 	</div>
 

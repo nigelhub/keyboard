@@ -17,39 +17,31 @@ $(document).ready(function() {
 
     //THIS INITIALLY HIDES THE KEYBOARD TO DISPLAY FREE PLAY KEYBOARD AT DEFAULT
     $(".small").hide();
-    //DISPLAYS FULL SIZE FREE PLAY KEYBOARD ON CLICK
-    $(".fullsize").click(function() {
-        $('.small').hide();
-        $('.large').show();
-        $('#tutorial_question').hide();
-     });
-     //DISPLAYS TUTORIAL SIZE KEYBOARD ON CLICK
-    $(".smallsize").click(function() {
-        $('.large').hide();
-        $('.small').show();
-        $('#tutorial_question').show();
-    });
-    $("#tutorial, #quiz").click(function() {
-    	$('.large').hide();
-    	$('.small').hide();
-    	$("img").hide();
-    	$("body").load("level_selection.html");
-    });
-    
-var data = [ [ "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>" ], 
-[ "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>" ], 
-["<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>", "<img src='Images/level1.png'</>" ] ];
 
-var html = '<table><thead><tr>...</tr></thead><tbody>';
-for (var i = 0, len = data.length; i < len; ++i) {
-    html += '<tr>';
-    for (var j = 0, rowLen = data[i].length; j < rowLen; ++j ) {
-        html += '<td>' + data[i][j] + '</td>';
-    }
-    html += "</tr>";
+var test = [{"levelId":1,"levelNumber":1,"description":"Learn when to use your right and left hand to play a note."},
+{"levelId":2,"levelNumber":2,"description":"Learn how to understand the lines in a note."},
+{"levelId":3,"levelNumber":3,"description":"Learn about all the variations of the C4 note."},
+{"levelId":4,"levelNumber":4,"description":"Learn about the D4 and E4 notes."},
+{"levelId":5,"levelNumber":5,"description":"Learn about the F4 and G4 notes"},
+{"levelId":6,"levelNumber":6,"description":"Learn about the B4, A4 and G3 notes."},
+{"levelId":7,"levelNumber":7,"description":"Learn about the D#4, F#4, G#4 and C#4 notes."},
+{"levelId":8,"levelNumber":8,"description":"The grand finale! Put all the items you have learned together and play a song!"}];
+
+var html = '<table><thead><tr></tr></thead><tbody>';
+for (var j = 0; j < test.length; j++) {
+
+	if (j % 3 == 0) {
+    	html += '<tr>';    
+	 }
+
+	html += '<td>' + test[j].levelId + '</td>';    	        	    
+
+	if (j % 3 == 2) {
+    	html += "</tr>";
+	}
 }
-html += '</tbody><tfoot><tr>....</tr></tfoot></table>';
-
+html += '</tbody><tfoot><tr></tr></tfoot></table>';
+console.log(html);
 $(html).appendTo('#test');
 
     var key_mappings = [
