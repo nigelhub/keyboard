@@ -18,6 +18,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
     var quiz_location = 0;
     var quiz_answer_location = 0; //Position in array of answers for current quiz question
     var tutorial_location = 0;
+    var process_hash = 0;
 
     this.setMode = function(mode_value){
         if (this.mode !== mode_value) {//checks for state change
@@ -122,6 +123,8 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
     };
 
     $scope.$on('$routeChangeSuccess', function() {
+        process_hash = getProcessHash();
+
         if($routeParams.levelId && $routeParams.levelId != thisController.level_number){
             thisController.setLevel($routeParams.levelId);
         }
@@ -155,8 +158,8 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
     iterateTutorial = function(){
         if (thisController.tutorial_level_info.length > tutorial_location){
             var tutorial_phase = thisController.tutorial_level_info[tutorial_location];
-            setDisplayText(tutorial_phase.display.text, 'tutorial');
-            setDisplayImage(tutorial_phase.display.image, 'tutorial');
+            setDisplayText(tutorial_phase.display.text, process_hash);
+            setDisplayImage(tutorial_phase.display.image, process_hash);
 
             if (tutorial_phase.tutorial_phase_type == 'press_continue') {
                 thisController.click_to_continue_true = true;
@@ -168,20 +171,20 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
             }
 
         } else {
-            setDisplayText('', 'tutorial');
-            setDisplayImage('', 'tutorial');
+            setDisplayText('', process_hash);
+            setDisplayImage('', process_hash);
             thisController.click_to_continue_true = false;
         }
     }
 
-    setDisplayText = function(new_value, expected_mode){
-        if(thisController.mode === expected_mode){
+    setDisplayText = function(new_value, expected_process_hash){
+        if(process_hash === expected_process_hash){
             thisController.display_text = new_value;
         }
     };
 
-    setDisplayImage = function(new_value, expected_mode){
-        if(thisController.mode === expected_mode){
+    setDisplayImage = function(new_value, expected_process_hash){
+        if(process_hash === expected_process_hash){
             thisController.display_image = new_value;
         }
     };
@@ -197,18 +200,19 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
         var note_pos = 0;
         var wait_length = 900;
         var prevous_note = { note_key: ""};
+        var expected_process_hash = process_hash;
 
         var playNextNote = function() {
             var note = demo_data_array[note_pos];
-            setDisplayText(note.display.text, 'demo');
-            setDisplayImage(note.display.image, 'demo');
+            setDisplayText(note.display.text, process_hash);
+            setDisplayImage(note.display.image, process_hash);
 
             simulateKeyPress(note.note_key, prevous_note.note_key);
 
             prevous_note = note;
             note_pos++;
 
-            if (thisController.mode !== 'demo'){
+            if (process_hash !== expected_process_hash){
                 angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
             } else if (note_pos == demo_data_array.length){
                 wait_length = whole_note_length * prevous_note.note_length - short_wait;
@@ -221,8 +225,8 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
             } else {
                 wait_length = whole_note_length * prevous_note.note_length - short_wait;
                 $timeout(function(){
-                    setDisplayText('', 'demo');
-                    setDisplayImage('', 'demo');
+                    setDisplayText('', process_hash);
+                    setDisplayImage('', process_hash);
                     $timeout(playNextNote, short_wait);
                     },
                     wait_length
@@ -234,17 +238,17 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
 
     iterateQuiz = function() {
         if(quiz_location >= thisController.quiz_info.length){
-            setDisplayText('Congratulations! You got it', 'quiz');
-            setDisplayImage('', 'quiz');
+            setDisplayText('Congratulations! You got it', process_hash);
+            setDisplayImage('', process_hash);
             thisController.multiple_choices = [];
             thisController.selected_multiple_choice="";
             thisController.click_to_continue_true = false;
         } else {
             var question_info = thisController.quiz_info[quiz_location]
-            setDisplayText('', 'quiz');
-            $timeout(function() { setDisplayText(question_info.display.text, 'quiz') },
+            setDisplayText('', process_hash);
+            $timeout(function() { setDisplayText(question_info.display.text, process_hash) },
                 short_wait);
-            setDisplayImage(question_info.display.image, 'quiz');
+            setDisplayImage(question_info.display.image, process_hash);
             if (question_info.questionType == "multiple_choice") {
                 thisController.multiple_choices = question_info.choices;
                 thisController.click_to_continue_true = true;
@@ -254,4 +258,9 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
             }
         }
     };
+
+    getProcessHash = function() {
+        var time = new Date().getTime();
+        return time + Math.random();
+    }
 });
