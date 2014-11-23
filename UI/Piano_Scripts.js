@@ -1,6 +1,6 @@
 $(document).ready(function() {
      // THESE FUNCTIONS CHANGE THE CSS CLASS OF EACH KEY HIT TO PRESS KEY DOWN
-    $('body').hide().fadeIn(800);
+    $('body').hide().fadeIn(300);
     $(".key").mousedown(function () {
         $(this).addClass("key_down");
         var note = $(this).attr("note");
@@ -34,7 +34,7 @@ for (var j = 0; j < test.length; j++) {
     	html += '<tr>';    
 	 }
 
-	html += '<td>' + test[j].levelId + '</td>';    	        	    
+	html += '<td>' + '<div class=\"center\">' + test[j].levelId + '</div>' + '</td>';    	        	    
 
 	if (j % 3 == 2) {
     	html += "</tr>";
@@ -42,7 +42,7 @@ for (var j = 0; j < test.length; j++) {
 }
 html += '</tbody><tfoot><tr></tr></tfoot></table>';
 console.log(html);
-$(html).appendTo('#test');
+$(html).appendTo('#selection_table');
 
     var key_mappings = [
         ['shift+1', 'c1'],
