@@ -1,5 +1,6 @@
 $(document).ready(function() {
      // THESE FUNCTIONS CHANGE THE CSS CLASS OF EACH KEY HIT TO PRESS KEY DOWN
+    $('body').hide().fadeIn(800);
     $(".key").mousedown(function () {
         $(this).addClass("key_down");
         var note = $(this).attr("note");

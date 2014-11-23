@@ -1,13 +1,13 @@
-
-app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, TutorialDataService, QuizDataService){
+piano_app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, TutorialDataService, QuizDataService, DemoDataService){
     //variables with data binding to UI
-    this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none
+    this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none, demo
     this.display_text = '';
     this.display_image = '';
     this.quiz_answer_status = '';
     this.level_number = 1;
-    this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
-    this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
+    this.tutorial_level_info = [];
+    this.quiz_info = [];
+    this.demo_info = [];
     this.click_to_continue_true = false;
     this.multiple_choices = [];
     this.selected_multiple_choice="";
@@ -28,25 +28,29 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
             this.display_image = '';
             this.click_to_continue_true = false;
             angular.element(".highlight").removeClass('highlight');
-            if (mode_value === 'tutorial'){
+
+            if (mode_value === 'tutorial' || mode_value === 'quiz' || mode_value === 'demo' ){
                 angular.element(".large").hide();
                 angular.element(".small").show();
                 angular.element('#tutorial_question').show();
-
-                tutorial_location = 0;
-                iterateTutorial();
-            } else if (mode_value === 'quiz'){
-                angular.element(".large").hide();
-                angular.element(".small").show();
-                angular.element('#tutorial_question').show();
-
-                quiz_location = 0;
-                quiz_answer_location = 0;
-                iterateQuiz();
             } else if (mode_value === 'free_play'){
                 angular.element(".small").hide();
                 angular.element(".large").show();
                 angular.element('#tutorial_question').hide();
+            }
+
+            if (mode_value === 'tutorial'){
+                tutorial_location = 0;
+                this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
+                iterateTutorial();
+            } else if (mode_value === 'quiz'){
+                this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
+                quiz_location = 0;
+                quiz_answer_location = 0;
+                iterateQuiz();
+            } else if (mode_value === 'demo'){
+                this.demo_info = DemoDataService.demo_data(this.level_number);
+                playDemo(this.demo_info);
             }
         }
     };
@@ -55,8 +59,6 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
         var recieved_level = parseInt(level_value);
         if (this.level_number !== recieved_level){//checks for state change
             this.level_number = recieved_level;
-            this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
-            this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
         }
         this.setMode('free_play');
     };
@@ -119,6 +121,15 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
         }
     };
 
+    $scope.$on('$routeChangeSuccess', function() {
+        if($routeParams.levelId && $routeParams.levelId != thisController.level_number){
+            thisController.setLevel($routeParams.levelId);
+        }
+        if($routeParams.modeName && $routeParams.modeName != thisController.mode){
+            thisController.setMode($routeParams.modeName);
+        }
+    });
+
     checkKeyboardPressAnswer = function(pressed_key, expected_note, location_in_answer, answer_length){
 
         if(pressed_key ===  expected_note) {
@@ -130,15 +141,6 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
         }
         return location_in_answer;
     };
-
-    $scope.$on('$routeChangeSuccess', function() {
-        if($routeParams.levelId && $routeParams.levelId != thisController.level_number){
-            thisController.setLevel($routeParams.levelId);
-        }
-        if($routeParams.modeName && $routeParams.modeName != thisController.mode){
-            thisController.setMode($routeParams.modeName);
-        }
-    });
 
     wrongAnswerDisplay = function(){
         thisController.quiz_answer_status = 'wrong';
@@ -153,24 +155,18 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
     iterateTutorial = function(){
         if (thisController.tutorial_level_info.length > tutorial_location){
             var tutorial_phase = thisController.tutorial_level_info[tutorial_location];
-            if (tutorial_phase.tutorial_phase_type == 'demonstration') {
-                thisController.click_to_continue_true = false;
-                playDemo(tutorial_phase.demonstration_information);
-                tutorial_location++;
-                iterateTutorial();
-            } else {
-                setDisplayText(tutorial_phase.display.text, 'tutorial');
-                setDisplayImage(tutorial_phase.display.image, 'tutorial');
+            setDisplayText(tutorial_phase.display.text, 'tutorial');
+            setDisplayImage(tutorial_phase.display.image, 'tutorial');
 
-                if (tutorial_phase.tutorial_phase_type == 'press_continue') {
-                    thisController.click_to_continue_true = true;
-                } else if (tutorial_phase.tutorial_phase_type == 'key_press'){
-                    thisController.click_to_continue_true = false;
-                    quiz_answer_location = 0;
-                    var next_key = thisController.tutorial_level_info[tutorial_location].expected_keys[0];
-                    angular.element("div[note=" + next_key + "]").addClass('highlight');
-                }
+            if (tutorial_phase.tutorial_phase_type == 'press_continue') {
+                thisController.click_to_continue_true = true;
+            } else if (tutorial_phase.tutorial_phase_type == 'key_press'){
+                thisController.click_to_continue_true = false;
+                quiz_answer_location = 0;
+                var next_key = thisController.tutorial_level_info[tutorial_location].expected_keys[0];
+                angular.element("div[note=" + next_key + "]").addClass('highlight');
             }
+
         } else {
             setDisplayText('', 'tutorial');
             setDisplayImage('', 'tutorial');
@@ -204,15 +200,15 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
 
         var playNextNote = function() {
             var note = demo_data_array[note_pos];
-            setDisplayText(note.display.text, 'tutorial');
-            setDisplayImage(note.display.image, 'tutorial');
+            setDisplayText(note.display.text, 'demo');
+            setDisplayImage(note.display.image, 'demo');
 
             simulateKeyPress(note.note_key, prevous_note.note_key);
 
             prevous_note = note;
             note_pos++;
 
-            if (thisController.mode !== 'tutorial'){
+            if (thisController.mode !== 'demo'){
                 angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
             } else if (note_pos == demo_data_array.length){
                 wait_length = whole_note_length * prevous_note.note_length - short_wait;
@@ -225,8 +221,8 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
             } else {
                 wait_length = whole_note_length * prevous_note.note_length - short_wait;
                 $timeout(function(){
-                    setDisplayText('', 'tutorial');
-                    setDisplayImage('', 'tutorial');
+                    setDisplayText('', 'demo');
+                    setDisplayImage('', 'demo');
                     $timeout(playNextNote, short_wait);
                     },
                     wait_length
@@ -258,9 +254,4 @@ app.controller('TutorialQuizController', function($scope, $route, $routeParams, 
             }
         }
     };
-});
-
-app.controller('LevelsListController', function(ListLevelsService) {
-    this.new_level;
-    this.level_overview = ListLevelsService.level_overview();
 });

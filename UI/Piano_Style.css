@@ -1,39 +1,81 @@
-html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAFA; }
+html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAFA; font-family:arial; color:white; }
 
 .center {display:block;margin-left:auto; margin-right:auto; }
 
 .blue {color:blue;}
 
-#header
+#level_select
 {
 	position:relative;
-	height:100px;
-	width:100%;
-	background-color:#0070BA;
+	top:5%;
+	height:50%;
+	margin:0;
+	padding:0;
+	clear:both;
 }
 
-li { display:inline; padding:10px; padding-right:0px; }
+table
+{
+	position:absolute;
+	width:100%;
+	height:100%;
+	text-align:center;
+}
+
+td
+{
+	display:inline-block;
+	width:30%;
+	height:100px;
+	border: 1px solid #ccc;
+	background-color:#70AFD8;
+	cursor:pointer;
+}
+
+#header
+{
+	top:10px;
+	position:relative;
+	height:100px;
+	width:40%;
+	background-color:#005A95;
+	float:right;
+	text-align:center;
+}
+
+.header2
+{
+	position:relative;
+	width:30%;
+	float:right;
+	height:100px;
+	background-color:#70AFD8;
+	top:10px;
+}
+
+li { display:inline; }
 
 ul
 {
-    padding: 35px;
-    padding-left:100px;
     list-style-type: none;
+    margin:0;
+    padding:0;
+	margin-top:40px;
 }
 
-#header a, #footer a
+#header a, #footer a, #header2 a
 {
 	position: relative;
-	color: #000;
+	color:white;
 	text-decoration: none;
 }
 
-#header a:hover, #footer a:hover
+#header a:hover, #header2 a:hover
 {
 	color: #000;
 }
 
-#header a:before, #footer a:before
+#header a:before, #header2 a:before
 {
 	content: "";
 	position: absolute;
@@ -49,7 +91,7 @@ ul
 	transition: all 0.3s ease-in-out 0s;
 }
 
-#header a:hover:before, #footer a:hover:before
+#header a:hover:before, #header2 a:hover:before
 {
 	visibility: visible;
 	-webkit-transform: scaleX(1);
@@ -58,15 +100,17 @@ ul
 
 #tutorial_question
 {
-	position:relative;
-	display:none;
+    position:relative;
+    display:none;
+    clear: both;
 }
 
 #full_piano_container
 {
     position:relative;
     width:1300px;
-    top:36px;
+    clear: both;
+    top:135px;
 }
 
 #full_piano_container_small
@@ -74,6 +118,8 @@ ul
     position:relative;
     width:1155px;
     padding-bottom:100px;
+    top:-100px;
+    clear: both;
 }
 
 #full_piano_container .keyboard_body
@@ -283,13 +329,19 @@ ul
     text-align: center;
     width: 1050px;
     height: 110px;
-    top: 140px;
+    top: 42px;
     z-index:1000;
     font-size:200%;
     border-color:black;
-    background-color: lightgray;
+    background-color:#8195D5;
     border:solid;
     overflow:auto;
+    clear:both;
+}
+
+img
+{
+	padding-top:5px;
 }
 
 #tutorial_screen.correct {
@@ -304,7 +356,7 @@ ul
     position: absolute;
     bottom: 0;
     right: 0;
-    color: green;
+	color:#0033CC;
     font-size: 15px;
     cursor:pointer;
     visibility: hidden;
@@ -322,4 +374,9 @@ ul
 input[type="radio"] {
     width: 4em;
     height: 2em;
+}
+
+.title {
+    text-align: center;
+    color: black;
 }
