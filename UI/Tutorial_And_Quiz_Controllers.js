@@ -50,7 +50,6 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                 iterateQuiz();
             } else if (mode_value === 'demo'){
                 this.demo_info = DemoDataService.demo_data(this.level_number);
-                console.log(this.demo_info);
                 playDemo(this.demo_info);
             }
         }
