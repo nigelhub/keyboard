@@ -13,17 +13,17 @@ function updateLevelsPage(mode, levels_object) {
             html += '<tr>';
         }
 
-        html += '<td>';
+        html += '<td><div id=\'square\' class=\'center\'>';
         html += '<a href="piano.html#/mode/' + mode + '/level/' + levels_object[j].id + '"></a>'
 
-        if (mode == 'tutorial' || mode == 'quiz'){
-            var capitalize_mode = mode.charAt(0).toUpperCase() + mode.slice(1)
+        if (mode == 'tutorial' || mode == 'quiz') {
+            var capitalize_mode = mode.charAt(0).toUpperCase() + mode.slice(1);
             html += '<div>' + capitalize_mode + ' ' + levels_object[j].id + '</div>';
         } else if (mode == 'demo') {
             html +=  '<div>' + levels_object[j].demoName  + '</div>';
         }
         html += '<div>' + levels_object[j].description + '</div>';
-        html += '</td>';
+        html += '</td></div>';
 
         if (j % 3 == 2) {
             html += "</tr>";
