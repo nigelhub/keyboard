@@ -179,13 +179,21 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
 
     setDisplayText = function(new_value, expected_process_hash){
         if(process_hash === expected_process_hash){
-            thisController.display_text = new_value;
+            if (typeof new_value === 'undefined'){
+                thisController.display_text = '';
+            } else {
+                thisController.display_text = new_value;
+            }
         }
     };
 
     setDisplayImage = function(new_value, expected_process_hash){
         if(process_hash === expected_process_hash){
-            thisController.display_image = new_value;
+            if (typeof new_value === 'undefined'){
+                thisController.display_image = '';
+            } else {
+                thisController.display_image = new_value;
+            }
         }
     };
 
