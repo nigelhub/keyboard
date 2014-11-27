@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 
- * Description:  Unit tests for UserDao class.
+ * Description:  Unit tests for QuizDao class.
  * 
  * The data loaded prior to the execution of a given test is located
  * at: src/test/resources/import.sql

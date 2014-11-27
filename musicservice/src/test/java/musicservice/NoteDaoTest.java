@@ -1,8 +1,10 @@
 package musicservice;
 
 import static org.junit.Assert.*;
+import musicservice.dao.DemoDao;
+import musicservice.dao.NoteDao;
 import musicservice.dao.UserDao;
-import musicservice.model.User;
+import musicservice.model.Demo;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 
- * Description:  Unit tests for UserDao class.
+ * Description:  Unit tests for NoteDao class.
  * 
  * The data loaded prior to the execution of a given test is located
  * at: src/test/resources/import.sql
@@ -31,36 +33,22 @@ import org.springframework.transaction.annotation.Transactional;
 "classpath:/META-INF/spring/applicationContext.xml"})
 @Transactional
 @TransactionConfiguration(defaultRollback=true)
-public class UserDaoTest {
+public class NoteDaoTest {
 	
     @Autowired    
-    private UserDao userDao;
+    private NoteDao noteDao;
 
-
-    
+	
     /**
-     * Test adding and deleting a user.
+     * Get all the demo notes from the test database.
      */
+    
     @Test
-    public void testInsertUser()
-    { 
-    	// verify no records exist
-    	assertEquals(0, userDao.findAll().size());
-    	
-    	// Add new user to database.
-    	User user = new User();
-    	user.setFirstName("Tim");
-    	user.setLastName("Galager");
-    	user.setEmail("tbg@gmail.com");
-    	user.setRole("user");
-    	user.setUsername("tbg25");
-    	user.setPassword("abcd123");
-    	userDao.register(user);
-    	
-    	// verify a record was created
-    	assertEquals(1, userDao.findAll().size());
-    	
-    }   
+    public void testGetAllDemos()
+    {    	
+    	assertEquals(0, noteDao.findAll().size());
+
+    }
 
 }
 
