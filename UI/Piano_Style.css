@@ -103,8 +103,6 @@ ul
     position:relative;
     display:none;
     clear: both;
-    overflow: hidden;
-    overflow-x:hidden;
 }
 
 #full_piano_container
@@ -359,7 +357,7 @@ img
     bottom: 0;
     right: 0;
 	color:#0033CC;
-    font-size: 15px;
+    font-size:150%;
     cursor:pointer;
     visibility: hidden;
 }
