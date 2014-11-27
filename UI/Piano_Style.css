@@ -369,7 +369,7 @@ img
     font-size: 20px;
 }
 
-#tutorial_screen.multiple_choice_mode_true { height: 250px; }
+#tutorial_screen.multiple_choice_mode_true { height: 200px; }
 
 #tutorial_screen form { text-align: center; }
 
