@@ -20,7 +20,7 @@ img
 	clear:both;
 }
 
-.square 
+.square
 {
 	width:80%;
 	height:80%;
@@ -139,9 +139,9 @@ a:hover:before
 #full_piano_container_small
 {
     position:relative;
-    width:1155px;
-    padding-bottom:100px;
-    top:-100px;
+    width:952px;
+    padding-bottom:90px;
+    top:-80px;
     clear: both;
 }
 
@@ -164,8 +164,8 @@ a:hover:before
 #full_piano_container_small .keyboard_body
 {
     position:relative;
-    width:1149px;
-    height:280px;
+    width:952px;
+    height:224px;
     background-image: url("Images/Body.png");
     margin:0;
     padding:0;
@@ -193,7 +193,7 @@ a:hover:before
 {
     position:relative;
     top:59%;
-    width:1149px;
+    width:952px;
     height:100%;
     background-image: url("Images/PianoFace.png");
     background-repeat:no-repeat;
@@ -211,7 +211,7 @@ a:hover:before
 #full_piano_container_small .container
 {
     position:relative;
-    width:1155px;
+    width:952px;
     white-space:nowrap;
 }
 
@@ -226,8 +226,8 @@ a:hover:before
 #full_piano_container_small .inside
 {
     position:relative;
-    height:300px;
-    width:1155px;
+    height:240px;
+    width:952px;
     overflow:hidden;
 }
 
@@ -241,8 +241,8 @@ a:hover:before
 #full_piano_container_small .keys
 {
     position:relative;
-    height:300px;
-    width:1155px;
+    height:240px;
+    width:952px;
 }
 
 #full_piano_container .white.key
@@ -268,8 +268,8 @@ a:hover:before
 
 #full_piano_container_small .white.key
 {
-    width:82px;
-    height:300px;
+    width:68px;
+    height:240px;
     float:left;
     background-image:url("Images/WhiteKey_Small.png");
     background-repeat:no-repeat;
@@ -299,18 +299,12 @@ a:hover:before
 {
     position: relative;
     float:left;
-    width: 50px;
-    height:150px;
-    left: -25px;
-    margin-right: -50px;
+    width: 40px;
+    height:120px;
+    left: -20px;
+    margin-right: -40px;
     vertical-align: top;
     background-image:url("Images/BlackKey_Small.png");
-    background-repeat:no-repeat;
-    cursor:pointer;
-}
-
-.whitekey_down {
-    float:left;
     background-repeat:no-repeat;
     cursor:pointer;
 }
@@ -325,8 +319,8 @@ a:hover:before
 
 #full_piano_container_small .white.key_down
 {
-    width:82px;
-    height:300px;
+    width:68px;
+    height:240px;
     background-image:url("Images/WhiteKeyDown_Small.png");
     cursor:pointer;
 }
@@ -349,10 +343,10 @@ a:hover:before
 {
     position: relative;
     float:left;
-    width: 50px;
-    height:150px;
-    left: -25px;
-    margin-right: -50px;
+    width: 40px;
+    height:120px;
+    left: -20px;
+    margin-right: -40px;
     vertical-align: top;
     background-image:url("Images/BlackKeyDown_Small.png");
     background-repeat:no-repeat;
@@ -362,11 +356,11 @@ a:hover:before
 #tutorial_screen {
     position: relative;
     text-align: center;
-    width: 1050px;
-    height: 110px;
-    top: 42px;
+    width: 840px;
+    height: 88px;
+    top: 34px;
     z-index:1000;
-    font-size:200%;
+    font-size:150%;
     border-color:black;
     background-color:#8195D5;
     border:solid;
@@ -387,7 +381,7 @@ a:hover:before
     bottom: 0;
     right: 0;
 	color:#0033CC;
-    font-size: 15px;
+    font-size:150%;
     cursor:pointer;
     visibility: hidden;
 }
@@ -397,7 +391,7 @@ a:hover:before
     font-size: 20px;
 }
 
-#tutorial_screen.multiple_choice_mode_true { height: 250px; }
+#tutorial_screen.multiple_choice_mode_true { height: 200px; }
 
 #tutorial_screen form { text-align: center; }
 
@@ -406,10 +400,10 @@ input[type="radio"] {
     height: 2em;
 }
 
-h1 
+h1
 {
-	clear:both; 
-	position:relative; 
+	clear:both;
+	position:relative;
 	top:50px;
 }
 
