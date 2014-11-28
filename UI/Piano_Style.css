@@ -4,6 +4,12 @@ html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAF
 
 .blue {color:blue;}
 
+img
+{
+	padding:0;
+	margin:0;
+}
+
 #level_select
 {
 	position:relative;
@@ -14,7 +20,7 @@ html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAF
 	clear:both;
 }
 
-#square 
+.square 
 {
 	width:80%;
 	height:80%;
@@ -39,7 +45,6 @@ td
 	height:100px;
 	border: 1px solid #ccc;
 	background-color:#70AFD8;
-	cursor:pointer;
 	border-radius:5px;
 	margin:2px;
 	border: 1px solid black;
@@ -64,6 +69,11 @@ td
 	height:100px;
 	background-color:#70AFD8;
 	top:10px;
+}
+
+.header2 img
+{
+	padding-top:6px;
 }
 
 li { display:inline; }
@@ -362,11 +372,6 @@ a:hover:before
     border:solid;
     overflow:auto;
     clear:both;
-}
-
-img
-{
-	padding-top:5px;
 }
 
 #tutorial_screen.correct {
