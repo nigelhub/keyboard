@@ -400,10 +400,8 @@ piano_app.service('DataService', ['$http', function($http) {
                 if (typeof oldKeys !== 'undefined' && oldKeys.length > 0) {
                     data = changeKeys(oldKeys, newKeys, data);
                 }
-                console.log(data);
                 response(data);
             }).error(function(data,status) {
-                console.log("lol");
                 response([])
             });
     }
