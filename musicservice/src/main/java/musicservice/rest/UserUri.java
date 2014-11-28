@@ -120,7 +120,7 @@ public class UserUri {
     User saveOrAdd(@RequestBody User newUser) {
         logger.trace("Entering saveOrAdd(user): newUser: " + newUser.toString());
         userDao.register(newUser);
-        return (userDao.findById(newUser.getUserId()));
+        return (userDao.findById(newUser.getId()));
     }
 
     /**

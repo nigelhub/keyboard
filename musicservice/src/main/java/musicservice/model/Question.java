@@ -78,7 +78,7 @@ public class Question {
      * 
      * @return the level id.
      */
-    public Long getQuestionId() {
+    public Long getId() {
         return questionId;
     }
     
@@ -87,7 +87,7 @@ public class Question {
      * 
      * @return the id.
      */
-    public Long getQuizId() {
+    public Long getParentId() {
         return quizId;
     }
     
@@ -155,7 +155,7 @@ public class Question {
 	 * @param id
 	 * @return
 	 */
-	   public void setQuestionId(Long id) {
+	   public void setId(Long id) {
 	       questionId = id;
 	   }
 	    
@@ -164,7 +164,7 @@ public class Question {
 	 * @param id
 	 * @return
 	 */
-	 public void setQuizId(Long id) {
+	 public void setParentId(Long id) {
 	     quizId = id;
 	 }
 	   

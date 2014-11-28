@@ -42,7 +42,7 @@ public class NoteDao {
      * @return
      */
     public Note findById(Long id) {
-        logger.trace("Entering findById: id: " + id);
+        logger.info("Entering findById: id: " + id);
         return entityManager.find(Note.class, id);
     }
 
@@ -62,7 +62,7 @@ public class NoteDao {
         
         List<Note> matches = new ArrayList<Note>();
         for (Note note : results) {
-        	if (note.getDemoId().equals(demoId)) {
+        	if (note.getParentId().equals(demoId)) {
         		matches.add(note);
         	}
         }

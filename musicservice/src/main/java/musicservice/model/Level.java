@@ -52,7 +52,7 @@ public class Level {
      * 
      * @return the level id.
      */
-    public Long getLevelId() {
+    public Long getId() {
         return levelId;
     }
     

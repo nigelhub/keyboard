@@ -67,13 +67,13 @@ public class UserDao {
     public void register(User user) {
         logger.trace("Entering register: user: " + user.toString());
         
-        if (user.getUserId() != null) {
+        if (user.getId() != null) {
         	logger.debug("user is not null");
         	
-        	if ( user.getUserId() != 0 ) {
+        	if ( user.getId() != 0 ) {
               logger.debug("user is not 0");
-              if ( findById(user.getUserId()) != null ) {
-                  logger.debug("lookup of user '" + user.getUserId() + "' is not null" );
+              if ( findById(user.getId()) != null ) {
+                  logger.debug("lookup of user '" + user.getId() + "' is not null" );
               }
               else {
                   logger.debug("lookup of user for this id is null" );
@@ -96,9 +96,9 @@ public class UserDao {
         }
         
         
-        if (user.getUserId() != null 
-                        && user.getUserId() != 0 
-                        && findById(user.getUserId()) != null ) {
+        if (user.getId() != null 
+                        && user.getId() != 0 
+                        && findById(user.getId()) != null ) {
             logger.debug("Object already exists: merging object with existing object.");
             entityManager.merge(user);
         }

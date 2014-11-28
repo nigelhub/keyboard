@@ -52,7 +52,7 @@ public class Demo {
      * 
      * @return the level id.
      */
-    public Long getDemoId() {
+    public Long getId() {
         return demoLevel;
     }
     
@@ -61,7 +61,7 @@ public class Demo {
      * 
      * @return the name.
      */
-    public String getDemoName() {
+    public String getName() {
         return name;
     }
     
@@ -98,7 +98,7 @@ public class Demo {
      * Set the demo id.
      * @param id
      */
-    public void setDemoId(Long id) {
+    public void setId(Long id) {
         this.demoLevel = id;
     }
 

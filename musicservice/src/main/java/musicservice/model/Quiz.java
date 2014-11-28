@@ -62,7 +62,7 @@ public class Quiz {
      * 
      * @return the level id.
      */
-    public Long getQuizId() {
+    public Long getId() {
         return quizId;
     }
     
@@ -71,7 +71,7 @@ public class Quiz {
      * 
      * @return the name.
      */
-    public String getQuizName() {
+    public String getName() {
         return name;
     }
     

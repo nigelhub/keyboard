@@ -73,7 +73,7 @@ public class Note {
      * 
      * @return the id.
      */
-    public Long getDemoNoteId() {
+    public Long getId() {
         return demoNoteId;
     }
     
@@ -82,7 +82,7 @@ public class Note {
      * 
      * @return the id.
      */
-    public Long getDemoId() {
+    public Long getParentId() {
         return demoId;
     }
     
@@ -92,7 +92,7 @@ public class Note {
      * 
      * @return the note
      */
-    public String getNoteDisplay() {
+    public String getText() {
         return noteDisplay;
     }
     
@@ -106,6 +106,16 @@ public class Note {
      */
     public Long getSequenceId() {
         return sequenceId;
+    }
+    
+    
+    /**
+     * Returns the duration for which the note should
+     * be played.
+     * @return  duration.
+     */
+    public String getLength() {
+    	return this.noteDuration;
     }
     
     
@@ -128,7 +138,7 @@ public class Note {
      * 
      * @return the delay.
      */
-    public String getNoteDelay() {
+    public String getDelay() {
         return noteDelay;
     }
     
@@ -138,7 +148,7 @@ public class Note {
 	 * @param id
 	 * @return
 	 */
-	   public void setDemoNoteId(Long id) {
+	   public void setId(Long id) {
 	       demoNoteId = id;
 	   }
 	    
@@ -147,7 +157,7 @@ public class Note {
 	 * @param id
 	 * @return
 	 */
-	 public void setDemoId(Long id) {
+	 public void setParentId(Long id) {
 	     demoId = id;
 	 }
 	   
@@ -159,7 +169,7 @@ public class Note {
 	  * @param name
 	  * @return
 	  */
-	 public void setNoteDisplay(String name) {
+	 public void setText(String name) {
 	     noteDisplay = name;
 	 }
 	    
@@ -194,7 +204,7 @@ public class Note {
 	  * @param text
 	  * @return
 	  */
-	 public void setNoteDuration(String duration) {
+	 public void setLength(String duration) {
 	     noteDuration = duration;
 	 }
 	   
@@ -205,7 +215,7 @@ public class Note {
 	  * @param id
 	  * @return
 	  */
-	 public void setNoteDelay(String delay) {
+	 public void setDelay(String delay) {
 	     noteDelay = delay;
 	 }
 	   
