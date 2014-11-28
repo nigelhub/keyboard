@@ -1,69 +1,4 @@
-piano_app.service('TutorialDataService', function() {
-    this.tutorial_data = function(level_num) {
-        if (level_num == 1){
-            return  { tutorial_information: [
-                {
-                    tutorial_phase_type: 'press_continue',
-                    display: {
-                        image: 'Tutorial/Level1/Tutorial_Level1_1.png',
-                        text: 'This is the grand staff. The grand staff displays what notes to play on the piano! It is broken into two seperate staves each with five lines.'
-                    }
-                },
-                {
-                    tutorial_phase_type: 'press_continue',
-                    display: {
-                        image: 'Tutorial/Level1/Tutorial_Level1_2.png',
-                        text: 'The is the Treble Clef. It is also called the G Clef. Just remember that the top five lines include notes to be played with the right hand.'
-                    }
-                },
-                {
-                    tutorial_phase_type: 'press_continue',
-                    display: {
-                        image: 'Tutorial/Level1/Tutorial_Level1_3.png',
-                        text: 'The blue circle shows where all notes to be played with the left hand go. The red circle shows the Bass Clef. It is also called the F Clef. All notes in this space are played with the left hand.'
-                    }
-                },
-                   {
-                    tutorial_phase_type: 'press_continue',
-                    display: {
-                        image: 'Tutorial/Level1/Tutorial_Level1_4.png',
-                        text: 'The top five lines are for the right hand notes and the bottom five lines are for left hand notes!'
-                    }
-                },
-            ]};
-        } else if (level_num == 3){
-            return  { tutorial_information: [
-                {
-                    tutorial_phase_type: 'key_press',
-                    display: {
-                        image: 'Tutorial/Level3/Tutorial_Level3_1.png',
-                        text: 'This is the middle C. This is the first note mose people learn to play on the piano. The line through the note comes from the invisible line we saw earlier that divides the two staves.'
-                    },
-                    expected_keys : ['c4']
-
-                },
-                {
-                    tutorial_phase_type: 'key_press',
-                    display: {
-                        image: 'Tutorial/Level3/Tutorial_Level3_2.png',
-                        text: 'This is the same physical note on the piano. Here the note is closer to the Bass clef though. This means that the left hand will play the note instead of the right hand.'
-                    },
-                    expected_keys : ['c4']
-                },
-                {
-                    tutorial_phase_type: 'key_press',
-                    display: {
-                        image: 'Tutorial/Level3/Tutorial_Level3_3.png',
-                        text: 'Here there are 6 middle C notes in a row. The first three should be played withe the right hand and the next three should be played with the left hand on a real piano.'
-                    },
-                    expected_keys : ['c4', 'c4', 'c4', 'c4', 'c4', 'c4']
-                }
-            ]};
-        }
-    };
-});
-
-piano_app.service('QuizDataService', function() {
+piano_app.service('DataService', ['$http', function($http) {
     this.quiz_data = function(level_num) {
         if (level_num === 20){
             return  { quiz_questions: [
@@ -450,290 +385,42 @@ piano_app.service('QuizDataService', function() {
             ]};
         }
     };
-});
 
-piano_app.service('DemoDataService', function() {
-    this.demo_data = function(level_num) {
-        if (level_num === 1){
-            return [
-            //HAPPY BIRTHDAY TO YOU
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'D' },
-                    note_length: 0.25,
-                    note_key: 'd4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.25,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'F' },
-                    note_length: 0.25,
-                    note_key: 'f4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: .5,
-                    note_key: 'e4'
-                },
-
-                //HAPPY BIRTHDAY TO YOU
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'D' },
-                    note_length: 0.25,
-                    note_key: 'd4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.25,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'G' },
-                    note_length: 0.25,
-                    note_key: 'g4'
-                },
-                {
-                    display: { text: 'F' },
-                    note_length: .5,
-                    note_key: 'f4'
-                },
-
-                //HAPPY BIRTHDAY, DEAR SOME-ONE
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.25,
-                    note_key: 'c5'
-                },
-                {
-                    display: { text: 'A' },
-                    note_length: 0.25,
-                    note_key: 'a5'
-                },
-                {
-                    display: { text: 'F' },
-                    note_length: 0.25,
-                    note_key: 'f4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: 0.25,
-                    note_key: 'e4'
-                },
-                {
-                    display: { text: 'D' },
-                    note_length: 0.25,
-                    note_key: 'd4'
-                },
-
-                 //HAPPY BIRTHDAY TO YOU!
-                {
-                    display: { text: 'A#' },
-                    note_length: 0.125,
-                    note_key: "asharp5"
-                },
-                {
-                    display: { text: 'A#' },
-                    note_length: 0.125,
-                    note_key: "asharp5"
-                },
-                {
-                    display: { text: 'A' },
-                    note_length: 0.25,
-                    note_key: 'a5'
-                },
-                {
-                    display: { text: 'F' },
-                    note_length: 0.25,
-                    note_key: 'f4'
-                },
-                {
-                    display: { text: 'G' },
-                    note_length: 0.25,
-                    note_key: 'g4'
-                },
-                {
-                    display: { text: 'F' },
-                    note_length: .5,
-                    note_key: 'f4'
-                }
-            ];
-        } else if (level_num === 2){
-            return  [
-            //ROW ROW ROW YOUR BOAT
-                {
-                    display: { text: 'C' },
-                    note_length: 0.375,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.375,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.25,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'D' },
-                    note_length: 0.125,
-                    note_key: 'd4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: 0.375,
-                    note_key: 'e4'
-                },
-                //GENTLY DOWN THE STREAM
-                {
-                    display: { text: 'E' },
-                    note_length: 0.25,
-                    note_key: 'e4'
-                },
-                {
-                    display: { text: 'D' },
-                    note_length: 0.125,
-                    note_key: 'd4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: 0.25,
-                    note_key: 'e4'
-                },
-                {
-                    display: { text: 'F' },
-                    note_length: 0.125,
-                    note_key: 'f4'
-                },
-                {
-                    display: { text: 'G' },
-                    note_length: 0.75,
-                    note_key: 'g4'
-                },
-                //MERRILY MERRILY MERRILY MERILY
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c5'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c5'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c5'
-                },
-                {
-                    display: { text: 'G' },
-                    note_length: 0.125,
-                    note_key: 'g4'
-                },
-                {
-                    display: { text: 'G' },
-                    note_length: 0.125,
-                    note_key: 'g4'
-                },
-                {
-                    display: { text: 'G' },
-                    note_length: 0.125,
-                    note_key: 'g4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: 0.125,
-                    note_key: 'e4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: 0.125,
-                    note_key: 'e4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: 0.125,
-                    note_key: 'e4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.125,
-                    note_key: 'c4'
-                },
-                //LIFE IS BUT A DREAM
-                {
-                    display: { text: 'G' },
-                    note_length: 0.25,
-                    note_key: 'g4'
-                },
-
-                {
-                    display: { text: 'F' },
-                    note_length: 0.125,
-                    note_key: 'f4'
-                },
-                {
-                    display: { text: 'E' },
-                    note_length: 0.25,
-                    note_key: 'e4'
-                },
-                {
-                    display: { text: 'D' },
-                    note_length: 0.125,
-                    note_key: 'd4'
-                },
-                {
-                    display: { text: 'C' },
-                    note_length: 0.75,
-                    note_key: 'c4'
-                }
-            ];
-
-        }
+    this.tutorial_data = function(tutorial_id, response) {
+        api_call('http://keyboard.cloudapp.net:3010/MusicService/tutorial_page?tutorialId='+tutorial_id, response);
     };
-});
+
+    this.demo_data = function(demo_id, response) {
+        api_call('http://keyboard.cloudapp.net:3010/MusicService/note?demoId='+demo_id, response);
+    };
+
+    function api_call(api_call, response, oldKeys, newKeys) {
+        $http.get(api_call).
+            success(function(data) {
+                if (typeof oldKeys !== 'undefined' && oldKeys.length > 0) {
+                    data = changeKeys(oldKeys, newKeys, data);
+                }
+                console.log(data);
+                response(data);
+            }).error(function(data,status) {
+                console.log("lol");
+                response([])
+            });
+    }
+
+    function changeKeys(originalKeys, newKeys, arr)
+    {
+        var newArr = [];
+        for(var pos = 0; pos < arr.length; pos++)
+        {
+            var obj = arr[pos];
+            for( var key_pos = 0; key_pos < originalKeys.length; key_pos ++){
+                obj[newKeys[key_pos]] = obj[originalKeys[key_pos]];
+                delete(obj[originalKeys[key_pos]]);
+                newArr.push(obj);
+            }
+        }
+        return newArr;
+    }
+}]);
 

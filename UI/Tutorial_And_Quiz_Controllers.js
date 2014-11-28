@@ -1,4 +1,4 @@
-piano_app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, TutorialDataService, QuizDataService, DemoDataService){
+piano_app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, DataService){
     //variables with data binding to UI
     this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none, demo
     this.display_text = '';
@@ -7,7 +7,6 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
     this.level_number = 1;
     this.tutorial_level_info = [];
     this.quiz_info = [];
-    this.demo_info = [];
     this.click_to_continue_true = false;
     this.multiple_choices = [];
     this.selected_multiple_choice="";
@@ -42,7 +41,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
 
             if (mode_value === 'tutorial'){
                 tutorial_location = 0;
-                this.tutorial_level_info = TutorialDataService.tutorial_data(this.level_number).tutorial_information;
+                this.tutorial_level_info = DataService.tutorial_data(this.level_number).tutorial_information;
                 iterateTutorial();
             } else if (mode_value === 'quiz'){
                 this.quiz_info = QuizDataService.quiz_data(this.level_number).quiz_questions;
@@ -50,8 +49,9 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                 quiz_answer_location = 0;
                 iterateQuiz();
             } else if (mode_value === 'demo'){
-                this.demo_info = DemoDataService.demo_data(this.level_number);
-                playDemo(this.demo_info);
+                DataService.demo_data(this.level_number,
+                    function(data){ playDemo(data); }
+                );
             }
         }
     };
@@ -212,26 +212,28 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
 
         var playNextNote = function() {
             var note = demo_data_array[note_pos];
-            setDisplayText(note.display.text, process_hash);
-            setDisplayImage(note.display.image, process_hash);
+            setDisplayText(note.text, process_hash);
+            setDisplayImage(note.image, process_hash);
 
-            simulateKeyPress(note.note_key, prevous_note.note_key);
+            simulateKeyPress(note.noteKey, prevous_note.noteKey);
 
             prevous_note = note;
             note_pos++;
 
             if (process_hash !== expected_process_hash){
-                angular.element("div[note=" + note.note_key + "]").trigger('mouseup');
+                angular.element("div[note=" + note.noteKey + "]").trigger('mouseup');
             } else if (note_pos == demo_data_array.length){
-                wait_length = whole_note_length * prevous_note.note_length - short_wait;
+                wait_length = whole_note_length * prevous_note.length - short_wait;
 
                 $timeout(function(){
-                    angular.element("div[note=" + prevous_note.note_key + "]").trigger('mouseup');
+                    angular.element("div[note=" + prevous_note.noteKey + "]").trigger('mouseup');
+                    setDisplayText('', process_hash);
+                    setDisplayImage('', process_hash);
                     },
                     wait_length
                 );
             } else {
-                wait_length = whole_note_length * prevous_note.note_length - short_wait;
+                wait_length = whole_note_length * prevous_note.length - short_wait;
                 $timeout(function(){
                     setDisplayText('', process_hash);
                     setDisplayImage('', process_hash);
