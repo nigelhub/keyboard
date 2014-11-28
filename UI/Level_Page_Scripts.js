@@ -20,7 +20,7 @@ function updateLevelsPage(mode, levels_object) {
             var capitalize_mode = mode.charAt(0).toUpperCase() + mode.slice(1);
             html += capitalize_mode + ' ' + levels_object[j].id;
         } else if (mode == 'demo') {
-            html += levels_object[j].demoName;
+            html += levels_object[j].name;
         }
         html += '<div>' + levels_object[j].description + '</div>';
         html += '</a></td></div>';
