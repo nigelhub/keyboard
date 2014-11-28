@@ -4,14 +4,30 @@ html,body { height:100%; width:100%;padding:0; margin:0; background-color:#FFFAF
 
 .blue {color:blue;}
 
+img
+{
+	padding:0;
+	margin:0;
+}
+
 #level_select
 {
 	position:relative;
-	top:5%;
+	top:12%;
 	height:50%;
 	margin:0;
 	padding:0;
 	clear:both;
+}
+
+.square 
+{
+	width:80%;
+	height:80%;
+	margin-top:10px;
+	background-color:#005A95;
+	border-radius:5px;
+	border: 1px solid black;
 }
 
 table
@@ -29,7 +45,9 @@ td
 	height:100px;
 	border: 1px solid #ccc;
 	background-color:#70AFD8;
-	cursor:pointer;
+	border-radius:5px;
+	margin:2px;
+	border: 1px solid black;
 }
 
 #header
@@ -53,6 +71,11 @@ td
 	top:10px;
 }
 
+.header2 img
+{
+	padding-top:6px;
+}
+
 li { display:inline; }
 
 ul
@@ -63,19 +86,19 @@ ul
 	margin-top:40px;
 }
 
-#header a, #footer a, #header2 a
+a
 {
 	position: relative;
 	color:white;
 	text-decoration: none;
 }
 
-#header a:hover, #header2 a:hover
+a:hover
 {
 	color: #000;
 }
 
-#header a:before, #header2 a:before
+a:before
 {
 	content: "";
 	position: absolute;
@@ -91,7 +114,7 @@ ul
 	transition: all 0.3s ease-in-out 0s;
 }
 
-#header a:hover:before, #header2 a:hover:before
+a:hover:before
 {
 	visibility: visible;
 	-webkit-transform: scaleX(1);
@@ -110,7 +133,7 @@ ul
     position:relative;
     width:1300px;
     clear: both;
-    top:135px;
+    top:70px;
 }
 
 #full_piano_container_small
@@ -130,6 +153,12 @@ ul
     background-image: url("Images/Body.png");
     margin:0;
     padding:0;
+    -webkit-border-top-left-radius: 30px;
+	-webkit-border-top-right-radius: 30px;
+	-moz-border-radius-topleft: 30px;
+	-moz-border-radius-topright: 30px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 }
 
 #full_piano_container_small .keyboard_body
@@ -140,6 +169,12 @@ ul
     background-image: url("Images/Body.png");
     margin:0;
     padding:0;
+    -webkit-border-top-left-radius: 30px;
+	-webkit-border-top-right-radius: 30px;
+	-moz-border-radius-topleft: 30px;
+	-moz-border-radius-topright: 30px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 }
 
 #full_piano_container .keyboard_face
@@ -339,11 +374,6 @@ ul
     clear:both;
 }
 
-img
-{
-	padding-top:5px;
-}
-
 #tutorial_screen.correct {
     border-color:green;
 }
@@ -376,7 +406,16 @@ input[type="radio"] {
     height: 2em;
 }
 
+h1 
+{
+	clear:both; 
+	position:relative; 
+	top:50px;
+}
+
 .title {
     text-align: center;
     color: black;
+    margin:0;
 }
+
