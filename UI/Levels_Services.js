@@ -1,14 +1,14 @@
 levels_app.service('TutorialsNavService', ['$http', function($http) {
     this.tutorial_overview = function(response) {
-        api_call('http://keyboard.cloudapp.net:3010/MusicService/level', response, ['levelId'], ['id']);
+        api_call('http://keyboard.cloudapp.net:3010/MusicService/level', response);
     };
 
     this.quiz_overview = function(response) {
-        api_call('http://keyboard.cloudapp.net:3010/MusicService/quiz', response, ['quizId'], ['id']);
+        api_call('http://keyboard.cloudapp.net:3010/MusicService/quiz', response);
     };
 
     this.demo_overview = function(response) {
-        api_call('http://keyboard.cloudapp.net:3010/MusicService/demo', response, ['demoId'], ['id']);
+        api_call('http://keyboard.cloudapp.net:3010/MusicService/demo', response);
     };
 
     function api_call(api_call, response, oldKeys, newKeys) {
