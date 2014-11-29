@@ -141,7 +141,7 @@ a:hover:before
     position:relative;
     width:952px;
     padding-bottom:90px;
-    top:-80px;
+    top:-110px;
     clear: both;
 }
 
@@ -165,7 +165,7 @@ a:hover:before
 {
     position:relative;
     width:952px;
-    height:224px;
+    height:324px;
     background-image: url("Images/Body.png");
     margin:0;
     padding:0;
@@ -229,6 +229,7 @@ a:hover:before
     height:240px;
     width:952px;
     overflow:hidden;
+    top:-50px;
 }
 
 #full_piano_container .keys
@@ -309,6 +310,11 @@ a:hover:before
     cursor:pointer;
 }
 
+#full_piano_container_small .black.key.highlight
+{
+    background-image:url("Images/BlackKey_Small_Highlight.png");
+}
+
 #full_piano_container .white.key_down
 {
     width:36px;
@@ -356,11 +362,11 @@ a:hover:before
 #tutorial_screen {
     position: relative;
     text-align: center;
-    width: 840px;
-    height: 88px;
-    top: 25px;
+    width: 900px;
+    height: 130px;
+    top: 40px;
     z-index:1000;
-    font-size:150%;
+    font-size:130%;
     border-color:black;
     background-color:#8195D5;
     border:solid;
