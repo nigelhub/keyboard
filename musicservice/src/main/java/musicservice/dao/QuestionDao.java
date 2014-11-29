@@ -76,7 +76,7 @@ public class QuestionDao {
         
         List<Question> matches = new ArrayList<Question>();
         for (Question question : results) {
-        	if (question.getId().equals(quizId)) {
+        	if (question.getParentId().equals(quizId)) {
         		matches.add(question);
         	}
         }
