@@ -139,7 +139,7 @@ a:hover:before
 #full_piano_container_small
 {
     position:relative;
-    width:952px;
+    width:910px;
     padding-bottom:90px;
     top:-110px;
     clear: both;
@@ -164,8 +164,8 @@ a:hover:before
 #full_piano_container_small .keyboard_body
 {
     position:relative;
-    width:952px;
-    height:324px;
+    width:910px;
+    height:308px;
     background-image: url("Images/Body.png");
     margin:0;
     padding:0;
@@ -193,9 +193,9 @@ a:hover:before
 {
     position:relative;
     top:50%;
-    width:952px;
     height:100%;
     background-image: url("Images/PianoFace.png");
+    background-size: 1768px 75px;
     background-repeat:no-repeat;
     margin:0;
     padding:0;
@@ -211,7 +211,6 @@ a:hover:before
 #full_piano_container_small .container
 {
     position:relative;
-    width:952px;
     white-space:nowrap;
 }
 
@@ -226,10 +225,9 @@ a:hover:before
 #full_piano_container_small .inside
 {
     position:relative;
-    height:240px;
-    width:952px;
+    height:228px;
     overflow:hidden;
-    top:-50px;
+    top:-79px;
 }
 
 #full_piano_container .keys
@@ -242,8 +240,6 @@ a:hover:before
 #full_piano_container_small .keys
 {
     position:relative;
-    height:240px;
-    width:952px;
 }
 
 #full_piano_container .white.key
@@ -269,11 +265,12 @@ a:hover:before
 
 #full_piano_container_small .white.key
 {
-    width:68px;
-    height:240px;
+    width:65px;
+    height:228px;
     float:left;
     background-image:url("Images/WhiteKey_Small.png");
     background-repeat:no-repeat;
+    background-size: 65px 228px;
     cursor:pointer;
 }
 
@@ -300,13 +297,14 @@ a:hover:before
 {
     position: relative;
     float:left;
-    width: 40px;
-    height:120px;
-    left: -20px;
-    margin-right: -40px;
+    width: 38px;
+    height:114px;
+    left: -19px;
+    margin-right: -48px;
     vertical-align: top;
     background-image:url("Images/BlackKey_Small.png");
     background-repeat:no-repeat;
+    background-size: 38px 114px;
     cursor:pointer;
 }
 
@@ -325,8 +323,6 @@ a:hover:before
 
 #full_piano_container_small .white.key_down
 {
-    width:68px;
-    height:240px;
     background-image:url("Images/WhiteKeyDown_Small.png");
     cursor:pointer;
 }
@@ -349,10 +345,6 @@ a:hover:before
 {
     position: relative;
     float:left;
-    width: 40px;
-    height:120px;
-    left: -20px;
-    margin-right: -40px;
     vertical-align: top;
     background-image:url("Images/BlackKeyDown_Small.png");
     background-repeat:no-repeat;
@@ -362,9 +354,9 @@ a:hover:before
 #tutorial_screen {
     position: relative;
     text-align: center;
-    width: 900px;
+    width: 855px;
     height: 130px;
-    top: 40px;
+    top: 38px;
     z-index:1000;
     font-size:130%;
     border-color:black;
@@ -418,4 +410,3 @@ h1
     color: black;
     margin:0;
 }
-
