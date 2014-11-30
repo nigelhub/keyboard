@@ -128,6 +128,15 @@ a:hover:before
     clear: both;
 }
 
+#spacer
+{
+    position:relative;
+    display:none;
+    clear: both;
+    height:50px;
+    display:block;
+}
+
 #full_piano_container
 {
     position:relative;
@@ -141,7 +150,7 @@ a:hover:before
     position:relative;
     width:910px;
     padding-bottom:90px;
-    top:-110px;
+    top:-130px;
     clear: both;
 }
 
@@ -165,7 +174,7 @@ a:hover:before
 {
     position:relative;
     width:910px;
-    height:308px;
+    height:288px;
     background-image: url("Images/Body.png");
     margin:0;
     padding:0;
@@ -195,7 +204,7 @@ a:hover:before
     top:50%;
     height:100%;
     background-image: url("Images/PianoFace.png");
-    background-size: 1768px 75px;
+    background-size: 1768px 65px;
     background-repeat:no-repeat;
     margin:0;
     padding:0;
@@ -355,8 +364,7 @@ a:hover:before
     position: relative;
     text-align: center;
     width: 855px;
-    height: 130px;
-    top: 38px;
+    height: 110px;
     z-index:1000;
     font-size:130%;
     border-color:black;
