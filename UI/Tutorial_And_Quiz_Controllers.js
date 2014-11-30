@@ -207,12 +207,6 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
         }
     };
 
-    setTitle =  function(new_value, expected_process_hash){
-        if(process_hash === expected_process_hash){
-            thisController.title = new_value;
-        }
-    };
-
     simulateKeyPress = function(note_pressed, previous_note){
         if (previous_note !== ""){
             angular.element("div[note=" + previous_note + "]").trigger('mouseup');
