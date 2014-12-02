@@ -9,7 +9,8 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
     this.quiz_info = [];
     this.click_to_continue_true = false;
     this.multiple_choices = [];
-    this.selected_multiple_choice="";
+    this.selected_multiple_choice = '';
+    this.tutorial_quiz_loc = '';
 
     var thisController = this;
     var whole_note_length = 3000;
@@ -41,6 +42,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
 
             if (mode_value === 'tutorial'){
                 tutorial_location = 0;
+                this.tutorial_quiz_loc = "Tutorial " + this.level_number ;
                 DataService.tutorial_data(this.level_number,
                     function(data){
                         thisController.tutorial_level_info = data;
@@ -48,6 +50,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                     }
                 );
             } else if (mode_value === 'quiz'){
+                this.tutorial_quiz_loc = "Quiz " + this.level_number ;
                 quiz_location = 0;
                 quiz_answer_location = 0;
 
@@ -167,7 +170,6 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
         if (thisController.tutorial_level_info.length > tutorial_location){
             var tutorial_phase = thisController.tutorial_level_info[tutorial_location];
             setDisplayText(tutorial_phase.text, process_hash);
-
             if (typeof tutorial_phase.image === 'undefined' || tutorial_phase.image === null){
                 setDisplayImage('', process_hash);
             } else {
