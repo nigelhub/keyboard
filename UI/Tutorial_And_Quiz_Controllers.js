@@ -119,7 +119,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                     tutorial_location++;
                     iterateTutorial();
                 }
-            } else if (this.mode === 'quiz' && this.quiz_info[quiz_location].questionType == "multiple_choice") {
+            } else if (this.mode === 'quiz' && this.quiz_info[quiz_location].type == "multiple_choice") {
                 if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
                     correctAnswerDisplay();
                     this.selected_multiple_choice = "";
@@ -262,6 +262,9 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
 
         if(quiz_location >= thisController.quiz_info.length){
             setDisplayText('Congratulations! You got it', process_hash);
+            setDisplayImage('', process_hash);
+            thisController.multiple_choices = [];
+            thisController.click_to_continue_true = false;
         } else {
             var question_info = thisController.quiz_info[quiz_location]
             setDisplayText(question_info.text, process_hash);
