@@ -40,11 +40,7 @@ piano_app.service('DataService', ['$http', function($http) {
         {
             var obj = data[pos];
             if (obj.type == "press_key"){
-                if(obj.answer  == "c4 (x6)") {
-                    obj.answer = ['c4', 'c4', 'c4', 'c4','c4', 'c4'];
-                } else {
-                    obj.answer = obj.answer.split(" ");
-                }
+                obj.answer = obj.answer.split(" ");
                 cleaned_data.push(obj);
             } else if (obj.type == "multiple_choice"){
                 if (typeof multiple_choice_hash[quiz_id.toString()] !== 'undefined' &&
