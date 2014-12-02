@@ -119,8 +119,11 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                     tutorial_location++;
                     iterateTutorial();
                 }
-            } else if (this.mode === 'quiz' && this.quiz_info[quiz_location].type == "multiple_choice") {
-                if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
+            } else if (this.mode === 'quiz'){
+                if (quiz_location >= thisController.quiz_info.length){
+                    this.setLevel(this.level_number+1);
+                    this.setMode('tutorial');
+                } else if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
                     correctAnswerDisplay();
                     this.selected_multiple_choice = "";
                     correctAnswerDisplay();
@@ -259,12 +262,18 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
     };
 
     iterateQuiz = function() {
-
         if(quiz_location >= thisController.quiz_info.length){
-            setDisplayText('Congratulations! You got it', process_hash);
-            setDisplayImage('', process_hash);
             thisController.multiple_choices = [];
-            thisController.click_to_continue_true = false;
+            if (thisController.level_number != 8) {
+                var message = "Congratulations! You completed quiz " + thisController.level_number +
+                    ". Click Continue to got to tutorial " + (thisController.level_number + 1) + "!";
+                thisController.click_to_continue_true = true;
+            } else {
+                var message = 'Congratulations! You completed the last quiz!';
+                thisController.click_to_continue_true = false;
+            }
+            setDisplayText(message, process_hash);
+            setDisplayImage('', process_hash);
         } else {
             var question_info = thisController.quiz_info[quiz_location]
             setDisplayText(question_info.text, process_hash);
