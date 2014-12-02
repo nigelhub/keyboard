@@ -57,6 +57,15 @@ piano_app.service('DataService', ['$http', function($http) {
                 cleaned_data.push(obj);
             }
         }
+
+        if (quiz_id != 8) {
+            var final_message = "Congratulations! You completed quiz " + quiz_id +
+                    ". Click Continue to got to tutorial " + (quiz_id + 1) + "!";
+        } else {
+            var final_message = 'Congratulations! You completed the last quiz!';
+        }
+
+        cleaned_data.push({"type":"done", "text":final_message});
         response(cleaned_data);
     }
 }]);

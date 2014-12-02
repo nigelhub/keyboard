@@ -120,7 +120,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                     iterateTutorial();
                 }
             } else if (this.mode === 'quiz'){
-                if (quiz_location >= thisController.quiz_info.length){
+                if (this.quiz_info[quiz_location].type == "done"){
                     this.setLevel(this.level_number+1);
                     this.setMode('tutorial');
                 } else if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
@@ -262,19 +262,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
     };
 
     iterateQuiz = function() {
-        if(quiz_location >= thisController.quiz_info.length){
-            thisController.multiple_choices = [];
-            if (thisController.level_number != 8) {
-                var message = "Congratulations! You completed quiz " + thisController.level_number +
-                    ". Click Continue to got to tutorial " + (thisController.level_number + 1) + "!";
-                thisController.click_to_continue_true = true;
-            } else {
-                var message = 'Congratulations! You completed the last quiz!';
-                thisController.click_to_continue_true = false;
-            }
-            setDisplayText(message, process_hash);
-            setDisplayImage('', process_hash);
-        } else {
+        if(quiz_location < thisController.quiz_info.length){
             var question_info = thisController.quiz_info[quiz_location]
             setDisplayText(question_info.text, process_hash);
 
@@ -284,12 +272,14 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                 setDisplayImage("Quizzes/Level" + thisController.level_number+'/'+ question_info.image, process_hash);
             }
 
+
+            thisController.multiple_choices = [];
+            thisController.click_to_continue_true = false;
             if (question_info.type == "multiple_choice") {
                 thisController.multiple_choices = question_info.choices;
                 thisController.click_to_continue_true = true;
-            } else {
-                thisController.multiple_choices = [];
-                thisController.click_to_continue_true = false;
+            } else if (question_info.type == "done"){
+                thisController.click_to_continue_true = true;
             }
         }
     };
