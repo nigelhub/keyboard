@@ -3,7 +3,7 @@ piano_app.service('DataService', ['$http', function($http) {
         $http.get('http://keyboard.cloudapp.net:3010/MusicService/question?quizId='+quiz_id).
             success(function(data){
                 if (quiz_id === 1 || quiz_id == 2){
-                    $http.get('multiple_choices.json').
+                     $http.get('multiple_choices.json', {headers: {'Content-Type': 'application/json'}}).
                         success(function(multiple_choice_hash){
                             clean_quiz_data(quiz_id, data, multiple_choice_hash, response);
                         }).error(function() {
