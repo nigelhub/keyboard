@@ -244,7 +244,8 @@ USE `music_service`;
 INSERT INTO `music_service`.`db_version` (`db_version_id`, `version`, `description`) VALUES (1, '1.0', 'Added user table and db_version table.');
 INSERT INTO `music_service`.`db_version` (`db_version_id`, `version`, `description`) VALUES (2, '2.0', 'Added core tables for entire projet.');
 INSERT INTO `music_service`.`db_version` (`db_version_id`, `version`, `description`) VALUES (3, '3.0', 'Added tutorial, tutorial_pages, and tutorial_page_responses table.');
-INSERT INTO `music_service`.`db_version` (`db_version_id`, `version`, `description`) VALUES (3, '4.0', 'Modified note duration to be a varchar. Lower cased music notes. Tweaked one tutorial page statement.');
+INSERT INTO `music_service`.`db_version` (`db_version_id`, `version`, `description`) VALUES (4, '4.0', 'Modified note duration to be a varchar. Lower cased music notes. Tweaked one tutorial page statement.');
+INSERT INTO `music_service`.`db_version` (`db_version_id`, `version`, `description`) VALUES (5, '5.0', 'Tweaked some tutorial page  types to press_key and some question answers.');
 
 COMMIT;
 
