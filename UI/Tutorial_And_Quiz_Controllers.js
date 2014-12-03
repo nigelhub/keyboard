@@ -279,7 +279,9 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                 thisController.multiple_choices = question_info.choices;
                 thisController.click_to_continue_true = true;
             } else if (question_info.type == "done"){
-                thisController.click_to_continue_true = true;
+                if (thisController.level_number !== 8) {
+                    thisController.click_to_continue_true = true;
+                }
             }
         }
     };
