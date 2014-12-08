@@ -1,4 +1,4 @@
-piano_app.controller('TutorialQuizController', function($scope, $route, $routeParams, $timeout, DataService){
+piano_app.controller('TutorialQuizController', function($scope, $route, $location, $routeParams, $timeout, DataService){
     //variables with data binding to UI
     this.mode = 'free_play'; //possible values: free_play, tutorial, quiz, none, demo
     this.display_text = '';
@@ -114,6 +114,8 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
         if (this.click_to_continue_true) {
             if (this.mode === 'tutorial'){
                 if (this.tutorial_level_info[tutorial_location].type == 'done') {
+                    var url = '/mode/quiz/level/' + this.level_number;
+                    $location.path( url );
                     this.setMode('quiz');
                 } else {
                     tutorial_location++;
@@ -121,7 +123,9 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $routePa
                 }
             } else if (this.mode === 'quiz'){
                 if (this.quiz_info[quiz_location].type == "done"){
-                    this.setLevel(this.level_number+1);
+                    var url = '/mode/tutorial/level/' + (this.level_number + 1);
+                    $location.path( url );
+                    this.setLevel(this.level_number+ 1 );
                     this.setMode('tutorial');
                 } else if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
                     correctAnswerDisplay();
