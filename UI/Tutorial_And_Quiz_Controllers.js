@@ -125,7 +125,7 @@ piano_app.controller('TutorialQuizController', function($scope, $route, $locatio
                 if (this.quiz_info[quiz_location].type == "done"){
                     var url = '/mode/tutorial/level/' + (this.level_number + 1);
                     $location.path( url );
-                    this.setLevel(this.level_number+ 1 );
+                    this.setLevel(this.level_number + 1);
                     this.setMode('tutorial');
                 } else if( this.selected_multiple_choice == this.quiz_info[quiz_location].answer ){
                     correctAnswerDisplay();
